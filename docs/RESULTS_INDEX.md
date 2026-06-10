@@ -1,0 +1,68 @@
+# Results Index
+
+All canonical paper-ready artifacts are under [results/paper](../results/paper).
+Root-level `figures/` and `data/` directories are local working mirrors and are
+ignored by git.
+
+## DeepRM
+
+Directory: [results/paper/deeprm](../results/paper/deeprm)
+
+Key artifacts:
+
+- [Clean reproduction gate](../results/paper/deeprm/tables/deeprm_clean_gate.md)
+- [Prediction outcomes](../results/paper/deeprm/tables/deeprm_prediction_outcomes.md)
+- [Perturbation sweep compact table](../results/paper/deeprm/tables/deeprm_sweep_compact.csv)
+- [P1 first-fit fallback sensitivity](../results/paper/deeprm/tables/deeprm_p1_first_fit_sensitivity.md)
+- [Training curve](../results/paper/deeprm/figures/deeprm_training_curve.pdf)
+- [P1 stale-action sensitivity, vector](../results/paper/deeprm/figures/deeprm_p1_first_fit_sensitivity.pdf)
+
+## Rossi/RLAD
+
+Directory: [results/paper/rossi](../results/paper/rossi)
+
+Key artifacts:
+
+- [Rossi handoff report](../results/paper/rossi/ROSSI_CLAUDE_HANDOFF_REPORT.md)
+- [Methodology QA](../results/paper/rossi/ROSSI_METHODOLOGY_QA.md)
+- [Table I reproduction gate](../results/paper/rossi/tables/rossi_reproduction_table_i.md)
+- [P1 online lag sweep](../results/paper/rossi/tables/rossi_p1_online_lag_sweep.md)
+- [P2 online tail shift](../results/paper/rossi/tables/rossi_p2_online.md)
+- [P3 online bucket flip](../results/paper/rossi/tables/rossi_p3_online.md)
+- [Per-window delta diagnostics](../results/paper/rossi/tables/rossi_per_window_delta_diagnostics.csv)
+- [Q-table convergence diagnostic](../results/paper/rossi/tables/rossi_clean_q_l1_convergence_diagnostic.csv)
+
+## Decima
+
+Directory: [results/paper/decima](../results/paper/decima)
+
+Key artifacts:
+
+- [Decima handoff report](../results/paper/decima/DECIMA_CLAUDE_HANDOFF_REPORT.md)
+- [Official README gate](../results/paper/decima/tables/decima_official_readme_gate.md)
+- [Prediction outcomes](../results/paper/decima/tables/decima_prediction_outcomes.md)
+- [Prediction summary](../results/paper/decima/tables/decima_prediction_summary.csv)
+- [Per-seed deltas](../results/paper/decima/tables/decima_per_seed_deltas.csv)
+- [Paired seed delta distributions, vector](../results/paper/decima/figures/decima_paired_delta_distributions.pdf)
+
+## Additional Experiments
+
+Directory: [results/paper/experiments](../results/paper/experiments)
+
+- [Experiment A: Rossi block bootstrap](../results/paper/experiments/experiment_a/experiment_a_results.md)
+- [Experiment B: HPA-v2 baseline](../results/paper/experiments/experiment_b/experiment_b_results.md)
+- [Experiment C: DeepRM action ablation](../results/paper/experiments/experiment_c/experiment_c_results.md)
+- [HPA-v2 config sensitivity](../results/paper/experiments/hpa_v2_config_sensitivity/hpa_v2_config_sensitivity_results.md)
+- [Decima SRTF/Graphene-style comparator sensitivity](../results/paper/experiments/decima_srtf_comparator/decima_srtf_comparator_results.md)
+- [E1/E2 handoff report](../results/paper/experiments/e1_magnitude_sweep/E1_E2_CLAUDE_HANDOFF_REPORT.md)
+- [E1 pre-submission audit](../results/paper/experiments/e1_magnitude_sweep/E1_PRESUBMISSION_AUDIT.md)
+- [E2 companion analysis](../results/paper/experiments/e2_objective_native/e2_companion_a_results.md)
+
+## Figure Quality
+
+The following figures have vector PDF/SVG versions suitable for paper
+inclusion:
+
+- [DeepRM P1 stale-action sensitivity](../results/paper/deeprm/figures/deeprm_p1_first_fit_sensitivity.pdf)
+- [Decima paired seed delta distributions](../results/paper/decima/figures/decima_paired_delta_distributions.pdf)
+- [Experiment B threshold vs HPA-v2 under lag](../results/paper/experiments/experiment_b/figures/threshold_vs_hpa_v2_under_lag.pdf)

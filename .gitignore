@@ -1,0 +1,71 @@
+# Python and local tooling
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.ipynb_checkpoints/
+
+# MLflow/runtime state
+/mlruns/
+/mlartifacts/
+/mlflow.db
+logs/
+
+# Large regenerated experiment state
+/results/checkpoints/
+/results/training/
+/results/evaluation/
+/results/decima/
+/results/rossi/
+/results/provenance/
+
+# Keep the curated, paper-ready outputs.
+!results/
+!results/paper/
+!results/paper/**
+
+# External source checkouts are documented but not vendored.
+external/*
+!external/README.md
+
+# Private/internal notebooks, operational notes, and source PDFs.
+/archive/internal_notes/
+/IMPLEMENTATION_NOTES.md
+/SCIENTIFIC_DECISIONS.md
+/E1_E2_OPERATIONAL_AUDIT_2026_06_03.md
+/DEEPRM_AUTHOR_ALIGNMENT.md
+/REPRODUCTION_DEBUG.md
+/SIMULATOR_NOTES.md
+/Horizontal_and_Vertical_Scaling_of_Container-Based_Applications_Using_Reinforcement_Learning.pdf
+/CISOSE_Paper_RL_V4.pdf
+
+# Legacy root-level protocol drafts are retained locally; public copies live in docs/.
+/00_MASTER_coordination.md
+/01_calibration.md
+/02_preregistration.md
+/03_codex_brief.md
+/04_codex_brief_decima.md
+/05_codex_brief_rossi.md
+/calibration New.md
+/preregistration New.md
+/PROTOCOL_AMENDMENT_v2.2.md
+/PROTOCOL_AMENDMENT_DECIMA_SIMULATOR_GATE.md
+/EXPERIMENT_A_block_bootstrap_rossi.md
+/EXPERIMENT_B_hpa_baseline_rossi.md
+/EXPERIMENT_C_action_ablation_deeprm.md
+/PREREG_E1_magnitude_sweep.md
+/PREREG_E2_objective_native.md
+
+# Legacy root-level duplicate summaries; canonical copies live under results/paper/.
+/experiment_a_results.md
+/experiment_b_results.md
+/experiment_c_results.md
+/hpa_v2_config_sensitivity_results.md
+/decima_srtf_comparator_results.md
+/data/
+/figures/
+
+# Windows/WSL metadata streams
+*:Zone.Identifier
