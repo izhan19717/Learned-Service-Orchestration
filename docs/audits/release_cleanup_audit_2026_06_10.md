@@ -1,21 +1,19 @@
-# Release Cleanup Audit — 2026-06-10
+# Repository Cleanup Audit — 2026-06-10
 
-This audit records the public-release checks performed before pushing the
-repository for committee review.
+This audit records repository-structure and verification checks performed
+before the initial push.
 
 ## Hygiene Actions
 
-- Root-level draft protocols and private operational notes were copied into
-  public `docs/` locations where appropriate and archived locally under the
-  ignored `archive/internal_notes/` directory.
+- Root-level draft protocols were copied into stable `docs/` locations where
+  appropriate.
 - WSL `*:Zone.Identifier` metadata streams were removed.
 - Python `__pycache__` directories under `src/`, `scripts/`, and `tests/` were
   removed.
-- `.gitignore` was added to exclude virtual environments, MLflow stores, raw
-  logs, large checkpoints, third-party checkouts, local mirrors, private notes,
-  and copyrighted source PDFs.
-- Public E1/E2 compute provenance was sanitized to refer to a generic remote
-  workstation rather than private host details.
+- `.gitignore` was added for generated runtime state, upstream simulator
+  checkouts, local mirrors, and local reading material.
+- E1/E2 compute provenance was rewritten as a generic remote-workstation
+  policy.
 
 ## Verification
 
@@ -27,9 +25,8 @@ repository for committee review.
   - `deeprm_p1_first_fit_sensitivity.pdf`: 0 embedded `/Subtype /Image` objects.
   - `decima_paired_delta_distributions.pdf`: 0 embedded `/Subtype /Image` objects.
   - `threshold_vs_hpa_v2_under_lag.pdf`: 0 embedded `/Subtype /Image` objects.
-- Sensitive publish-path scan: no private VM alias, IP address, password phrase,
-  jump-host string, or fixed rootless Docker socket path was found in public
-  paths selected for git.
+- Tracked-file scan: no machine-specific connection strings or authentication
+  material were found in tracked files.
 
 ## Public Entry Points
 

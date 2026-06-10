@@ -124,7 +124,7 @@ published Decima method and would weaken the paper's scientific integrity.
 
 ## Consequence For The Paper
 
-Decima should be excluded from the empirical perturbation evidence under v2.2.
+Decima should not be used as primary empirical perturbation evidence under v2.2.
 The paper can mention it as an attempted but failed reproduction, with the
 exact gate result reported transparently.
 

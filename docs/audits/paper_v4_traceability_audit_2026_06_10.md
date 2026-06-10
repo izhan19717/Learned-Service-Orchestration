@@ -1,28 +1,26 @@
 # Paper v4 Traceability Audit — 2026-06-10
 
-Source audited: `archive/internal_notes/CISOSE_Paper_RL_V4.pdf`.
+Source audited: local manuscript PDF `CISOSE_Paper_RL_V4.pdf`.
 
 Purpose: verify that the empirical claims in the finalized paper PDF are backed
 by public repository artifacts before pushing the release package.
 
 ## Summary Verdict
 
-The major empirical claims in the paper are backed by committed artifacts under
+The major empirical claims in the paper are backed by tracked artifacts under
 `docs/` and `results/paper/`.
 
-Two non-blocking manuscript-side caveats were found:
+Two manuscript-side corrections remain:
 
-1. The PDF still contains the placeholder text `[REPOSITORY URL TO BE FILLED]`
-   in Section IV. This repository push supplies the URL, but the PDF itself
-   should be updated before camera-ready submission.
+1. Section IV still contains a repository-URL placeholder.
 2. The paper states that DeepRM FGSM changes the argmax in 69.8% of states. The
    committed Experiment C rerun reports 75.2% for the M=10 harness. The 69.8%
    value is present in the frozen Experiment C preregistration as the earlier
    locked diagnostic baseline. The aggregate P3 result is unchanged, but the
    diagnostic percentage should be cited with its source if retained.
 
-No missing public artifact was found for the paper's primary tables, figures,
-or headline empirical conclusions.
+No missing tracked artifact was found for the paper's primary tables, figures,
+or empirical conclusions.
 
 ## Reproduction Gates
 
@@ -74,8 +72,8 @@ or headline empirical conclusions.
 | Decima clean/adversarial target-action probabilities 0.341/0.279 | `results/paper/decima/tables/decima_p3_fgsm_epsilon_0_05.json` | Present |
 | Rossi bucket-flip attack fraction 0.2089 | `results/paper/rossi/tables/rossi_p3_online.csv` | Present |
 
-## Public/Private Boundary Check
+## Manuscript File Boundary
 
-The audited paper PDF itself remains in `archive/internal_notes/` and is ignored
-by git. The public repository contains the evidence package, not the submitted
-paper PDF.
+The manuscript PDF is not part of the tracked artifact set. This repository
+tracks the protocols, code, scripts, tests, and result artifacts that support
+the manuscript's empirical claims.

@@ -1,10 +1,9 @@
-# Reproducibility Guide
+# Reproducibility
 
-This guide describes how to verify the public package and how to regenerate the
-paper-ready artifacts. Full training runs can take many hours and may require
-the external simulators described in [external/README.md](../external/README.md).
+This file lists the commands used to verify the repository and regenerate the
+reported artifacts. Full official-simulator runs can take many hours.
 
-## 1. Install the Python Package
+## 1. Install
 
 ```bash
 python -m venv .venv
@@ -13,7 +12,7 @@ python -m pip install --upgrade pip
 python -m pip install -e '.[dev]'
 ```
 
-The package exposes three command-line entry points:
+Command-line entry points:
 
 ```bash
 cisose-deeprm protocol
@@ -21,20 +20,19 @@ cisose-rossi protocol
 cisose-decima protocol
 ```
 
-## 2. Run Fast Verification
+## 2. Tests
 
 ```bash
 python -m pytest
 ```
 
-These tests cover simulator invariants, statistics helpers, perturbation
-machinery, Rossi source-derived parameters, and DeepRM author-alignment
-regressions. Passing tests do not replace full experiment execution, but they
-are the expected first check for reviewers.
+The tests cover simulator invariants, statistics helpers, perturbation
+machinery, Rossi source-derived constants, Decima adapter behavior, and DeepRM
+author-alignment checks.
 
-## 3. Clone External Simulators
+## 3. External Simulators
 
-For Rossi and Decima full workflows:
+Rossi and Decima full workflows require upstream simulator checkouts:
 
 ```bash
 mkdir -p external
@@ -46,12 +44,9 @@ git clone https://github.com/hongzimao/decima-sim external/decima-sim
 git -C external/decima-sim checkout c010dd74ff4b7566bd0ac989c90a32cfbc630d84
 ```
 
-The public repository intentionally ignores these checkouts.
+## 4. Tables and Figures
 
-## 4. Regenerate Paper Artifacts From Existing Tables
-
-These commands regenerate the paper-ready summaries and plots from committed
-tables and JSON outputs:
+Regenerate summaries and figures from committed result tables and JSON files:
 
 ```bash
 python scripts/generate_deeprm_paper_artifacts.py
@@ -62,11 +57,11 @@ python scripts/render_paper_quality_figures.py
 python scripts/render_experiment_b_threshold_hpa_vector.py
 ```
 
-Canonical outputs are written under `results/paper`.
+Outputs are written under `results/paper`.
 
-## 5. DeepRM Full Workflow
+## 5. DeepRM Workflow
 
-The DeepRM training entry point is:
+Training command:
 
 ```bash
 cisose-deeprm train --author-source --load 0.7 --iterations 1000 \
@@ -75,8 +70,7 @@ cisose-deeprm train --author-source --load 0.7 --iterations 1000 \
   --rollout-workers 16 --run-label author_source_rescue
 ```
 
-After training, run clean and perturbation evaluations with the frozen
-checkpoint:
+Clean and perturbation evaluation:
 
 ```bash
 cisose-deeprm evaluate-clean --checkpoint results/checkpoints/author_source_rescue/policy_final.pt
@@ -84,14 +78,12 @@ cisose-deeprm evaluate-perturbations --checkpoint results/checkpoints/author_sou
 python scripts/run_deeprm_p1_first_fit_sensitivity.py
 ```
 
-The committed repository does not include large checkpoint files. Re-running
-training is required if a reviewer wants to reproduce from raw training rather
-than inspect the committed paper artifacts.
+The committed `results/paper/deeprm` directory contains the reported tables and
+figures. A from-training reproduction requires regenerating the checkpoint.
 
-## 6. Rossi/RLAD Full Workflow
+## 6. Rossi/RLAD Workflow
 
-After cloning `external/rlad-core-simulator`, inspect the source-derived
-protocol:
+After cloning `external/rlad-core-simulator`:
 
 ```bash
 cisose-rossi protocol
@@ -101,7 +93,7 @@ python scripts/run_rossi_online_p2_p3.py
 python scripts/generate_rossi_diagnostics_qa.py
 ```
 
-Additional Rossi experiments:
+Additional Rossi analyses:
 
 ```bash
 python scripts/run_experiment_a_block_bootstrap_rossi.py
@@ -111,9 +103,9 @@ python scripts/run_e1_rossi_magnitude_sweep.py
 python scripts/run_e2_companion_a_rossi_rescore.py
 ```
 
-## 7. Decima Full Workflow
+## 7. Decima Workflow
 
-After cloning `external/decima-sim`, run preflight/readiness checks:
+After cloning `external/decima-sim`:
 
 ```bash
 cisose-decima preflight
@@ -121,7 +113,7 @@ cisose-decima reference-commands
 python scripts/run_decima_preflight.py
 ```
 
-The official Decima training and evaluation workflow is Docker-based:
+Official simulator training and evaluation:
 
 ```bash
 python scripts/run_decima_tf1_reproduction.py
@@ -129,22 +121,23 @@ python scripts/run_decima_tf1_test_gate.py
 python scripts/run_decima_tf1_perturb_eval.py
 ```
 
-Comparator sensitivities:
+Comparator sensitivity analyses:
 
 ```bash
 python scripts/run_decima_srtf_sensitivity.py
 python scripts/run_e1_decima_magnitude_sweep.py
 ```
 
-The public Decima package labels reconstructed SRTF/Graphene-style sensitivity
-artifacts separately from official Graphene evidence because the public
-simulator did not ship a directly executable single-resource Graphene
-comparator.
+The Decima SRTF/Graphene-style comparator is a reconstructed sensitivity
+analysis. It is not treated as executable official Graphene evidence.
 
-## 8. Provenance and Privacy Boundary
+## 8. Provenance For New Runs
 
-The paper-ready result artifacts include MLflow run IDs where generated during
-the study, but the local MLflow database and artifact store are not committed.
-Private remote-workstation connection details are deliberately omitted. Any
-future rerun should record the public commit hash, package version, external
-simulator commit hashes, and generated artifact manifests.
+Record the following for any new canonical run:
+
+- Repository commit hash.
+- Python version and lockfile.
+- Upstream simulator URL and commit hash.
+- Docker image digest for Decima/TF1 runs.
+- MLflow run ID or equivalent immutable run identifier.
+- SHA256 manifest for generated result files.

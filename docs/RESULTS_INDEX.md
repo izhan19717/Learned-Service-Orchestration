@@ -1,8 +1,7 @@
 # Results Index
 
-All canonical paper-ready artifacts are under [results/paper](../results/paper).
-Root-level `figures/` and `data/` directories are local working mirrors and are
-ignored by git.
+The reported tables, figures, manifests, and method reports are under
+[results/paper](../results/paper).
 
 ## DeepRM
 
@@ -64,10 +63,9 @@ Directory: [results/paper/experiments](../results/paper/experiments)
   maps the finalized manuscript's empirical claims, figures, and tables to
   committed public artifacts.
 
-## Figure Quality
+## Vector Figures
 
-The following figures have vector PDF/SVG versions suitable for paper
-inclusion:
+The following figures have vector PDF/SVG versions:
 
 - [DeepRM P1 stale-action sensitivity](../results/paper/deeprm/figures/deeprm_p1_first_fit_sensitivity.pdf)
 - [Decima paired seed delta distributions](../results/paper/decima/figures/decima_paired_delta_distributions.pdf)

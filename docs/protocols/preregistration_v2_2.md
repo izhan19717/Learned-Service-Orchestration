@@ -1,6 +1,6 @@
 # Pre-Registration Document (v2.2)
 
-**Project**: CISOSE 2026 position paper, empirical section.
+**Project**: Learned service orchestration empirical study.
 **Authors**: Khilji, Furutanpey, Dustdar.
 
 This document records the predictions we test **before** any experiment runs. If a prediction is falsified, we report that honestly in the paper.
@@ -90,7 +90,7 @@ For all three: **Confirmation** = CI entirely below zero. **Falsification** = CI
 
 **P3-Decima**: at FGSM budget `ε = 0.05` on node feature vectors, the 95% CI on `Δ_Decima(adv, 0.05)` lies entirely below zero. The adversarial perturbation is applied only to Decima's GNN node-feature observation. Graphene is evaluated on the true DAG state.
 
-**P3-Rossi**: at minimum bucket-flip perturbation budget `ε = 0.05` on the continuous pre-discretisation utilization observation, the 95% CI on `Δ_Rossi(adv, 0.05)` lies entirely below zero. The bucket-flip construction is the discrete-state analogue of FGSM, documented in [calibration_v2_2.md](calibration_v2_2.md) §4.3 and summarized in [implementation_notes_public.md](../public_notes/implementation_notes_public.md). The perturbation is applied only to Rossi/RLAD's observation. HPA is evaluated on the true utilization state.
+**P3-Rossi**: at minimum bucket-flip perturbation budget `ε = 0.05` on the continuous pre-discretisation utilization observation, the 95% CI on `Δ_Rossi(adv, 0.05)` lies entirely below zero. The bucket-flip construction is the discrete-state analogue of FGSM, documented in [calibration_v2_2.md](calibration_v2_2.md) §4.3 and summarized in [implementation_notes.md](../implementation_notes.md). The perturbation is applied only to Rossi/RLAD's observation. HPA is evaluated on the true utilization state.
 
 For all three: **Confirmation** = CI entirely below zero. **Falsification** = CI entirely above zero. **Inconclusive** = CI straddles zero.
 

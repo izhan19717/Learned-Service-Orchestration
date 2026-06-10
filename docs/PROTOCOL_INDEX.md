@@ -22,11 +22,11 @@ Protocol documents should be read in chronological order.
 - [Experiment E1: perturbation-magnitude sweep](protocols/extensions/prereg_e1_magnitude_sweep.md)
 - [Experiment E2: objective-native constrained demonstration](protocols/extensions/prereg_e2_objective_native.md)
 
-## Public Implementation Notes
+## Implementation Notes
 
-- [Public implementation notes](public_notes/implementation_notes_public.md):
+- [Implementation notes](implementation_notes.md):
   source-alignment choices, observability policy, comparator semantics, and
-  public/private artifact boundary.
+  artifact provenance.
 
 ## Result Reports
 

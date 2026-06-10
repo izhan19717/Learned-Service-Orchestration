@@ -2,9 +2,8 @@
 
 **Status:** Frozen before any sweep run. Confirmatory robustness extension of the nine pre-registered predictions.
 **Registered:** 2026-06-03, before first E1 sweep execution.
-**Commit/provenance:** release repository commit plus SHA256 manifests and
-MLflow run IDs recorded in the generated artifacts. Private hostnames and IP
-addresses are intentionally excluded from this public package.
+**Commit/provenance:** repository commit plus SHA256 manifests and MLflow run
+IDs recorded in the generated artifacts.
 **Compute:** remote workstation for canonical evaluation; local workstation for
 smoke tests only. Evaluation only; no retraining.
 

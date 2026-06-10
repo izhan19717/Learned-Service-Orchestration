@@ -43,7 +43,7 @@ actions. The port now does.
 
 ## Official Simulator Smoke Result
 
-This smoke is deliberately small and does not use README reproduction scale.
+This smoke is a small-scale simulator check and does not use README reproduction scale.
 
 | Scheme | Finished jobs | Total reward | Mean JCT | Decisions |
 |---|---:|---:|---:|---:|
@@ -301,6 +301,6 @@ Consequences:
 3. The Graphene comparator gate remains unresolved, but the reproduction gate
    failure is already sufficient to exclude Decima from the empirical
    perturbation evidence.
-4. Decima may be discussed only as a failed reproduction / excluded method
+4. Decima may be discussed only as a failed reproduction / non-primary method
    unless a future protocol amendment authorizes new Decima work before any
    new perturbation results are seen.

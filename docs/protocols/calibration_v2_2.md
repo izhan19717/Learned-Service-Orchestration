@@ -1,6 +1,6 @@
 # Perturbation Calibration Document (v2.2)
 
-**Project**: CISOSE 2026 position paper, empirical section.
+**Project**: Learned service orchestration empirical study.
 **Authors**: Khilji, Furutanpey, Dustdar.
 **Purpose**: Record, with sources, the realistic-world perturbation magnitudes the empirical section uses. Every magnitude that appears in a figure or table must be traceable to an entry in this document.
 
@@ -130,7 +130,7 @@ At each decision step during evaluation (no retraining):
 
 `ε ∈ {0, 0.01, 0.02, 0.05, 0.10}` relative to state-image magnitude.
 
-Anchor for the figure's vertical reference line: **ε = 0.05** (the upper end of Huang 2017's standard budget range, deliberately conservative — if DeepRM collapses at smaller ε than this, the result is stronger).
+Anchor for the figure's vertical reference line: **ε = 0.05** (the upper end of Huang 2017's standard budget range; degradation at smaller ε is stronger evidence).
 
 ### 3.5 Why this perturbation and not reward bias
 
@@ -144,7 +144,7 @@ We are not running an "adversary in the wild" study. The threat model is restric
 
 ### 3.7 Comparator semantics
 
-The primary P3 comparison attacks only the learned RL policy. The classical comparator is evaluated on the true unperturbed structured state. This is deliberate: FGSM and the Rossi bucket-flip construction are targeted to the learned policy's representation, not generic measurement noise. Applying the same policy-targeted perturbation to a hand-coded heuristic would test a different hypothesis and can introduce arbitrary decoding choices from perturbed neural features back to valid structured scheduler inputs.
+The primary P3 comparison attacks only the learned RL policy. The classical comparator is evaluated on the true unperturbed structured state. FGSM and the Rossi bucket-flip construction target the learned policy's representation; they are not generic measurement noise. Applying the same policy-targeted perturbation to a hand-coded heuristic would test a different hypothesis and can introduce arbitrary decoding choices from perturbed neural features back to valid structured scheduler inputs.
 
 The paired comparison still uses the same underlying arrivals, jobs, DAGs, and simulator transitions. Only the RL policy's observation channel is adversarially perturbed.
 
