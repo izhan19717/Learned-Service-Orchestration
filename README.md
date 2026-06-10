@@ -14,6 +14,10 @@ the learned policy has the lower metric. Negative `Delta` means the comparator
 has the lower metric. The method-specific metrics are mean slowdown for DeepRM,
 total autoscaling cost for Rossi/RLAD, and mean job completion time for Decima.
 
+<p align="center">
+  <img src="docs/assets/repository_evidence_map.svg" alt="Evidence map linking fixed protocols, three learned orchestration methods, perturbation families, and paper artifacts." width="900">
+</p>
+
 ## Contents
 
 ```text

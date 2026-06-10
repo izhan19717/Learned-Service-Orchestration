@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc" viewBox="0 0 1200 520">
+  <title id="title">Repository evidence map</title>
+  <desc id="desc">Fixed protocols feed three method implementations, three perturbation families, paired evaluation, and paper-ready artifacts.</desc>
+  <style>
+    .bg { fill: #f8fafc; }
+    .panel { fill: #ffffff; stroke-width: 2; }
+    .protocol { stroke: #2563eb; }
+    .method { stroke: #059669; }
+    .perturb { stroke: #b45309; }
+    .artifact { stroke: #7c3aed; }
+    .label { font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #111827; }
+    .title { font-size: 30px; font-weight: 700; }
+    .subtitle { font-size: 16px; fill: #4b5563; }
+    .section { font-size: 18px; font-weight: 700; }
+    .body { font-size: 14px; fill: #374151; }
+    .small { font-size: 12px; fill: #4b5563; }
+    .chip { fill: #f9fafb; stroke: #d1d5db; stroke-width: 1.4; }
+    .arrow { fill: none; stroke: #6b7280; stroke-width: 2.3; marker-end: url(#arrowhead); }
+    .note { fill: #eef2ff; stroke: #c7d2fe; stroke-width: 1.4; }
+  </style>
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="8" refX="8" refY="4" orient="auto">
+      <path d="M 0 0 L 10 4 L 0 8 z" fill="#6b7280" />
+    </marker>
+  </defs>
+
+  <rect class="bg" x="0" y="0" width="1200" height="520" rx="18" />
+  <text class="label title" x="600" y="48" text-anchor="middle">Learned Service Orchestration Evidence Map</text>
+  <text class="label subtitle" x="600" y="76" text-anchor="middle">Protocols, implementations, perturbation tests, and reviewable paper artifacts in one reproducible package.</text>
+
+  <rect class="panel protocol" x="40" y="125" width="235" height="250" rx="12" />
+  <text class="label section" x="65" y="160">Fixed Protocols</text>
+  <rect class="chip" x="62" y="185" width="190" height="34" rx="8" />
+  <text class="label body" x="82" y="207">Calibration</text>
+  <rect class="chip" x="62" y="232" width="190" height="34" rx="8" />
+  <text class="label body" x="82" y="254">Pre-registration</text>
+  <rect class="chip" x="62" y="279" width="190" height="34" rx="8" />
+  <text class="label body" x="82" y="301">Protocol amendments</text>
+  <text class="label small" x="65" y="346">docs/protocols/</text>
+
+  <rect class="panel method" x="340" y="100" width="255" height="300" rx="12" />
+  <text class="label section" x="365" y="135">Implemented Methods</text>
+  <rect class="chip" x="365" y="160" width="205" height="48" rx="8" />
+  <text class="label body" x="385" y="181">DeepRM</text>
+  <text class="label small" x="385" y="199">multi-resource scheduling</text>
+  <rect class="chip" x="365" y="226" width="205" height="48" rx="8" />
+  <text class="label body" x="385" y="247">Rossi/RLAD</text>
+  <text class="label small" x="385" y="265">container autoscaling</text>
+  <rect class="chip" x="365" y="292" width="205" height="48" rx="8" />
+  <text class="label body" x="385" y="313">Decima</text>
+  <text class="label small" x="385" y="331">DAG scheduling</text>
+  <text class="label small" x="365" y="370">src/ and tests/</text>
+
+  <rect class="panel perturb" x="670" y="100" width="255" height="300" rx="12" />
+  <text class="label section" x="695" y="135">Perturbation Families</text>
+  <rect class="chip" x="695" y="160" width="205" height="48" rx="8" />
+  <text class="label body" x="715" y="181">P1 observation lag</text>
+  <text class="label small" x="715" y="199">stale observations/actions</text>
+  <rect class="chip" x="695" y="226" width="205" height="48" rx="8" />
+  <text class="label body" x="715" y="247">P2 workload tail</text>
+  <text class="label small" x="715" y="265">heavy-tail stressors</text>
+  <rect class="chip" x="695" y="292" width="205" height="48" rx="8" />
+  <text class="label body" x="715" y="313">P3 adversarial input</text>
+  <text class="label small" x="715" y="331">policy-observation attacks</text>
+  <text class="label small" x="695" y="370">paired evaluation grids</text>
+
+  <rect class="panel artifact" x="985" y="125" width="175" height="250" rx="12" />
+  <text class="label section" x="1010" y="160">Artifacts</text>
+  <rect class="chip" x="1007" y="185" width="130" height="34" rx="8" />
+  <text class="label body" x="1024" y="207">Tables</text>
+  <rect class="chip" x="1007" y="232" width="130" height="34" rx="8" />
+  <text class="label body" x="1024" y="254">Figures</text>
+  <rect class="chip" x="1007" y="279" width="130" height="34" rx="8" />
+  <text class="label body" x="1024" y="301">Reports</text>
+  <text class="label small" x="1010" y="346">results/paper/</text>
+
+  <path class="arrow" d="M 275 250 H 330" />
+  <path class="arrow" d="M 595 250 H 660" />
+  <path class="arrow" d="M 925 250 H 975" />
+
+  <rect class="note" x="323" y="430" width="555" height="52" rx="10" />
+  <text class="label body" x="600" y="454" text-anchor="middle">Primary statistic: Delta = metric(classical comparator) - metric(RL)</text>
+  <text class="label small" x="600" y="474" text-anchor="middle">Positive Delta means the learned policy has the lower method-specific metric.</text>
+</svg>
