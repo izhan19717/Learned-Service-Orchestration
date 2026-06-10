@@ -116,26 +116,32 @@ def main() -> None:
     ax_p1.set_xlim(-0.04, 2.08)
     ax_p1.set_ylim(-0.09, 1.62)
 
-    inset = inset_axes(ax_p1, width="35%", height="58%", loc="upper left", borderpad=1.05)
+    inset = inset_axes(ax_p1, width="34%", height="56%", loc="upper left", borderpad=1.15)
     mask = x <= 0.5
     style_axis(inset)
     draw_curve(inset, x[mask], y[mask] * 1000.0, lo[mask] * 1000.0, hi[mask] * 1000.0)
     inset.set_xlim(-0.03, 0.53)
-    inset.set_ylim(-24.0, 155.0)
+    inset.set_ylim(-36.0, 158.0)
     inset.set_xticks([0.0, 0.25, 0.5])
+    inset.set_xticklabels(["0", "0.25", "0.5"])
+    inset.set_yticks([0.0, 50.0, 100.0, 150.0])
     inset.set_title(r"$\Delta$ ($\times 10^3$)", fontsize=7, pad=2)
-    inset.tick_params(axis="both", labelsize=6)
+    inset.tick_params(axis="both", labelsize=5.9, pad=1.8)
     inset.grid(axis="y", color="#edf2f7", linewidth=0.45)
     row_025 = next(row for row in rows if row["curve"] == "p1_lag" and row["magnitude"] == "0.25")
     delta_025 = float(row_025["delta_dynamic_partition_minus_decima"])
     p_h_025 = float(row_025["holm_less_curve"])
-    inset.annotate(
-        rf"$\lambda=0.25$: $\Delta={delta_025 / 1000:.1f}$k, $p_H={p_h_025:.3f}$",
-        xy=(0.25, delta_025 / 1000.0),
-        xytext=(0.04, -13.0),
-        textcoords="data",
-        fontsize=6.1,
-        arrowprops={"arrowstyle": "-", "color": "#555555", "linewidth": 0.6},
+    inset.plot([0.25], [delta_025 / 1000.0], marker="o", color="#1f5f94", markersize=4.0, zorder=5)
+    inset.text(
+        0.035,
+        0.88,
+        rf"$\lambda=0.25$" + "\n" + rf"$\Delta={delta_025 / 1000:.1f}$k, $p_H={p_h_025:.3f}$",
+        transform=inset.transAxes,
+        fontsize=5.9,
+        ha="left",
+        va="top",
+        bbox={"boxstyle": "round,pad=0.18", "facecolor": "white", "edgecolor": "#d1d5db", "linewidth": 0.55},
+        zorder=8,
     )
 
     x, y, lo, hi = curve_arrays(rows, "p2_tail", 1000.0)
@@ -164,6 +170,9 @@ def main() -> None:
             fig.savefig(path, dpi=420, bbox_inches="tight")
         else:
             fig.savefig(path, bbox_inches="tight")
+            if suffix == "svg":
+                text = path.read_text(encoding="utf-8")
+                path.write_text("\n".join(line.rstrip() for line in text.splitlines()) + "\n", encoding="utf-8")
         print(path.relative_to(ROOT))
     plt.close(fig)
 
