@@ -13,8 +13,8 @@ pre-specified target:
 - relative error to target: `0.8565437644076319`
 - gate passed: `False`
 
-Per `04_codex_brief_decima.md`, Decima perturbation cells are therefore not
-run.
+Under the original v2.2 Decima gate, Decima perturbation cells were therefore
+not run from this failed-gate attempt.
 
 ## Training Provenance
 

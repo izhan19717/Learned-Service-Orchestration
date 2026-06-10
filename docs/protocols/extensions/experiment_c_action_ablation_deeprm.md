@@ -131,7 +131,7 @@ In all three cases, the value of the experiment is that the action-redundancy cl
 
 ## 9. Deliverables
 
-The Codex agent returns the following artefacts.
+The analysis produces the following artifacts.
 
 1. `experiment_c_results.md` — a short report with the competency-gate outcomes, the §7 results table, the verdict on H_C1/H_C2/H_C3, the diagnostic figures, and the per-case interpretation following the rules in §8.
 2. `figures/deeprm_ablation_degradation.pdf`, `figures/deeprm_ablation_action_diagnostics.pdf` — the two diagnostic figures.

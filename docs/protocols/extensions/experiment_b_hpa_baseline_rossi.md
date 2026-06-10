@@ -112,7 +112,7 @@ These are pre-implementation gates. Failure on any of them indicates an implemen
 
 **S3 — stabilisation correctness.** Inject a synthetic util sequence `[0.9, 0.9, 0.9, 0.2, 0.2, 0.2, …]` (a step from overload to underload). The HPA controller should scale up at the first sync after the overload and remain at maximum until at least 300 simulator ticks after the step to underload, regardless of the subsequent low recommendations. Quantitative criterion: from the step to underload at time `t₀`, the replica count at time `t₀ + 250` is at least the maximum reached during the overload phase.
 
-If any sanity check fails, the agent reports the failure and halts. We do not move on to perturbation cells until the controller behaves as the autoscaling/v2 algorithm specifies.
+If any sanity check fails, the analysis reports the failure and halts. We do not move on to perturbation cells until the controller behaves as the autoscaling/v2 algorithm specifies.
 
 ## 4. Statistical procedure
 
@@ -192,7 +192,7 @@ This *vindicates the cross-method P1 narrative* against the peer review's strong
 
 ## 9. Deliverables
 
-The Codex agent returns the following artefacts.
+The analysis produces the following artifacts.
 
 1. `experiment_b_results.md` — a short report with the sanity-check outcomes, the §7 results table, the magnitude verdict (which of H_P1a or H_P1b prevailed), the failure-trace figures, and the per-cell interpretation following the rules in §8.
 2. `figures/hpa_v2_clean_vs_k10_failure_trace.pdf`, `figures/threshold_vs_hpa_v2_under_lag.pdf` — the two diagnostic figures.

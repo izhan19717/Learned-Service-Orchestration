@@ -16,15 +16,12 @@ import mlflow
 
 
 ACTIVE_DOC_FILES = (
-    "calibration New.md",
-    "preregistration New.md",
-    "PROTOCOL_AMENDMENT_v2.2.md",
-    "SCIENTIFIC_DECISIONS.md",
-    "SIMULATOR_NOTES.md",
-    "IMPLEMENTATION_NOTES.md",
-    "03_codex_brief.md",
-    "04_codex_brief_decima.md",
-    "05_codex_brief_rossi.md",
+    "docs/protocols/calibration_v2_2.md",
+    "docs/protocols/preregistration_v2_2.md",
+    "docs/protocols/protocol_amendment_v2_2.md",
+    "docs/protocols/protocol_amendment_decima_simulator_gate.md",
+    "docs/implementation_notes.md",
+    "docs/PROTOCOL_INDEX.md",
 )
 
 

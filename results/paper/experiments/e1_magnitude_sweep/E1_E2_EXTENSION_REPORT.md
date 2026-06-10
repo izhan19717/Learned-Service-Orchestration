@@ -1,6 +1,6 @@
 # E1/E2 Extension Scientific Report
 
-Generated after VM completion on 2026-06-04. Delta convention is unchanged: `metric(comparator) - metric(RL)`. Positive delta means the learned/RL method has the lower metric; negative delta means the comparator has the lower metric.
+Prepared after canonical evaluation completion on 2026-06-04. Delta convention is unchanged: `metric(comparator) - metric(RL)`. Positive delta means the learned/RL method has the lower metric; negative delta means the comparator has the lower metric.
 
 ## Run/Artifact Status
 

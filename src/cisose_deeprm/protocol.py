@@ -31,19 +31,12 @@ TRAIN_ITERATIONS = 1000
 TRAIN_LEARNING_RATE = 0.001
 
 DOC_FILES = (
-    "01_calibration.md",
-    "02_preregistration.md",
-    "03_codex_brief.md",
-    "PROTOCOL_AMENDMENT_v2.2.md",
-    "DEEPRM_AUTHOR_ALIGNMENT.md",
-    "REPRODUCTION_DEBUG.md",
-    "IMPLEMENTATION_NOTES.md",
-    "SCIENTIFIC_DECISIONS.md",
-    "SIMULATOR_NOTES.md",
-    "calibration New.md",
-    "preregistration New.md",
-    "04_codex_brief_decima.md",
-    "05_codex_brief_rossi.md",
+    "docs/protocols/calibration_v2_2.md",
+    "docs/protocols/preregistration_v2_2.md",
+    "docs/protocols/protocol_amendment_v2_2.md",
+    "docs/protocols/protocol_amendment_decima_simulator_gate.md",
+    "docs/implementation_notes.md",
+    "docs/PROTOCOL_INDEX.md",
 )
 
 

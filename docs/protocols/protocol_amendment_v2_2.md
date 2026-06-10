@@ -13,12 +13,10 @@ cross-method evaluation table exists.
 
 ## Active Documents
 
-- DeepRM clean-training brief: `03_codex_brief.md`
-- Three-method calibration: `calibration New.md`
-- Three-method pre-registration: `preregistration New.md`
-- Decima brief: `04_codex_brief_decima.md`
-- Rossi brief: `05_codex_brief_rossi.md`
-- Source extraction record: `IMPLEMENTATION_NOTES.md`
+- Three-method calibration: `docs/protocols/calibration_v2_2.md`
+- Three-method pre-registration: `docs/protocols/preregistration_v2_2.md`
+- Decima simulator-gate amendment: `docs/protocols/protocol_amendment_decima_simulator_gate.md`
+- Source extraction record: `docs/implementation_notes.md`
 
 ## DeepRM Continuity
 

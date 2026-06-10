@@ -59,9 +59,10 @@ def ensure_image(image: str, *, build: bool) -> None:
         return
     if not build:
         raise RuntimeError(f"Docker image {image!r} not found and --no-build-image set")
-    # Rootless Docker on the VM can lose DNS inside the build sandbox while the
-    # host resolver works. Host networking affects only package resolution during
-    # image construction, not the simulator/evaluation semantics.
+    # Rootless Docker in the remote execution environment can lose DNS inside
+    # the build sandbox while the host resolver works. Host networking affects
+    # only package resolution during image construction, not the
+    # simulator/evaluation semantics.
     subprocess.run(
         ["docker", "build", "--network=host", "-t", image, "docker/decima-tf1"],
         cwd=ROOT,

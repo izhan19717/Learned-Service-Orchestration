@@ -6,7 +6,7 @@ Delta convention: `metric(comparator) - metric(RL)`. Positive delta means the le
 
 ## 1. DeepRM E1/Table IV Reconciliation
 
-Claude's concern was correct: the first DeepRM E1 sweep was not using the same operational harness as the locked DeepRM Table IV pipeline.
+The pre-submission audit found that the first DeepRM E1 sweep was not using the same operational harness as the locked DeepRM Table IV pipeline.
 
 Root causes:
 
@@ -18,7 +18,7 @@ Corrective action:
 
 - Patched `scripts/run_e1_deeprm_magnitude_sweep.py` to use `policy_final.pt`, `Tetris*` as the primary comparator, SJF as the secondary comparator, CLI policy-generator offsets, sanitized MLflow metric names, and locked Table IV statistic seeds.
 - Moved the superseded local result directory to `results/paper/experiments/e1_magnitude_sweep/deeprm_20260604_superseded_iter1000_sourcepacker`.
-- Reran DeepRM E1 on the VM and finalized artifacts through MLflow run `2d4588396f474862bbf61bfebbf16ba4`.
+- Reran DeepRM E1 in the canonical execution environment and finalized artifacts through MLflow run `2d4588396f474862bbf61bfebbf16ba4`.
 
 Acceptance check against locked Table IV:
 
@@ -34,7 +34,7 @@ The DeepRM E1 mismatch is resolved. The corrected E1 table can be tabulated with
 
 ## 2. Decima Lambda 0.25 Sanity Check
 
-Claude's concern was the non-monotonic P1 lag point: lambda=0.25 is significantly negative while lambda=0, 0.5, and larger values are positive.
+The pre-submission audit also examined the non-monotonic P1 lag point: lambda=0.25 is significantly negative while lambda=0, 0.5, and larger values are positive.
 
 Code audit:
 
@@ -63,4 +63,4 @@ Keep the Decima lambda=0.25 result, but describe it carefully: it is a real per-
 - Corrected DeepRM E1 table: `results/paper/experiments/e1_magnitude_sweep/deeprm/tables/e1_deeprm_magnitude_sweep.csv`
 - Corrected DeepRM E1 figure: `results/paper/experiments/e1_magnitude_sweep/deeprm/figures/e1_deeprm_magnitude_sweep.pdf`
 - Decima P1 per-seed audit table: `results/paper/experiments/e1_magnitude_sweep/decima/tables/decima_e1_p1_lag_per_seed_audit.csv`
-- Updated handoff report: `results/paper/experiments/e1_magnitude_sweep/E1_E2_CLAUDE_HANDOFF_REPORT.md`
+- Updated extension report: `results/paper/experiments/e1_magnitude_sweep/E1_E2_EXTENSION_REPORT.md`

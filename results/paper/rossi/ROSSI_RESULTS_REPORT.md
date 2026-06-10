@@ -1,11 +1,10 @@
-# Rossi 2019 Branch Handoff Report
+# Rossi 2019 Results Report
 
 Date: 2026-05-21
 
 This report summarizes the completed Rossi 2019 branch for the CISOSE empirical
-section. It is written as a handoff for Claude or another paper-writing agent.
-The goal is to preserve the exact protocol choices, result interpretation, and
-paper caveats without forcing the next agent to reconstruct them from logs.
+section. It records the protocol choices, result interpretation, and paper
+caveats needed to audit the Rossi evidence package.
 
 ## Executive Status
 
@@ -308,9 +307,9 @@ Acceptable concise conclusion:
 
 Protocol and decision files:
 
-- `SCIENTIFIC_DECISIONS.md`
-- `IMPLEMENTATION_NOTES.md`
-- `05_codex_brief_rossi.md`
+- `docs/protocols/preregistration_v2_2.md`
+- `docs/protocols/calibration_v2_2.md`
+- `docs/implementation_notes.md`
 
 Canonical result files:
 

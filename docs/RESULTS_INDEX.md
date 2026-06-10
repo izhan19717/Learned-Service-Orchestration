@@ -22,7 +22,7 @@ Directory: [results/paper/rossi](../results/paper/rossi)
 
 Key artifacts:
 
-- [Rossi handoff report](../results/paper/rossi/ROSSI_CLAUDE_HANDOFF_REPORT.md)
+- [Rossi results report](../results/paper/rossi/ROSSI_RESULTS_REPORT.md)
 - [Methodology QA](../results/paper/rossi/ROSSI_METHODOLOGY_QA.md)
 - [Table I reproduction gate](../results/paper/rossi/tables/rossi_reproduction_table_i.md)
 - [P1 online lag sweep](../results/paper/rossi/tables/rossi_p1_online_lag_sweep.md)
@@ -37,7 +37,7 @@ Directory: [results/paper/decima](../results/paper/decima)
 
 Key artifacts:
 
-- [Decima handoff report](../results/paper/decima/DECIMA_CLAUDE_HANDOFF_REPORT.md)
+- [Decima results report](../results/paper/decima/DECIMA_RESULTS_REPORT.md)
 - [Official README gate](../results/paper/decima/tables/decima_official_readme_gate.md)
 - [Prediction outcomes](../results/paper/decima/tables/decima_prediction_outcomes.md)
 - [Prediction summary](../results/paper/decima/tables/decima_prediction_summary.csv)
@@ -53,7 +53,7 @@ Directory: [results/paper/experiments](../results/paper/experiments)
 - [Experiment C: DeepRM action ablation](../results/paper/experiments/experiment_c/experiment_c_results.md)
 - [HPA-v2 config sensitivity](../results/paper/experiments/hpa_v2_config_sensitivity/hpa_v2_config_sensitivity_results.md)
 - [Decima SRTF/Graphene-style comparator sensitivity](../results/paper/experiments/decima_srtf_comparator/decima_srtf_comparator_results.md)
-- [E1/E2 handoff report](../results/paper/experiments/e1_magnitude_sweep/E1_E2_CLAUDE_HANDOFF_REPORT.md)
+- [E1/E2 extension report](../results/paper/experiments/e1_magnitude_sweep/E1_E2_EXTENSION_REPORT.md)
 - [E1 pre-submission audit](../results/paper/experiments/e1_magnitude_sweep/E1_PRESUBMISSION_AUDIT.md)
 - [E2 companion analysis](../results/paper/experiments/e2_objective_native/e2_companion_a_results.md)
 

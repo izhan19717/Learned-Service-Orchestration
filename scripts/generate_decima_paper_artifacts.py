@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Generate Decima paper tables, figures, and handoff report from locked results."""
+"""Generate Decima paper tables, figures, and results report from locked results."""
 
 from __future__ import annotations
 
@@ -82,7 +82,7 @@ def main() -> None:
             _write_prediction_summary(summary_rows),
             _write_per_seed_csv(per_seed_rows),
         ]
-        report_path = _write_handoff_report(summary_rows, payloads, run.info.run_id)
+        report_path = _write_results_report(summary_rows, payloads, run.info.run_id)
         fig_paths = [
             *_plot_percent_improvement(summary_rows),
             *_plot_paired_distribution(per_seed_rows),
@@ -381,7 +381,7 @@ def _save_figure(fig: plt.Figure, stem: str) -> list[Path]:
     return paths
 
 
-def _write_handoff_report(
+def _write_results_report(
     rows: list[dict[str, object]],
     payloads: list[tuple[PredictionSpec, dict[str, object]]],
     run_id: str,
@@ -389,7 +389,7 @@ def _write_handoff_report(
     p3_payload = next(payload for spec, payload in payloads if spec.prediction.startswith("P3"))
     p3_diag = p3_payload.get("perturbation_metadata", {})
     lines = [
-        "# Decima Final Handoff Report",
+        "# Decima Results Report",
         "",
         "## Status",
         "",
@@ -471,7 +471,7 @@ def _write_handoff_report(
             f"- MLflow artifact-generation run: `{run_id}`.",
         ]
     )
-    path = OUT_DIR / "DECIMA_CLAUDE_HANDOFF_REPORT.md"
+    path = OUT_DIR / "DECIMA_RESULTS_REPORT.md"
     path.write_text("\n".join(lines) + "\n", encoding="utf-8")
     return path
 

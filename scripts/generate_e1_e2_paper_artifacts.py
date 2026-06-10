@@ -149,7 +149,7 @@ def write_status_note(generated: list[Path]) -> Path:
     pieces = [
         "# E1/E2 Extension Status",
         "",
-        "This file is regenerated from completed result CSVs. Missing sections mean the corresponding VM job has not produced its final CSV yet.",
+        "This file is regenerated from completed result CSVs. Missing sections mean the corresponding batch job has not produced its final CSV yet.",
         "",
         "## Available Figures",
         "",

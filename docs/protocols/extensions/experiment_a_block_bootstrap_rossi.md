@@ -12,7 +12,7 @@ No new simulator runs are required. The experiment consumes the per-window cost 
 
 ## 1. Input data
 
-The Codex agent already holds the following arrays in the Rossi evaluation pipeline (one entry per window, indexed `i = 1, …, 30` in trajectory order):
+The Rossi evaluation pipeline provides the following arrays (one entry per window, indexed `i = 1, …, 30` in trajectory order):
 
 | Cell | Array name (proposed) | Description |
 |------|----------------------|-------------|
@@ -89,7 +89,7 @@ The block bootstrap is reported as a sensitivity analysis around the main result
 
 ## 6. Deliverables
 
-The Codex agent returns the following artefacts.
+The analysis produces the following artifacts.
 
 1. `experiment_a_results.md` — a short report with the Part A1 diagnostic table, the Part A2 results table, the autocorrelation figure description, and an interpretation paragraph following the rules in §5.
 2. `figures/rossi_acf_diagnostic.pdf` — the 4-panel ACF figure.

@@ -88,6 +88,6 @@
     "results/paper/decima/tables/decima_prediction_outcomes.csv",
     "results/paper/decima/tables/decima_prediction_summary.csv",
     "results/paper/decima/tables/decima_per_seed_deltas.csv",
-    "results/paper/decima/DECIMA_CLAUDE_HANDOFF_REPORT.md"
+    "results/paper/decima/DECIMA_RESULTS_REPORT.md"
   ]
 }
