@@ -7,7 +7,7 @@ Prepared after canonical evaluation completion on 2026-06-04. Delta convention i
 | Component | Status | MLflow run | Primary table | Figure |
 |---|---|---|---|---|
 | E1 DeepRM | complete after Table-IV-compatible rerun; `epsilon=0.2` reported as noncompletion | `2d4588396f474862bbf61bfebbf16ba4` | `results/paper/experiments/e1_magnitude_sweep/deeprm/tables/e1_deeprm_magnitude_sweep.csv` | `results/paper/experiments/e1_magnitude_sweep/deeprm/figures/e1_deeprm_magnitude_sweep.pdf` |
-| E1 Decima | complete | `587abbac142e4d83aecd3924271d8909` | `results/paper/experiments/e1_magnitude_sweep/decima/tables/e1_decima_magnitude_sweep.csv` | `results/paper/experiments/e1_magnitude_sweep/decima/figures/e1_decima_magnitude_sweep.pdf` |
+| E1 Decima | complete | `587abbac142e4d83aecd3924271d8909` | `results/paper/experiments/e1_magnitude_sweep/decima/tables/e1_decima_magnitude_sweep.csv` | `results/paper/experiments/e1_magnitude_sweep/decima/figures/e1_decima_magnitude_sweep_paper_panel.pdf` |
 | E1 Rossi | complete | `777296676ab7416481572a92988c0899` | `results/paper/experiments/e1_magnitude_sweep/rossi/tables/e1_rossi_magnitude_sweep.csv` | `results/paper/experiments/e1_magnitude_sweep/rossi/figures/e1_rossi_magnitude_sweep.pdf` |
 | E2 Companion A | complete; no new policy training | `3c972e2a15f94c84924c40f9c8afc55e` | `results/paper/experiments/e2_objective_native/tables/e2_companion_a_weight_rescore.csv` | `results/paper/experiments/e2_objective_native/figures/e2_companion_a_rescore.pdf` |
 

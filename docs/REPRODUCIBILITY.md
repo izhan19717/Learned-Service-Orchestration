@@ -55,6 +55,7 @@ python scripts/generate_decima_paper_artifacts.py
 python scripts/generate_e1_e2_paper_artifacts.py
 python scripts/render_paper_quality_figures.py
 python scripts/render_experiment_b_threshold_hpa_vector.py
+python scripts/render_decima_e1_paper_panel.py
 ```
 
 Outputs are written under `results/paper`.

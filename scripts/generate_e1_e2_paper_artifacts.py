@@ -141,6 +141,7 @@ def plot_deeprm() -> Path | None:
 def write_status_note(generated: list[Path]) -> Path:
     note = E1_ROOT / "E1_E2_EXTENSION_STATUS.md"
     known_figures = [
+        E1_ROOT / "decima" / "figures" / "e1_decima_magnitude_sweep_paper_panel.png",
         E1_ROOT / "decima" / "figures" / "e1_decima_magnitude_sweep.png",
         E1_ROOT / "deeprm" / "figures" / "e1_deeprm_magnitude_sweep.png",
         E1_ROOT / "rossi" / "figures" / "e1_rossi_magnitude_sweep.png",

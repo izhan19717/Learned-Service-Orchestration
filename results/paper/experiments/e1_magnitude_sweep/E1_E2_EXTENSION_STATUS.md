@@ -5,6 +5,7 @@ This file is regenerated from completed result CSVs. Missing sections mean the c
 ## Available Figures
 
 - `results/paper/experiments/e1_magnitude_sweep/decima/figures/e1_decima_magnitude_sweep.png`
+- `results/paper/experiments/e1_magnitude_sweep/decima/figures/e1_decima_magnitude_sweep_paper_panel.png`
 - `results/paper/experiments/e1_magnitude_sweep/deeprm/figures/e1_deeprm_magnitude_sweep.png`
 - `results/paper/experiments/e1_magnitude_sweep/rossi/figures/e1_rossi_magnitude_sweep.png`
 - `results/paper/experiments/e2_objective_native/figures/e2_companion_a_rescore.png`

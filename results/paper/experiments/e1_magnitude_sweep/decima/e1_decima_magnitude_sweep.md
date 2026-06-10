@@ -23,3 +23,4 @@ MLflow parent run: `587abbac142e4d83aecd3924271d8909`
 | p3_fgsm | 0.2 | 875.619 | [135.152, 1689.58] | 1 | 0.0191498 |
 
 - CSV: `results/paper/experiments/e1_magnitude_sweep/decima/tables/e1_decima_magnitude_sweep.csv`
+- Paper panel: `results/paper/experiments/e1_magnitude_sweep/decima/figures/e1_decima_magnitude_sweep_paper_panel.pdf`
