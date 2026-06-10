@@ -51,6 +51,7 @@ Important entry points:
 - [Results index](docs/RESULTS_INDEX.md)
 - [Reproducibility guide](docs/REPRODUCIBILITY.md)
 - [Public implementation notes](docs/public_notes/implementation_notes_public.md)
+- [Paper v4 traceability audit](docs/audits/paper_v4_traceability_audit_2026_06_10.md)
 - [External simulator setup](external/README.md)
 
 ## Environment

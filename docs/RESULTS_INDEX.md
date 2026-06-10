@@ -58,6 +58,12 @@ Directory: [results/paper/experiments](../results/paper/experiments)
 - [E1 pre-submission audit](../results/paper/experiments/e1_magnitude_sweep/E1_PRESUBMISSION_AUDIT.md)
 - [E2 companion analysis](../results/paper/experiments/e2_objective_native/e2_companion_a_results.md)
 
+## Paper v4 Traceability
+
+- [Paper v4 traceability audit](audits/paper_v4_traceability_audit_2026_06_10.md):
+  maps the finalized manuscript's empirical claims, figures, and tables to
+  committed public artifacts.
+
 ## Figure Quality
 
 The following figures have vector PDF/SVG versions suitable for paper
