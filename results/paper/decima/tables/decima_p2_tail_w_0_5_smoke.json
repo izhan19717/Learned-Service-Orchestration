@@ -1,0 +1,102 @@
+{
+  "aggregate": {
+    "delta_ci_high": -461.9047619047633,
+    "delta_ci_low": -8780.523809523802,
+    "delta_mean": -4621.214285714283,
+    "dynamic_partition_mean_jct": 93828.11904761905,
+    "learn_mean_jct": 98449.33333333334,
+    "num_pairs": 2,
+    "p_greater": 1.0,
+    "p_less": 0.24731752682473176,
+    "prediction_confirmed": true
+  },
+  "anchor_weight": 0.5,
+  "args": {
+    "exec_cap": 50,
+    "num_ep_seed_base": 10000000,
+    "num_exp": 2,
+    "num_init_dags": 1,
+    "num_stream_dags": 20,
+    "saved_model": "/workspace/results/checkpoints/decima/official_tf1_readme/model_ep_10000"
+  },
+  "delta_definition": "mean_JCT(dynamic_partition)-mean_JCT(Decima)",
+  "elapsed_seconds_total": 6.1438353061676025,
+  "method": "decima",
+  "paired": [
+    {
+      "delta": -8780.523809523802,
+      "dynamic_partition_mean_jct": 114520.57142857143,
+      "exp": 0,
+      "learn_mean_jct": 123301.09523809524,
+      "seed": 10000000
+    },
+    {
+      "delta": -461.9047619047633,
+      "dynamic_partition_mean_jct": 73135.66666666667,
+      "exp": 1,
+      "learn_mean_jct": 73597.57142857143,
+      "seed": 10000001
+    }
+  ],
+  "perturbation": "tail",
+  "protocol_amendment": "PROTOCOL_AMENDMENT_DECIMA_SIMULATOR_GATE.md",
+  "rows": [
+    {
+      "decision_steps": 322,
+      "elapsed_seconds": 0.3454117774963379,
+      "exp": 0,
+      "makespan": 657099.0,
+      "mean_jct": 114520.57142857143,
+      "median_jct": 98933.0,
+      "num_jobs": 21,
+      "p95_jct": 231152.0,
+      "reward_implied_mean_jct": 114520.5714285715,
+      "scheme": "dynamic_partition",
+      "seed": 10000000,
+      "total_reward": -24.049320000000016
+    },
+    {
+      "decision_steps": 613,
+      "elapsed_seconds": 2.4334168434143066,
+      "exp": 0,
+      "makespan": 661065.0,
+      "mean_jct": 123301.09523809524,
+      "median_jct": 126045.0,
+      "num_jobs": 21,
+      "p95_jct": 219831.0,
+      "reward_implied_mean_jct": 123301.0952380951,
+      "scheme": "learn",
+      "seed": 10000000,
+      "total_reward": -25.893229999999974
+    },
+    {
+      "decision_steps": 398,
+      "elapsed_seconds": 0.3775789737701416,
+      "exp": 1,
+      "makespan": 566462.0,
+      "mean_jct": 73135.66666666667,
+      "median_jct": 69244.0,
+      "num_jobs": 21,
+      "p95_jct": 139887.0,
+      "reward_implied_mean_jct": 73135.66666666674,
+      "scheme": "dynamic_partition",
+      "seed": 10000001,
+      "total_reward": -15.358490000000016
+    },
+    {
+      "decision_steps": 641,
+      "elapsed_seconds": 2.2684781551361084,
+      "exp": 1,
+      "makespan": 554942.0,
+      "mean_jct": 73597.57142857143,
+      "median_jct": 60868.0,
+      "num_jobs": 21,
+      "p95_jct": 137484.0,
+      "reward_implied_mean_jct": 73597.57142857133,
+      "scheme": "learn",
+      "seed": 10000001,
+      "total_reward": -15.45548999999998
+    }
+  ],
+  "tail_weight": 0.5
+}

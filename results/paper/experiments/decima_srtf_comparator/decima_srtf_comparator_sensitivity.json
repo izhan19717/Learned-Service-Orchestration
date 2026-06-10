@@ -1,0 +1,1221 @@
+{
+  "bootstrap_seed": 20260602,
+  "cells": {
+    "clean": {
+      "aggregate": {
+        "decima_beats_srtf": true,
+        "delta_ci_high": 172082.70089137641,
+        "delta_ci_low": 117354.05462271978,
+        "delta_mean": 144962.60878938637,
+        "learn_mean_jct": 62917.386235489226,
+        "num_pairs": 30,
+        "p_greater": 9.99990000099999e-06,
+        "p_less": 1.0,
+        "srtf_beats_decima": false,
+        "srtf_mean_jct": 207879.99502487565
+      },
+      "args": {
+        "exec_cap": 50,
+        "num_ep_seed_base": 10000000,
+        "num_exp": 30,
+        "num_init_dags": 1,
+        "num_stream_dags": 200,
+        "saved_model": "/workspace/results/checkpoints/decima/official_tf1_readme/model_ep_10000"
+      },
+      "cell": "clean",
+      "command": [
+        "/usr/bin/docker",
+        "run",
+        "--rm",
+        "--name",
+        "cisose-decima-srtf-clean",
+        "--user",
+        "1000:1000",
+        "-e",
+        "MPLCONFIGDIR=/tmp/matplotlib",
+        "-e",
+        "DECIMA_PERTURBATION=clean",
+        "-e",
+        "DECIMA_TAIL_WEIGHT=0.0",
+        "-e",
+        "DECIMA_LAG_LAMBDA=0.0",
+        "-e",
+        "DECIMA_FGSM_EPSILON=0.0",
+        "-e",
+        "DECIMA_BOOTSTRAP_SEED=20260602",
+        "-e",
+        "DECIMA_SRTF_OUTPUT_JSON=/workspace/results/paper/experiments/decima_srtf_comparator/tables/decima_srtf_clean.json",
+        "-e",
+        "DECIMA_SRTF_OUTPUT_CSV=/workspace/results/paper/experiments/decima_srtf_comparator/data/decima_srtf_clean_raw.csv",
+        "-v",
+        "/home/izhan/CISOSE New RL Expeimentations:/workspace",
+        "-w",
+        "/workspace/external/decima-sim",
+        "cisose-decima-tf1:1.15.5",
+        "bash",
+        "-lc",
+        "python -u /workspace/scripts/decima_tf1_srtf_eval.py --exec_cap 50 --num_init_dags 1 --num_stream_dags 200 --test_schemes srtf learn --num_exp 30 --saved_model /workspace/results/checkpoints/decima/official_tf1_readme/model_ep_10000"
+      ],
+      "elapsed_seconds_wrapper": 853.8278193473816,
+      "exit_code": 0,
+      "label": "Clean",
+      "log_file": "/home/izhan/CISOSE New RL Expeimentations/logs/training/decima_srtf_clean.log",
+      "output_csv": "/home/izhan/CISOSE New RL Expeimentations/results/paper/experiments/decima_srtf_comparator/data/decima_srtf_clean_raw.csv",
+      "output_json": "/home/izhan/CISOSE New RL Expeimentations/results/paper/experiments/decima_srtf_comparator/tables/decima_srtf_clean.json",
+      "paired": [
+        {
+          "delta": 160185.71641791044,
+          "exp": 0,
+          "learn_mean_jct": 74291.5223880597,
+          "seed": 10000000,
+          "srtf_mean_jct": 234477.23880597015
+        },
+        {
+          "delta": 46433.9552238806,
+          "exp": 1,
+          "learn_mean_jct": 51946.17412935323,
+          "seed": 10000001,
+          "srtf_mean_jct": 98380.12935323383
+        },
+        {
+          "delta": 219656.00497512438,
+          "exp": 2,
+          "learn_mean_jct": 78103.68656716419,
+          "seed": 10000002,
+          "srtf_mean_jct": 297759.6915422886
+        },
+        {
+          "delta": 24697.716417910444,
+          "exp": 3,
+          "learn_mean_jct": 44685.885572139305,
+          "seed": 10000003,
+          "srtf_mean_jct": 69383.60199004975
+        },
+        {
+          "delta": 119805.9303482587,
+          "exp": 4,
+          "learn_mean_jct": 48545.567164179105,
+          "seed": 10000004,
+          "srtf_mean_jct": 168351.4975124378
+        },
+        {
+          "delta": 269676.62686567166,
+          "exp": 5,
+          "learn_mean_jct": 80935.82089552238,
+          "seed": 10000005,
+          "srtf_mean_jct": 350612.447761194
+        },
+        {
+          "delta": 122037.44278606966,
+          "exp": 6,
+          "learn_mean_jct": 53729.149253731346,
+          "seed": 10000006,
+          "srtf_mean_jct": 175766.592039801
+        },
+        {
+          "delta": 181518.61194029852,
+          "exp": 7,
+          "learn_mean_jct": 63818.72139303482,
+          "seed": 10000007,
+          "srtf_mean_jct": 245337.33333333334
+        },
+        {
+          "delta": 35149.34328358209,
+          "exp": 8,
+          "learn_mean_jct": 46933.45771144279,
+          "seed": 10000008,
+          "srtf_mean_jct": 82082.80099502488
+        },
+        {
+          "delta": 252628.592039801,
+          "exp": 9,
+          "learn_mean_jct": 91464.92039800996,
+          "seed": 10000009,
+          "srtf_mean_jct": 344093.51243781095
+        },
+        {
+          "delta": 274934.1641791045,
+          "exp": 10,
+          "learn_mean_jct": 77667.19900497512,
+          "seed": 10000010,
+          "srtf_mean_jct": 352601.3631840796
+        },
+        {
+          "delta": 97122.16417910448,
+          "exp": 11,
+          "learn_mean_jct": 55748.87064676617,
+          "seed": 10000011,
+          "srtf_mean_jct": 152871.03482587065
+        },
+        {
+          "delta": 137191.7014925373,
+          "exp": 12,
+          "learn_mean_jct": 59126.26865671642,
+          "seed": 10000012,
+          "srtf_mean_jct": 196317.97014925373
+        },
+        {
+          "delta": 217547.1094527363,
+          "exp": 13,
+          "learn_mean_jct": 65969.78606965175,
+          "seed": 10000013,
+          "srtf_mean_jct": 283516.89552238805
+        },
+        {
+          "delta": 58982.38308457711,
+          "exp": 14,
+          "learn_mean_jct": 52946.437810945274,
+          "seed": 10000014,
+          "srtf_mean_jct": 111928.82089552238
+        },
+        {
+          "delta": 94751.89552238805,
+          "exp": 15,
+          "learn_mean_jct": 70405.00497512438,
+          "seed": 10000015,
+          "srtf_mean_jct": 165156.90049751243
+        },
+        {
+          "delta": 72945.48258706467,
+          "exp": 16,
+          "learn_mean_jct": 48210.388059701494,
+          "seed": 10000016,
+          "srtf_mean_jct": 121155.87064676617
+        },
+        {
+          "delta": 97475.21393034825,
+          "exp": 17,
+          "learn_mean_jct": 57046.517412935325,
+          "seed": 10000017,
+          "srtf_mean_jct": 154521.73134328358
+        },
+        {
+          "delta": 213348.9502487562,
+          "exp": 18,
+          "learn_mean_jct": 68529.0895522388,
+          "seed": 10000018,
+          "srtf_mean_jct": 281878.03980099503
+        },
+        {
+          "delta": 234993.0845771144,
+          "exp": 19,
+          "learn_mean_jct": 62726.69154228856,
+          "seed": 10000019,
+          "srtf_mean_jct": 297719.77611940296
+        },
+        {
+          "delta": 88864.02487562188,
+          "exp": 20,
+          "learn_mean_jct": 53015.36815920398,
+          "seed": 10000020,
+          "srtf_mean_jct": 141879.39303482586
+        },
+        {
+          "delta": 93791.2039800995,
+          "exp": 21,
+          "learn_mean_jct": 68831.73134328358,
+          "seed": 10000021,
+          "srtf_mean_jct": 162622.93532338308
+        },
+        {
+          "delta": 236406.1393034826,
+          "exp": 22,
+          "learn_mean_jct": 78157.46268656716,
+          "seed": 10000022,
+          "srtf_mean_jct": 314563.60199004976
+        },
+        {
+          "delta": 73516.43781094528,
+          "exp": 23,
+          "learn_mean_jct": 49536.35323383084,
+          "seed": 10000023,
+          "srtf_mean_jct": 123052.79104477612
+        },
+        {
+          "delta": 247775.03980099503,
+          "exp": 24,
+          "learn_mean_jct": 76828.09950248756,
+          "seed": 10000024,
+          "srtf_mean_jct": 324603.1393034826
+        },
+        {
+          "delta": 59523.716417910444,
+          "exp": 25,
+          "learn_mean_jct": 43886.22388059701,
+          "seed": 10000025,
+          "srtf_mean_jct": 103409.94029850746
+        },
+        {
+          "delta": 188628.736318408,
+          "exp": 26,
+          "learn_mean_jct": 75637.39800995025,
+          "seed": 10000026,
+          "srtf_mean_jct": 264266.1343283582
+        },
+        {
+          "delta": 113407.22388059701,
+          "exp": 27,
+          "learn_mean_jct": 48935.22388059701,
+          "seed": 10000027,
+          "srtf_mean_jct": 162342.44776119402
+        },
+        {
+          "delta": 236251.64676616914,
+          "exp": 28,
+          "learn_mean_jct": 77522.69651741293,
+          "seed": 10000028,
+          "srtf_mean_jct": 313774.3432835821
+        },
+        {
+          "delta": 79632.00497512436,
+          "exp": 29,
+          "learn_mean_jct": 62339.87064676617,
+          "seed": 10000029,
+          "srtf_mean_jct": 141971.87562189053
+        }
+      ],
+      "perturbation_metadata": {},
+      "status": "completed"
+    },
+    "p1_lag_lambda_1_0": {
+      "aggregate": {
+        "decima_beats_srtf": true,
+        "delta_ci_high": 1815829.3654049125,
+        "delta_ci_low": 1731337.5820884977,
+        "delta_mean": 1773508.3069868984,
+        "learn_mean_jct": 1404196.7284270555,
+        "num_pairs": 30,
+        "p_greater": 9.99990000099999e-06,
+        "p_less": 1.0,
+        "srtf_beats_decima": false,
+        "srtf_mean_jct": 3177705.0354139535
+      },
+      "args": {
+        "exec_cap": 50,
+        "num_ep_seed_base": 10000000,
+        "num_exp": 30,
+        "num_init_dags": 1,
+        "num_stream_dags": 200,
+        "saved_model": "/workspace/results/checkpoints/decima/official_tf1_readme/model_ep_10000"
+      },
+      "cell": "p1_lag_lambda_1_0",
+      "command": [
+        "/usr/bin/docker",
+        "run",
+        "--rm",
+        "--name",
+        "cisose-decima-srtf-p1-lag-lambda-1-0",
+        "--user",
+        "1000:1000",
+        "-e",
+        "MPLCONFIGDIR=/tmp/matplotlib",
+        "-e",
+        "DECIMA_PERTURBATION=lag",
+        "-e",
+        "DECIMA_TAIL_WEIGHT=0.5",
+        "-e",
+        "DECIMA_LAG_LAMBDA=1.0",
+        "-e",
+        "DECIMA_FGSM_EPSILON=0.05",
+        "-e",
+        "DECIMA_BOOTSTRAP_SEED=20260603",
+        "-e",
+        "DECIMA_SRTF_OUTPUT_JSON=/workspace/results/paper/experiments/decima_srtf_comparator/tables/decima_srtf_p1_lag_lambda_1_0.json",
+        "-e",
+        "DECIMA_SRTF_OUTPUT_CSV=/workspace/results/paper/experiments/decima_srtf_comparator/data/decima_srtf_p1_lag_lambda_1_0_raw.csv",
+        "-v",
+        "/home/izhan/CISOSE New RL Expeimentations:/workspace",
+        "-w",
+        "/workspace/external/decima-sim",
+        "cisose-decima-tf1:1.15.5",
+        "bash",
+        "-lc",
+        "python -u /workspace/scripts/decima_tf1_srtf_eval.py --exec_cap 50 --num_init_dags 1 --num_stream_dags 200 --test_schemes srtf learn --num_exp 30 --saved_model /workspace/results/checkpoints/decima/official_tf1_readme/model_ep_10000"
+      ],
+      "elapsed_seconds_wrapper": 2154.9410076141357,
+      "exit_code": 0,
+      "label": "P1 lag lambda=1.0",
+      "log_file": "/home/izhan/CISOSE New RL Expeimentations/logs/training/decima_srtf_p1_lag_lambda_1_0.log",
+      "output_csv": "/home/izhan/CISOSE New RL Expeimentations/results/paper/experiments/decima_srtf_comparator/data/decima_srtf_p1_lag_lambda_1_0_raw.csv",
+      "output_json": "/home/izhan/CISOSE New RL Expeimentations/results/paper/experiments/decima_srtf_comparator/tables/decima_srtf_p1_lag_lambda_1_0.json",
+      "paired": [
+        {
+          "delta": 1659378.7471358695,
+          "exp": 0,
+          "learn_mean_jct": 1468512.5866495993,
+          "seed": 10000000,
+          "srtf_mean_jct": 3127891.3337854687
+        },
+        {
+          "delta": 1873807.778014189,
+          "exp": 1,
+          "learn_mean_jct": 1226619.858328308,
+          "seed": 10000001,
+          "srtf_mean_jct": 3100427.636342497
+        },
+        {
+          "delta": 1661936.3540118085,
+          "exp": 2,
+          "learn_mean_jct": 1548142.410689441,
+          "seed": 10000002,
+          "srtf_mean_jct": 3210078.7647012495
+        },
+        {
+          "delta": 1788019.5994916603,
+          "exp": 3,
+          "learn_mean_jct": 1221882.0914242475,
+          "seed": 10000003,
+          "srtf_mean_jct": 3009901.6909159077
+        },
+        {
+          "delta": 1838612.907862418,
+          "exp": 4,
+          "learn_mean_jct": 1387458.6940557093,
+          "seed": 10000004,
+          "srtf_mean_jct": 3226071.6019181274
+        },
+        {
+          "delta": 1904948.1525843798,
+          "exp": 5,
+          "learn_mean_jct": 1635838.6768557334,
+          "seed": 10000005,
+          "srtf_mean_jct": 3540786.829440113
+        },
+        {
+          "delta": 1600673.6097133378,
+          "exp": 6,
+          "learn_mean_jct": 1179187.35943894,
+          "seed": 10000006,
+          "srtf_mean_jct": 2779860.969152278
+        },
+        {
+          "delta": 1877510.501696258,
+          "exp": 7,
+          "learn_mean_jct": 1452457.3909844605,
+          "seed": 10000007,
+          "srtf_mean_jct": 3329967.8926807186
+        },
+        {
+          "delta": 1493920.3033825543,
+          "exp": 8,
+          "learn_mean_jct": 1067526.3802700897,
+          "seed": 10000008,
+          "srtf_mean_jct": 2561446.683652644
+        },
+        {
+          "delta": 1654223.9067235794,
+          "exp": 9,
+          "learn_mean_jct": 1628764.209572046,
+          "seed": 10000009,
+          "srtf_mean_jct": 3282988.1162956255
+        },
+        {
+          "delta": 1741306.24924653,
+          "exp": 10,
+          "learn_mean_jct": 1657147.108224576,
+          "seed": 10000010,
+          "srtf_mean_jct": 3398453.357471106
+        },
+        {
+          "delta": 1749227.1105104373,
+          "exp": 11,
+          "learn_mean_jct": 1243344.204735152,
+          "seed": 10000011,
+          "srtf_mean_jct": 2992571.3152455892
+        },
+        {
+          "delta": 1811959.3752287324,
+          "exp": 12,
+          "learn_mean_jct": 1438631.134394106,
+          "seed": 10000012,
+          "srtf_mean_jct": 3250590.5096228383
+        },
+        {
+          "delta": 1671062.579220296,
+          "exp": 13,
+          "learn_mean_jct": 1396432.292439857,
+          "seed": 10000013,
+          "srtf_mean_jct": 3067494.871660153
+        },
+        {
+          "delta": 1810207.9753405773,
+          "exp": 14,
+          "learn_mean_jct": 1202876.7776017534,
+          "seed": 10000014,
+          "srtf_mean_jct": 3013084.7529423307
+        },
+        {
+          "delta": 1698943.78575495,
+          "exp": 15,
+          "learn_mean_jct": 1293195.6416070175,
+          "seed": 10000015,
+          "srtf_mean_jct": 2992139.4273619675
+        },
+        {
+          "delta": 1725143.4204383516,
+          "exp": 16,
+          "learn_mean_jct": 1294628.9603082212,
+          "seed": 10000016,
+          "srtf_mean_jct": 3019772.3807465727
+        },
+        {
+          "delta": 1579021.8532061863,
+          "exp": 17,
+          "learn_mean_jct": 1353951.5461221912,
+          "seed": 10000017,
+          "srtf_mean_jct": 2932973.3993283776
+        },
+        {
+          "delta": 1679856.8256719012,
+          "exp": 18,
+          "learn_mean_jct": 1494952.2733120325,
+          "seed": 10000018,
+          "srtf_mean_jct": 3174809.0989839337
+        },
+        {
+          "delta": 1765162.6246531713,
+          "exp": 19,
+          "learn_mean_jct": 1610781.9300875715,
+          "seed": 10000019,
+          "srtf_mean_jct": 3375944.554740743
+        },
+        {
+          "delta": 1701600.622870572,
+          "exp": 20,
+          "learn_mean_jct": 1283973.6560047385,
+          "seed": 10000020,
+          "srtf_mean_jct": 2985574.2788753104
+        },
+        {
+          "delta": 1719471.077001849,
+          "exp": 21,
+          "learn_mean_jct": 1299204.8008646194,
+          "seed": 10000021,
+          "srtf_mean_jct": 3018675.8778664684
+        },
+        {
+          "delta": 1988742.7063419442,
+          "exp": 22,
+          "learn_mean_jct": 1687466.256189193,
+          "seed": 10000022,
+          "srtf_mean_jct": 3676208.9625311373
+        },
+        {
+          "delta": 1879154.3846288049,
+          "exp": 23,
+          "learn_mean_jct": 1332900.197888142,
+          "seed": 10000023,
+          "srtf_mean_jct": 3212054.582516947
+        },
+        {
+          "delta": 1971632.9635316632,
+          "exp": 24,
+          "learn_mean_jct": 1776212.1024242463,
+          "seed": 10000024,
+          "srtf_mean_jct": 3747845.0659559094
+        },
+        {
+          "delta": 1849435.7623571202,
+          "exp": 25,
+          "learn_mean_jct": 1292177.124968475,
+          "seed": 10000025,
+          "srtf_mean_jct": 3141612.887325595
+        },
+        {
+          "delta": 1922720.9236782494,
+          "exp": 26,
+          "learn_mean_jct": 1507566.7461562993,
+          "seed": 10000026,
+          "srtf_mean_jct": 3430287.6698345486
+        },
+        {
+          "delta": 1800698.7926897986,
+          "exp": 27,
+          "learn_mean_jct": 1252835.8700743516,
+          "seed": 10000027,
+          "srtf_mean_jct": 3053534.66276415
+        },
+        {
+          "delta": 1911569.3329387708,
+          "exp": 28,
+          "learn_mean_jct": 1628722.2455613893,
+          "seed": 10000028,
+          "srtf_mean_jct": 3540291.57850016
+        },
+        {
+          "delta": 1875298.9836809938,
+          "exp": 29,
+          "learn_mean_jct": 1262511.3255791506,
+          "seed": 10000029,
+          "srtf_mean_jct": 3137810.3092601444
+        }
+      ],
+      "perturbation_metadata": {
+        "expected_stage_duration_ms": 1197.1244254325359,
+        "lag_lambda": 1.0,
+        "lag_mean_ms": 1197.1244254325359,
+        "lag_semantics": "deterministic per-task exponential notification delay added to task completion events for both schedulers"
+      },
+      "status": "completed"
+    },
+    "p2_tail_w_0_5": {
+      "aggregate": {
+        "decima_beats_srtf": true,
+        "delta_ci_high": 447916.5366334991,
+        "delta_ci_low": 368357.53714344936,
+        "delta_mean": 408674.34262023214,
+        "learn_mean_jct": 131686.99004975124,
+        "num_pairs": 30,
+        "p_greater": 9.99990000099999e-06,
+        "p_less": 1.0,
+        "srtf_beats_decima": false,
+        "srtf_mean_jct": 540361.3326699835
+      },
+      "args": {
+        "exec_cap": 50,
+        "num_ep_seed_base": 10000000,
+        "num_exp": 30,
+        "num_init_dags": 1,
+        "num_stream_dags": 200,
+        "saved_model": "/workspace/results/checkpoints/decima/official_tf1_readme/model_ep_10000"
+      },
+      "cell": "p2_tail_w_0_5",
+      "command": [
+        "/usr/bin/docker",
+        "run",
+        "--rm",
+        "--name",
+        "cisose-decima-srtf-p2-tail-w-0-5",
+        "--user",
+        "1000:1000",
+        "-e",
+        "MPLCONFIGDIR=/tmp/matplotlib",
+        "-e",
+        "DECIMA_PERTURBATION=tail",
+        "-e",
+        "DECIMA_TAIL_WEIGHT=0.5",
+        "-e",
+        "DECIMA_LAG_LAMBDA=1.0",
+        "-e",
+        "DECIMA_FGSM_EPSILON=0.05",
+        "-e",
+        "DECIMA_BOOTSTRAP_SEED=20260604",
+        "-e",
+        "DECIMA_SRTF_OUTPUT_JSON=/workspace/results/paper/experiments/decima_srtf_comparator/tables/decima_srtf_p2_tail_w_0_5.json",
+        "-e",
+        "DECIMA_SRTF_OUTPUT_CSV=/workspace/results/paper/experiments/decima_srtf_comparator/data/decima_srtf_p2_tail_w_0_5_raw.csv",
+        "-v",
+        "/home/izhan/CISOSE New RL Expeimentations:/workspace",
+        "-w",
+        "/workspace/external/decima-sim",
+        "cisose-decima-tf1:1.15.5",
+        "bash",
+        "-lc",
+        "python -u /workspace/scripts/decima_tf1_srtf_eval.py --exec_cap 50 --num_init_dags 1 --num_stream_dags 200 --test_schemes srtf learn --num_exp 30 --saved_model /workspace/results/checkpoints/decima/official_tf1_readme/model_ep_10000"
+      ],
+      "elapsed_seconds_wrapper": 1057.4037165641785,
+      "exit_code": 0,
+      "label": "P2 tail w=0.5",
+      "log_file": "/home/izhan/CISOSE New RL Expeimentations/logs/training/decima_srtf_p2_tail_w_0_5.log",
+      "output_csv": "/home/izhan/CISOSE New RL Expeimentations/results/paper/experiments/decima_srtf_comparator/data/decima_srtf_p2_tail_w_0_5_raw.csv",
+      "output_json": "/home/izhan/CISOSE New RL Expeimentations/results/paper/experiments/decima_srtf_comparator/tables/decima_srtf_p2_tail_w_0_5.json",
+      "paired": [
+        {
+          "delta": 341160.1194029851,
+          "exp": 0,
+          "learn_mean_jct": 99043.12437810945,
+          "seed": 10000000,
+          "srtf_mean_jct": 440203.24378109456
+        },
+        {
+          "delta": 434510.60199004976,
+          "exp": 1,
+          "learn_mean_jct": 124854.31840796019,
+          "seed": 10000001,
+          "srtf_mean_jct": 559364.9203980099
+        },
+        {
+          "delta": 183192.7910447761,
+          "exp": 2,
+          "learn_mean_jct": 83868.59203980099,
+          "seed": 10000002,
+          "srtf_mean_jct": 267061.3830845771
+        },
+        {
+          "delta": 368789.96517412935,
+          "exp": 3,
+          "learn_mean_jct": 97149.46766169154,
+          "seed": 10000003,
+          "srtf_mean_jct": 465939.4328358209
+        },
+        {
+          "delta": 452655.1243781094,
+          "exp": 4,
+          "learn_mean_jct": 141163.58706467663,
+          "seed": 10000004,
+          "srtf_mean_jct": 593818.711442786
+        },
+        {
+          "delta": 217927.97014925373,
+          "exp": 5,
+          "learn_mean_jct": 84299.85074626865,
+          "seed": 10000005,
+          "srtf_mean_jct": 302227.82089552237
+        },
+        {
+          "delta": 261169.22885572142,
+          "exp": 6,
+          "learn_mean_jct": 89841.93034825871,
+          "seed": 10000006,
+          "srtf_mean_jct": 351011.1592039801
+        },
+        {
+          "delta": 509396.7213930348,
+          "exp": 7,
+          "learn_mean_jct": 215749.85572139305,
+          "seed": 10000007,
+          "srtf_mean_jct": 725146.5771144278
+        },
+        {
+          "delta": 220400.2985074627,
+          "exp": 8,
+          "learn_mean_jct": 96592.73631840796,
+          "seed": 10000008,
+          "srtf_mean_jct": 316993.03482587065
+        },
+        {
+          "delta": 283681.78109452734,
+          "exp": 9,
+          "learn_mean_jct": 97029.21890547263,
+          "seed": 10000009,
+          "srtf_mean_jct": 380711.0
+        },
+        {
+          "delta": 472018.1194029851,
+          "exp": 10,
+          "learn_mean_jct": 186476.9751243781,
+          "seed": 10000010,
+          "srtf_mean_jct": 658495.0945273632
+        },
+        {
+          "delta": 360963.67661691544,
+          "exp": 11,
+          "learn_mean_jct": 121136.01492537314,
+          "seed": 10000011,
+          "srtf_mean_jct": 482099.6915422886
+        },
+        {
+          "delta": 624697.8208955224,
+          "exp": 12,
+          "learn_mean_jct": 269468.9303482587,
+          "seed": 10000012,
+          "srtf_mean_jct": 894166.7512437811
+        },
+        {
+          "delta": 529714.9552238807,
+          "exp": 13,
+          "learn_mean_jct": 171992.53233830846,
+          "seed": 10000013,
+          "srtf_mean_jct": 701707.4875621891
+        },
+        {
+          "delta": 419777.01492537314,
+          "exp": 14,
+          "learn_mean_jct": 136718.71641791044,
+          "seed": 10000014,
+          "srtf_mean_jct": 556495.7313432836
+        },
+        {
+          "delta": 299686.8606965174,
+          "exp": 15,
+          "learn_mean_jct": 142923.01990049751,
+          "seed": 10000015,
+          "srtf_mean_jct": 442609.8805970149
+        },
+        {
+          "delta": 412914.75621890544,
+          "exp": 16,
+          "learn_mean_jct": 109481.00995024876,
+          "seed": 10000016,
+          "srtf_mean_jct": 522395.7661691542
+        },
+        {
+          "delta": 518422.7412935323,
+          "exp": 17,
+          "learn_mean_jct": 168275.0696517413,
+          "seed": 10000017,
+          "srtf_mean_jct": 686697.8109452736
+        },
+        {
+          "delta": 391153.40796019905,
+          "exp": 18,
+          "learn_mean_jct": 98787.29850746269,
+          "seed": 10000018,
+          "srtf_mean_jct": 489940.7064676617
+        },
+        {
+          "delta": 546084.3134328359,
+          "exp": 19,
+          "learn_mean_jct": 113009.87562189055,
+          "seed": 10000019,
+          "srtf_mean_jct": 659094.1890547264
+        },
+        {
+          "delta": 430981.0646766169,
+          "exp": 20,
+          "learn_mean_jct": 114086.75621890547,
+          "seed": 10000020,
+          "srtf_mean_jct": 545067.8208955224
+        },
+        {
+          "delta": 409666.26865671645,
+          "exp": 21,
+          "learn_mean_jct": 101364.34328358209,
+          "seed": 10000021,
+          "srtf_mean_jct": 511030.6119402985
+        },
+        {
+          "delta": 507303.0248756219,
+          "exp": 22,
+          "learn_mean_jct": 146894.89054726367,
+          "seed": 10000022,
+          "srtf_mean_jct": 654197.9154228856
+        },
+        {
+          "delta": 371044.8308457711,
+          "exp": 23,
+          "learn_mean_jct": 112867.11940298507,
+          "seed": 10000023,
+          "srtf_mean_jct": 483911.9502487562
+        },
+        {
+          "delta": 484255.631840796,
+          "exp": 24,
+          "learn_mean_jct": 198359.06467661692,
+          "seed": 10000024,
+          "srtf_mean_jct": 682614.6965174129
+        },
+        {
+          "delta": 266365.815920398,
+          "exp": 25,
+          "learn_mean_jct": 113287.55223880598,
+          "seed": 10000025,
+          "srtf_mean_jct": 379653.36815920396
+        },
+        {
+          "delta": 352221.46766169154,
+          "exp": 26,
+          "learn_mean_jct": 111229.42288557214,
+          "seed": 10000026,
+          "srtf_mean_jct": 463450.89054726367
+        },
+        {
+          "delta": 550318.0,
+          "exp": 27,
+          "learn_mean_jct": 108724.04975124379,
+          "seed": 10000027,
+          "srtf_mean_jct": 659042.0497512438
+        },
+        {
+          "delta": 503923.42786069645,
+          "exp": 28,
+          "learn_mean_jct": 158888.1542288557,
+          "seed": 10000028,
+          "srtf_mean_jct": 662811.5820895522
+        },
+        {
+          "delta": 535832.4776119402,
+          "exp": 29,
+          "learn_mean_jct": 137046.223880597,
+          "seed": 10000029,
+          "srtf_mean_jct": 672878.7014925373
+        }
+      ],
+      "perturbation_metadata": {
+        "tail_weight": 0.5,
+        "tpch_size_probabilities": [
+          0.03791453726625637,
+          0.05994814709635201,
+          0.08477948266279829,
+          0.11989629419270402,
+          0.18957268633128188,
+          0.23979258838540804,
+          0.2680962640651995
+        ],
+        "tpch_size_scores": [
+          2.0,
+          5.0,
+          10.0,
+          20.0,
+          50.0,
+          80.0,
+          100.0
+        ],
+        "tpch_sizes": [
+          "2g",
+          "5g",
+          "10g",
+          "20g",
+          "50g",
+          "80g",
+          "100g"
+        ]
+      },
+      "status": "completed"
+    },
+    "p3_fgsm_epsilon_0_05": {
+      "aggregate": {
+        "decima_beats_srtf": true,
+        "delta_ci_high": 174462.4520854063,
+        "delta_ci_low": 116860.27177446103,
+        "delta_mean": 145498.4661691542,
+        "learn_mean_jct": 62836.05240464346,
+        "num_pairs": 30,
+        "p_greater": 9.99990000099999e-06,
+        "p_less": 1.0,
+        "srtf_beats_decima": false,
+        "srtf_mean_jct": 208334.51857379766
+      },
+      "args": {
+        "exec_cap": 50,
+        "num_ep_seed_base": 10000000,
+        "num_exp": 30,
+        "num_init_dags": 1,
+        "num_stream_dags": 200,
+        "saved_model": "/workspace/results/checkpoints/decima/official_tf1_readme/model_ep_10000"
+      },
+      "cell": "p3_fgsm_epsilon_0_05",
+      "command": [
+        "/usr/bin/docker",
+        "run",
+        "--rm",
+        "--name",
+        "cisose-decima-srtf-p3-fgsm-epsilon-0-05",
+        "--user",
+        "1000:1000",
+        "-e",
+        "MPLCONFIGDIR=/tmp/matplotlib",
+        "-e",
+        "DECIMA_PERTURBATION=fgsm",
+        "-e",
+        "DECIMA_TAIL_WEIGHT=0.5",
+        "-e",
+        "DECIMA_LAG_LAMBDA=1.0",
+        "-e",
+        "DECIMA_FGSM_EPSILON=0.05",
+        "-e",
+        "DECIMA_BOOTSTRAP_SEED=20260605",
+        "-e",
+        "DECIMA_SRTF_OUTPUT_JSON=/workspace/results/paper/experiments/decima_srtf_comparator/tables/decima_srtf_p3_fgsm_epsilon_0_05.json",
+        "-e",
+        "DECIMA_SRTF_OUTPUT_CSV=/workspace/results/paper/experiments/decima_srtf_comparator/data/decima_srtf_p3_fgsm_epsilon_0_05_raw.csv",
+        "-v",
+        "/home/izhan/CISOSE New RL Expeimentations:/workspace",
+        "-w",
+        "/workspace/external/decima-sim",
+        "cisose-decima-tf1:1.15.5",
+        "bash",
+        "-lc",
+        "python -u /workspace/scripts/decima_tf1_srtf_eval.py --exec_cap 50 --num_init_dags 1 --num_stream_dags 200 --test_schemes srtf learn --num_exp 30 --saved_model /workspace/results/checkpoints/decima/official_tf1_readme/model_ep_10000"
+      ],
+      "elapsed_seconds_wrapper": 2431.215975046158,
+      "exit_code": 0,
+      "label": "P3 FGSM epsilon=0.05",
+      "log_file": "/home/izhan/CISOSE New RL Expeimentations/logs/training/decima_srtf_p3_fgsm_epsilon_0_05.log",
+      "output_csv": "/home/izhan/CISOSE New RL Expeimentations/results/paper/experiments/decima_srtf_comparator/data/decima_srtf_p3_fgsm_epsilon_0_05_raw.csv",
+      "output_json": "/home/izhan/CISOSE New RL Expeimentations/results/paper/experiments/decima_srtf_comparator/tables/decima_srtf_p3_fgsm_epsilon_0_05.json",
+      "paired": [
+        {
+          "delta": 152942.65174129355,
+          "exp": 0,
+          "learn_mean_jct": 74261.10447761194,
+          "seed": 10000000,
+          "srtf_mean_jct": 227203.75621890547
+        },
+        {
+          "delta": 48782.11940298508,
+          "exp": 1,
+          "learn_mean_jct": 52302.54228855721,
+          "seed": 10000001,
+          "srtf_mean_jct": 101084.6616915423
+        },
+        {
+          "delta": 220455.26368159207,
+          "exp": 2,
+          "learn_mean_jct": 79447.96019900497,
+          "seed": 10000002,
+          "srtf_mean_jct": 299903.22388059704
+        },
+        {
+          "delta": 23955.442786069652,
+          "exp": 3,
+          "learn_mean_jct": 45259.54726368159,
+          "seed": 10000003,
+          "srtf_mean_jct": 69214.99004975124
+        },
+        {
+          "delta": 112078.4527363184,
+          "exp": 4,
+          "learn_mean_jct": 48132.72139303482,
+          "seed": 10000004,
+          "srtf_mean_jct": 160211.17412935322
+        },
+        {
+          "delta": 287644.8308457711,
+          "exp": 5,
+          "learn_mean_jct": 79400.51741293533,
+          "seed": 10000005,
+          "srtf_mean_jct": 367045.34825870645
+        },
+        {
+          "delta": 127090.63681592041,
+          "exp": 6,
+          "learn_mean_jct": 51521.47263681592,
+          "seed": 10000006,
+          "srtf_mean_jct": 178612.10945273633
+        },
+        {
+          "delta": 182241.9751243781,
+          "exp": 7,
+          "learn_mean_jct": 63193.94029850746,
+          "seed": 10000007,
+          "srtf_mean_jct": 245435.91542288556
+        },
+        {
+          "delta": 35991.1592039801,
+          "exp": 8,
+          "learn_mean_jct": 47269.248756218905,
+          "seed": 10000008,
+          "srtf_mean_jct": 83260.40796019901
+        },
+        {
+          "delta": 245899.17412935325,
+          "exp": 9,
+          "learn_mean_jct": 91829.46268656716,
+          "seed": 10000009,
+          "srtf_mean_jct": 337728.6368159204
+        },
+        {
+          "delta": 288110.9303482587,
+          "exp": 10,
+          "learn_mean_jct": 76520.52736318408,
+          "seed": 10000010,
+          "srtf_mean_jct": 364631.4577114428
+        },
+        {
+          "delta": 92896.8208955224,
+          "exp": 11,
+          "learn_mean_jct": 56232.0,
+          "seed": 10000011,
+          "srtf_mean_jct": 149128.8208955224
+        },
+        {
+          "delta": 134486.24378109453,
+          "exp": 12,
+          "learn_mean_jct": 58909.16915422885,
+          "seed": 10000012,
+          "srtf_mean_jct": 193395.41293532337
+        },
+        {
+          "delta": 224938.08457711444,
+          "exp": 13,
+          "learn_mean_jct": 66124.00497512438,
+          "seed": 10000013,
+          "srtf_mean_jct": 291062.0895522388
+        },
+        {
+          "delta": 61308.726368159194,
+          "exp": 14,
+          "learn_mean_jct": 52357.21393034826,
+          "seed": 10000014,
+          "srtf_mean_jct": 113665.94029850746
+        },
+        {
+          "delta": 95933.08457711442,
+          "exp": 15,
+          "learn_mean_jct": 69531.89552238806,
+          "seed": 10000015,
+          "srtf_mean_jct": 165464.98009950249
+        },
+        {
+          "delta": 76595.11940298506,
+          "exp": 16,
+          "learn_mean_jct": 48728.701492537315,
+          "seed": 10000016,
+          "srtf_mean_jct": 125323.82089552238
+        },
+        {
+          "delta": 98699.28358208954,
+          "exp": 17,
+          "learn_mean_jct": 57056.89054726368,
+          "seed": 10000017,
+          "srtf_mean_jct": 155756.17412935322
+        },
+        {
+          "delta": 216269.00995024876,
+          "exp": 18,
+          "learn_mean_jct": 68909.35820895522,
+          "seed": 10000018,
+          "srtf_mean_jct": 285178.36815920396
+        },
+        {
+          "delta": 212683.41791044778,
+          "exp": 19,
+          "learn_mean_jct": 63143.76616915423,
+          "seed": 10000019,
+          "srtf_mean_jct": 275827.184079602
+        },
+        {
+          "delta": 75822.58706467661,
+          "exp": 20,
+          "learn_mean_jct": 51929.02487562189,
+          "seed": 10000020,
+          "srtf_mean_jct": 127751.6119402985
+        },
+        {
+          "delta": 105441.07960199003,
+          "exp": 21,
+          "learn_mean_jct": 67325.30348258707,
+          "seed": 10000021,
+          "srtf_mean_jct": 172766.3830845771
+        },
+        {
+          "delta": 244676.97014925376,
+          "exp": 22,
+          "learn_mean_jct": 78026.21393034825,
+          "seed": 10000022,
+          "srtf_mean_jct": 322703.184079602
+        },
+        {
+          "delta": 81583.6119402985,
+          "exp": 23,
+          "learn_mean_jct": 50558.10945273632,
+          "seed": 10000023,
+          "srtf_mean_jct": 132141.72139303482
+        },
+        {
+          "delta": 261138.5771144278,
+          "exp": 24,
+          "learn_mean_jct": 76083.17910447762,
+          "seed": 10000024,
+          "srtf_mean_jct": 337221.75621890544
+        },
+        {
+          "delta": 63429.238805970155,
+          "exp": 25,
+          "learn_mean_jct": 44487.069651741294,
+          "seed": 10000025,
+          "srtf_mean_jct": 107916.30845771145
+        },
+        {
+          "delta": 170631.9054726368,
+          "exp": 26,
+          "learn_mean_jct": 76400.39303482587,
+          "seed": 10000026,
+          "srtf_mean_jct": 247032.2985074627
+        },
+        {
+          "delta": 114945.76616915422,
+          "exp": 27,
+          "learn_mean_jct": 50419.36815920398,
+          "seed": 10000027,
+          "srtf_mean_jct": 165365.1343283582
+        },
+        {
+          "delta": 231957.8507462687,
+          "exp": 28,
+          "learn_mean_jct": 77006.82587064676,
+          "seed": 10000028,
+          "srtf_mean_jct": 308964.67661691544
+        },
+        {
+          "delta": 76323.97014925373,
+          "exp": 29,
+          "learn_mean_jct": 62714.03980099502,
+          "seed": 10000029,
+          "srtf_mean_jct": 139038.00995024876
+        }
+      ],
+      "perturbation_metadata": {
+        "fgsm_attack_count": 163095,
+        "fgsm_mean_abs_node_feature_delta": 0.02344381265690023,
+        "fgsm_mean_adv_target_prob": 0.279802287101941,
+        "fgsm_mean_clean_target_prob": 0.3410145172931126
+      },
+      "status": "completed"
+    }
+  },
+  "comparator": "SRTF-style dependency-aware shortest remaining work",
+  "decima_commit": "c010dd74ff4b7566bd0ac989c90a32cfbc630d84",
+  "decima_repo_url": "https://github.com/hongzimao/decima-sim",
+  "delta_definition": "mean_JCT(SRTF)-mean_JCT(Decima)",
+  "delta_interpretation": "negative means SRTF beats Decima; positive means Decima beats SRTF",
+  "docker_bin": "/usr/bin/docker",
+  "docker_image": "cisose-decima-tf1:1.15.5",
+  "exec_cap": 50,
+  "experiment": "decima_srtf_style_comparator_sensitivity",
+  "method": "Decima",
+  "mlflow_run_id": "fc912bd6b86847c888e05aed2d0b5383",
+  "num_exp": 30,
+  "num_init_dags": 1,
+  "num_stream_dags": 200,
+  "saved_model": "results/checkpoints/decima/official_tf1_readme/model_ep_10000",
+  "scope": "post-hoc sensitivity, not official Graphene evidence and not a replacement for dynamic_partition results",
+  "status": "completed",
+  "summary": {
+    "decima_beats_srtf_cells": [
+      "clean",
+      "p1_lag_lambda_1_0",
+      "p2_tail_w_0_5",
+      "p3_fgsm_epsilon_0_05"
+    ],
+    "rows": [
+      {
+        "cell": "clean",
+        "decima_beats_srtf": true,
+        "delta_ci_high": 172082.70089137641,
+        "delta_ci_low": 117354.05462271978,
+        "delta_mean": 144962.60878938637,
+        "label": "Clean",
+        "learn_mean_jct": 62917.386235489226,
+        "srtf_beats_decima": false,
+        "srtf_mean_jct": 207879.99502487565
+      },
+      {
+        "cell": "p1_lag_lambda_1_0",
+        "decima_beats_srtf": true,
+        "delta_ci_high": 1815829.3654049125,
+        "delta_ci_low": 1731337.5820884977,
+        "delta_mean": 1773508.3069868984,
+        "label": "P1 lag lambda=1.0",
+        "learn_mean_jct": 1404196.7284270555,
+        "srtf_beats_decima": false,
+        "srtf_mean_jct": 3177705.0354139535
+      },
+      {
+        "cell": "p2_tail_w_0_5",
+        "decima_beats_srtf": true,
+        "delta_ci_high": 447916.5366334991,
+        "delta_ci_low": 368357.53714344936,
+        "delta_mean": 408674.34262023214,
+        "label": "P2 tail w=0.5",
+        "learn_mean_jct": 131686.99004975124,
+        "srtf_beats_decima": false,
+        "srtf_mean_jct": 540361.3326699835
+      },
+      {
+        "cell": "p3_fgsm_epsilon_0_05",
+        "decima_beats_srtf": true,
+        "delta_ci_high": 174462.4520854063,
+        "delta_ci_low": 116860.27177446103,
+        "delta_mean": 145498.4661691542,
+        "label": "P3 FGSM epsilon=0.05",
+        "learn_mean_jct": 62836.05240464346,
+        "srtf_beats_decima": false,
+        "srtf_mean_jct": 208334.51857379766
+      }
+    ],
+    "scope": "post_hoc_sensitivity_not_graphene",
+    "srtf_beats_decima_cells": []
+  }
+}

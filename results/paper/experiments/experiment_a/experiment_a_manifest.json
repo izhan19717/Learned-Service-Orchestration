@@ -1,0 +1,125 @@
+{
+  "block_lengths": [
+    5,
+    10
+  ],
+  "bootstrap_replicates": 5000,
+  "compatibility_p_value_convention": "one-sided observed-sign block sign-flip",
+  "experiment": "A",
+  "family_tables": {
+    "5": {
+      "compat_one_sided_holm": {
+        "P1-Decima": 8.999910000899992e-05,
+        "P1-DeepRM": 8.999910000899992e-05,
+        "P1-Rossi": 0.06071939280607194,
+        "P2-Decima": 0.06071939280607194,
+        "P2-DeepRM": 8.999910000899992e-05,
+        "P2-Rossi": 0.06071939280607194,
+        "P3-Decima": 0.0004499955000449995,
+        "P3-DeepRM": 8.999910000899992e-05,
+        "P3-Rossi": 0.06071939280607194
+      },
+      "compat_one_sided_unadjusted": {
+        "P1-Decima": 9.99990000099999e-06,
+        "P1-DeepRM": 9.99990000099999e-06,
+        "P1-Rossi": 0.015179848201517986,
+        "P2-Decima": 0.0328896711032889,
+        "P2-DeepRM": 9.99990000099999e-06,
+        "P2-Rossi": 0.015909840901590984,
+        "P3-Decima": 8.99991000089999e-05,
+        "P3-DeepRM": 9.99990000099999e-06,
+        "P3-Rossi": 0.015209847901520985
+      },
+      "official_two_sided_holm": {
+        "P1-Decima": 0.00017999820001799984,
+        "P1-DeepRM": 0.00017999820001799984,
+        "P1-Rossi": 0.12387876121238788,
+        "P2-Decima": 0.12387876121238788,
+        "P2-DeepRM": 0.00017999820001799984,
+        "P2-Rossi": 0.12387876121238788,
+        "P3-Decima": 0.000899991000089999,
+        "P3-DeepRM": 0.00017999820001799984,
+        "P3-Rossi": 0.12387876121238788
+      },
+      "official_two_sided_unadjusted": {
+        "P1-Decima": 1.999980000199998e-05,
+        "P1-DeepRM": 1.999980000199998e-05,
+        "P1-Rossi": 0.03096969030309697,
+        "P2-Decima": 0.0657793422065778,
+        "P2-DeepRM": 1.999980000199998e-05,
+        "P2-Rossi": 0.031879681203187966,
+        "P3-Decima": 0.0001799982000179998,
+        "P3-DeepRM": 1.999980000199998e-05,
+        "P3-Rossi": 0.031029689703102967
+      }
+    },
+    "10": {
+      "compat_one_sided_holm": {
+        "P1-Decima": 8.999910000899992e-05,
+        "P1-DeepRM": 8.999910000899992e-05,
+        "P1-Rossi": 0.37181628183718163,
+        "P2-Decima": 0.1315586844131556,
+        "P2-DeepRM": 8.999910000899992e-05,
+        "P2-Rossi": 0.37181628183718163,
+        "P3-Decima": 0.0004499955000449995,
+        "P3-DeepRM": 8.999910000899992e-05,
+        "P3-Rossi": 0.37181628183718163
+      },
+      "compat_one_sided_unadjusted": {
+        "P1-Decima": 9.99990000099999e-06,
+        "P1-DeepRM": 9.99990000099999e-06,
+        "P1-Rossi": 0.12393876061239388,
+        "P2-Decima": 0.0328896711032889,
+        "P2-DeepRM": 9.99990000099999e-06,
+        "P2-Rossi": 0.12596874031259686,
+        "P3-Decima": 8.99991000089999e-05,
+        "P3-DeepRM": 9.99990000099999e-06,
+        "P3-Rossi": 0.12612873871261288
+      },
+      "official_two_sided_holm": {
+        "P1-Decima": 0.00017999820001799984,
+        "P1-DeepRM": 0.00017999820001799984,
+        "P1-Rossi": 0.7465125348746512,
+        "P2-Decima": 0.2631173688263112,
+        "P2-DeepRM": 0.00017999820001799984,
+        "P2-Rossi": 0.7465125348746512,
+        "P3-Decima": 0.000899991000089999,
+        "P3-DeepRM": 0.00017999820001799984,
+        "P3-Rossi": 0.7465125348746512
+      },
+      "official_two_sided_unadjusted": {
+        "P1-Decima": 1.999980000199998e-05,
+        "P1-DeepRM": 1.999980000199998e-05,
+        "P1-Rossi": 0.24883751162488374,
+        "P2-Decima": 0.0657793422065778,
+        "P2-DeepRM": 1.999980000199998e-05,
+        "P2-Rossi": 0.25080749192508073,
+        "P3-Decima": 0.0001799982000179998,
+        "P3-DeepRM": 1.999980000199998e-05,
+        "P3-Rossi": 0.2519874801251987
+      }
+    }
+  },
+  "figures": [
+    "results/paper/experiments/experiment_a/figures/rossi_acf_diagnostic.pdf",
+    "results/paper/experiments/experiment_a/figures/rossi_acf_diagnostic.png",
+    "figures/rossi_acf_diagnostic.pdf",
+    "figures/rossi_acf_diagnostic.png"
+  ],
+  "input_vectors": "results/paper/rossi/tables/rossi_per_window_delta_vectors.csv",
+  "method": "Rossi",
+  "n_windows": 30,
+  "official_p_value_convention": "two-sided block sign-flip",
+  "replicate_files": [
+    "results/paper/experiments/experiment_a/data/experiment_a_replicates_L5.npz",
+    "data/experiment_a_replicates_L5.npz",
+    "results/paper/experiments/experiment_a/data/experiment_a_replicates_L10.npz",
+    "data/experiment_a_replicates_L10.npz"
+  ],
+  "seed": 20260529,
+  "sign_flip_replicates": 100000,
+  "tables": [
+    "results/paper/experiments/experiment_a/tables/rossi_acf_diagnostic.csv",
+    "results/paper/experiments/experiment_a/tables/rossi_block_bootstrap_results.csv"
+  ]
+}

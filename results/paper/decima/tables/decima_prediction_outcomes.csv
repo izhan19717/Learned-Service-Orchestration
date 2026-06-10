@@ -1,0 +1,4 @@
+prediction,anchor,status,delta_definition,delta_value,ci_low,ci_high,reason
+P1-Decima observation lag,lambda=1.0,Falsified under simulator-gate amendment,mean_JCT(dynamic_partition)-mean_JCT(Decima),716395.9457635704,653206.2128087608,779841.7405440705,Decima remains lower-JCT than dynamic_partition in aggregate for this perturbation cell.
+P2-Decima workload tail,w=0.5,Falsified under simulator-gate amendment,mean_JCT(dynamic_partition)-mean_JCT(Decima),8043.676119402982,1138.4852446102782,16524.58891376449,Decima remains lower-JCT than dynamic_partition in aggregate for this perturbation cell.
+P3-Decima adversarial node features,epsilon=0.05,Falsified under simulator-gate amendment,mean_JCT(dynamic_partition)-mean_JCT(Decima),2000.6525704809292,1057.355505804312,3019.178864013268,Decima remains lower-JCT than dynamic_partition in aggregate for this perturbation cell.

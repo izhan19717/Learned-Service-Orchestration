@@ -1,0 +1,240 @@
+{
+  "artifacts": [
+    "results/paper/experiments/experiment_b/data/experiment_b_costs.csv",
+    "results/paper/experiments/experiment_b/tables/experiment_b_results.csv",
+    "results/paper/experiments/experiment_b/experiment_b_results_table.md"
+  ],
+  "cells": [
+    {
+      "anchor_value": "none",
+      "block": {
+        "10": {
+          "ci_high": -27.896814166666637,
+          "ci_low": -35.24563666666664,
+          "p_one_sided_observed": 0.12676873231267688,
+          "p_two_sided": 0.25166748332516675
+        },
+        "5": {
+          "ci_high": -28.314513499999975,
+          "ci_low": -36.87936141666663,
+          "p_one_sided_observed": 0.015079849201507985,
+          "p_two_sided": 0.03112968870311297
+        }
+      },
+      "ci_high": -26.799975583333303,
+      "ci_low": -36.37235766666664,
+      "delta_hpa_v2_minus_rossi": -31.557599999999972,
+      "hpa_v2_mean_replicas": 4.7696825793551625,
+      "hpa_v2_mean_total_cost": 172.53150000000002,
+      "hpa_v2_replica_std": 0.9848191718062049,
+      "hpa_v2_sla_violation_rate": 0.00021661251353828216,
+      "hpa_v2_wins": 30,
+      "key": "clean",
+      "label": "Clean",
+      "p_greater_than_zero": 1.0,
+      "p_less_than_zero": 9.99990000099999e-06,
+      "p_one_sided_observed": 9.99990000099999e-06,
+      "p_two_sided": 1.999980000199998e-05,
+      "rossi_mean_replicas": NaN,
+      "rossi_mean_total_cost": 204.0891,
+      "rossi_sla_violation_rate": 0.03180871448804466,
+      "rossi_wins": 0
+    },
+    {
+      "anchor_value": "10",
+      "block": {
+        "10": {
+          "ci_high": 25.227013333333357,
+          "ci_low": 20.40803666666669,
+          "p_one_sided_observed": 0.12393876061239388,
+          "p_two_sided": 0.24883751162488374
+        },
+        "5": {
+          "ci_high": 25.251636333333355,
+          "ci_low": 19.890727250000023,
+          "p_one_sided_observed": 0.015179848201517986,
+          "p_two_sided": 0.03096969030309697
+        }
+      },
+      "ci_high": 27.16418416666669,
+      "ci_low": 18.77950583333335,
+      "delta_hpa_v2_minus_rossi": 23.026630000000022,
+      "hpa_v2_mean_replicas": 4.800299925018745,
+      "hpa_v2_mean_total_cost": 173.63400000000001,
+      "hpa_v2_replica_std": 0.9926585023754843,
+      "hpa_v2_sla_violation_rate": 0.00021661251353828216,
+      "hpa_v2_wins": 0,
+      "key": "p1",
+      "label": "P1 lag k=10",
+      "p_greater_than_zero": 9.99990000099999e-06,
+      "p_less_than_zero": 1.0,
+      "p_one_sided_observed": 9.99990000099999e-06,
+      "p_two_sided": 1.999980000199998e-05,
+      "rossi_mean_replicas": NaN,
+      "rossi_mean_total_cost": 150.60737000000003,
+      "rossi_sla_violation_rate": 0.015162875947679748,
+      "rossi_wins": 30
+    },
+    {
+      "anchor_value": "1.5",
+      "block": {
+        "10": {
+          "ci_high": -47.71046666666666,
+          "ci_low": -56.864360499999975,
+          "p_one_sided_observed": 0.12596874031259686,
+          "p_two_sided": 0.25080749192508073
+        },
+        "5": {
+          "ci_high": -47.50348424999998,
+          "ci_low": -58.42883866666664,
+          "p_one_sided_observed": 0.015909840901590984,
+          "p_two_sided": 0.031879681203187966
+        }
+      },
+      "ci_high": -45.03260683333333,
+      "ci_low": -59.986155333333315,
+      "delta_hpa_v2_minus_rossi": -52.41958333333332,
+      "hpa_v2_mean_replicas": 4.7696825793551625,
+      "hpa_v2_mean_total_cost": 172.5615,
+      "hpa_v2_replica_std": 0.9848191718062049,
+      "hpa_v2_sla_violation_rate": 0.00022494376405898532,
+      "hpa_v2_wins": 30,
+      "key": "p2",
+      "label": "P2 tail alpha=1.5",
+      "p_greater_than_zero": 1.0,
+      "p_less_than_zero": 9.99990000099999e-06,
+      "p_one_sided_observed": 9.99990000099999e-06,
+      "p_two_sided": 1.999980000199998e-05,
+      "rossi_mean_replicas": NaN,
+      "rossi_mean_total_cost": 224.98108333333332,
+      "rossi_sla_violation_rate": 0.032458552028659514,
+      "rossi_wins": 0
+    },
+    {
+      "anchor_value": "0.05",
+      "block": {
+        "10": {
+          "ci_high": -35.10419666666663,
+          "ci_low": -40.03728999999997,
+          "p_one_sided_observed": 0.12612873871261288,
+          "p_two_sided": 0.2519874801251987
+        },
+        "5": {
+          "ci_high": -34.12263508333329,
+          "ci_low": -42.1019795833333,
+          "p_one_sided_observed": 0.015209847901520985,
+          "p_two_sided": 0.031029689703102967
+        }
+      },
+      "ci_high": -32.51626266666663,
+      "ci_low": -41.71122591666664,
+      "delta_hpa_v2_minus_rossi": -36.752626666666636,
+      "hpa_v2_mean_replicas": 4.7696825793551625,
+      "hpa_v2_mean_total_cost": 172.53150000000002,
+      "hpa_v2_replica_std": 0.9848191718062049,
+      "hpa_v2_sla_violation_rate": 0.00021661251353828216,
+      "hpa_v2_wins": 30,
+      "key": "p3",
+      "label": "P3 bucket-flip epsilon=0.05",
+      "p_greater_than_zero": 1.0,
+      "p_less_than_zero": 9.99990000099999e-06,
+      "p_one_sided_observed": 9.99990000099999e-06,
+      "p_two_sided": 1.999980000199998e-05,
+      "rossi_mean_replicas": NaN,
+      "rossi_mean_total_cost": 209.28412666666665,
+      "rossi_sla_violation_rate": 0.03264183954011498,
+      "rossi_wins": 0
+    }
+  ],
+  "experiment": "B",
+  "family_tables": {
+    "5": {
+      "holm_one_sided_observed": {
+        "clean": 0.06031939680603194,
+        "p1": 0.06031939680603194,
+        "p2": 0.06031939680603194,
+        "p3": 0.06031939680603194
+      },
+      "holm_two_sided": {
+        "clean": 0.12387876121238788,
+        "p1": 0.12387876121238788,
+        "p2": 0.12387876121238788,
+        "p3": 0.12387876121238788
+      },
+      "unadjusted_one_sided_observed": {
+        "clean": 0.015079849201507985,
+        "p1": 0.015179848201517986,
+        "p2": 0.015909840901590984,
+        "p3": 0.015209847901520985
+      },
+      "unadjusted_two_sided": {
+        "clean": 0.03112968870311297,
+        "p1": 0.03096969030309697,
+        "p2": 0.031879681203187966,
+        "p3": 0.031029689703102967
+      }
+    },
+    "10": {
+      "holm_one_sided_observed": {
+        "clean": 0.4957550424495755,
+        "p1": 0.4957550424495755,
+        "p2": 0.4957550424495755,
+        "p3": 0.4957550424495755
+      },
+      "holm_two_sided": {
+        "clean": 0.995350046499535,
+        "p1": 0.995350046499535,
+        "p2": 0.995350046499535,
+        "p3": 0.995350046499535
+      },
+      "unadjusted_one_sided_observed": {
+        "clean": 0.12676873231267688,
+        "p1": 0.12393876061239388,
+        "p2": 0.12596874031259686,
+        "p3": 0.12612873871261288
+      },
+      "unadjusted_two_sided": {
+        "clean": 0.25166748332516675,
+        "p1": 0.24883751162488374,
+        "p2": 0.25080749192508073,
+        "p3": 0.2519874801251987
+      }
+    }
+  },
+  "figures": [
+    "results/paper/experiments/experiment_b/figures/hpa_v2_clean_vs_k10_failure_trace.pdf",
+    "results/paper/experiments/experiment_b/figures/hpa_v2_clean_vs_k10_failure_trace.png",
+    "figures/hpa_v2_clean_vs_k10_failure_trace.pdf",
+    "figures/hpa_v2_clean_vs_k10_failure_trace.png",
+    "results/paper/experiments/experiment_b/figures/threshold_vs_hpa_v2_under_lag.pdf",
+    "results/paper/experiments/experiment_b/figures/threshold_vs_hpa_v2_under_lag.png",
+    "figures/threshold_vs_hpa_v2_under_lag.pdf",
+    "figures/threshold_vs_hpa_v2_under_lag.png"
+  ],
+  "mlflow_run_id": "9b609ba12448413aa92263b8859e5854",
+  "sanity": {
+    "S1_clean_stability": {
+      "metrics": {
+        "bundled_threshold_replica_std": 1.2176259076215654,
+        "hpa_v2_replica_max": 6.0,
+        "hpa_v2_replica_min": 1.0,
+        "hpa_v2_replica_std": 0.8607370501848708
+      },
+      "passed": true
+    },
+    "S2_sync_cadence": {
+      "metrics": {
+        "max_distinct_replicas_in_15_tick_window": 2.0
+      },
+      "passed": true
+    },
+    "S3_stabilization": {
+      "metrics": {
+        "final_replicas": 4.0,
+        "max_replicas_during_overload": 10.0,
+        "replicas_250_ticks_after_underload": 10.0
+      },
+      "passed": true
+    }
+  }
+}

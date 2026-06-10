@@ -1,0 +1,408 @@
+{
+  "comparator_mean_slowdown": 94.16182578305433,
+  "comparator_metrics": [
+    {
+      "makespan": 1022,
+      "mean_slowdown": 95.79567073738522,
+      "p95_completion_time": 547.4499999999998,
+      "steps": 1222
+    },
+    {
+      "makespan": 1096,
+      "mean_slowdown": 112.41688594917545,
+      "p95_completion_time": 655.1499999999996,
+      "steps": 1296
+    },
+    {
+      "makespan": 932,
+      "mean_slowdown": 82.6600097329621,
+      "p95_completion_time": 486.09999999999997,
+      "steps": 1132
+    },
+    {
+      "makespan": 1386,
+      "mean_slowdown": 103.95922966545218,
+      "p95_completion_time": 613.2499999999999,
+      "steps": 1586
+    },
+    {
+      "makespan": 881,
+      "mean_slowdown": 113.13353571715594,
+      "p95_completion_time": 405.09999999999997,
+      "steps": 1081
+    },
+    {
+      "makespan": 692,
+      "mean_slowdown": 50.31920281250743,
+      "p95_completion_time": 346.2999999999999,
+      "steps": 892
+    },
+    {
+      "makespan": 912,
+      "mean_slowdown": 75.02686288154966,
+      "p95_completion_time": 388.0999999999996,
+      "steps": 1112
+    },
+    {
+      "makespan": 1298,
+      "mean_slowdown": 180.16981328592655,
+      "p95_completion_time": 874.5999999999998,
+      "steps": 1498
+    },
+    {
+      "makespan": 733,
+      "mean_slowdown": 61.59858783130583,
+      "p95_completion_time": 341.2999999999999,
+      "steps": 933
+    },
+    {
+      "makespan": 984,
+      "mean_slowdown": 123.29398997571725,
+      "p95_completion_time": 507.5499999999995,
+      "steps": 1184
+    },
+    {
+      "makespan": 768,
+      "mean_slowdown": 67.35523146320625,
+      "p95_completion_time": 345.0,
+      "steps": 968
+    },
+    {
+      "makespan": 969,
+      "mean_slowdown": 101.1397460793553,
+      "p95_completion_time": 507.99999999999966,
+      "steps": 1169
+    },
+    {
+      "makespan": 1105,
+      "mean_slowdown": 103.99475596215444,
+      "p95_completion_time": 483.59999999999945,
+      "steps": 1305
+    },
+    {
+      "makespan": 901,
+      "mean_slowdown": 139.2089308672995,
+      "p95_completion_time": 496.09999999999997,
+      "steps": 1101
+    },
+    {
+      "makespan": 762,
+      "mean_slowdown": 60.695271702150364,
+      "p95_completion_time": 396.2499999999999,
+      "steps": 962
+    },
+    {
+      "makespan": 902,
+      "mean_slowdown": 82.08341983937186,
+      "p95_completion_time": 498.19999999999993,
+      "steps": 1102
+    },
+    {
+      "makespan": 813,
+      "mean_slowdown": 74.84144576184812,
+      "p95_completion_time": 396.7499999999998,
+      "steps": 1013
+    },
+    {
+      "makespan": 744,
+      "mean_slowdown": 85.95100506171353,
+      "p95_completion_time": 319.24999999999955,
+      "steps": 944
+    },
+    {
+      "makespan": 726,
+      "mean_slowdown": 60.861198789222726,
+      "p95_completion_time": 287.19999999999993,
+      "steps": 926
+    },
+    {
+      "makespan": 881,
+      "mean_slowdown": 75.46706813775441,
+      "p95_completion_time": 348.1999999999996,
+      "steps": 1081
+    },
+    {
+      "makespan": 1015,
+      "mean_slowdown": 128.05921518331533,
+      "p95_completion_time": 548.05,
+      "steps": 1215
+    },
+    {
+      "makespan": 915,
+      "mean_slowdown": 129.93979371987916,
+      "p95_completion_time": 463.04999999999995,
+      "steps": 1115
+    },
+    {
+      "makespan": 1001,
+      "mean_slowdown": 142.70573101437864,
+      "p95_completion_time": 511.0,
+      "steps": 1201
+    },
+    {
+      "makespan": 942,
+      "mean_slowdown": 115.8176423292067,
+      "p95_completion_time": 438.4499999999998,
+      "steps": 1142
+    },
+    {
+      "makespan": 1104,
+      "mean_slowdown": 101.09437963854369,
+      "p95_completion_time": 597.0999999999999,
+      "steps": 1304
+    },
+    {
+      "makespan": 839,
+      "mean_slowdown": 76.24097984092624,
+      "p95_completion_time": 424.5999999999998,
+      "steps": 1039
+    },
+    {
+      "makespan": 972,
+      "mean_slowdown": 65.04490714877076,
+      "p95_completion_time": 490.5499999999995,
+      "steps": 1172
+    },
+    {
+      "makespan": 675,
+      "mean_slowdown": 47.479938161325464,
+      "p95_completion_time": 292.9499999999997,
+      "steps": 875
+    },
+    {
+      "makespan": 968,
+      "mean_slowdown": 104.28079303117379,
+      "p95_completion_time": 469.09999999999997,
+      "steps": 1168
+    },
+    {
+      "makespan": 689,
+      "mean_slowdown": 64.21953117089579,
+      "p95_completion_time": 309.2499999999999,
+      "steps": 889
+    }
+  ],
+  "comparison": {
+    "ci_high": 52.458408837469435,
+    "ci_low": 37.50462843944907,
+    "differences": [
+      45.71727835350512,
+      58.32453712206929,
+      40.753665747162046,
+      28.96505025461893,
+      47.56170279526914,
+      13.385557589590455,
+      24.05030440522065,
+      89.60111254320901,
+      22.43785689470411,
+      59.75378465261398,
+      31.07566923514161,
+      65.78629635875373,
+      62.595288991033996,
+      58.88380161653001,
+      12.977871834091417,
+      24.792069401576427,
+      31.84601001552865,
+      49.44672359494253,
+      14.391728016825475,
+      39.782271469751535,
+      74.8341366419443,
+      65.65829698317812,
+      83.29919631992215,
+      70.22392745417189,
+      55.758260802814554,
+      42.025510025630055,
+      41.427363651190625,
+      16.821839614975197,
+      45.73179452380263,
+      33.11294201172846
+    ],
+    "mean_difference": 45.034061630716536,
+    "p_greater_than_zero": 9.99990000099999e-06,
+    "p_less_than_zero": 1.0
+  },
+  "deep_rm_mean_slowdown": 49.12776415233779,
+  "deep_rm_metrics": [
+    {
+      "makespan": 924,
+      "mean_slowdown": 50.0783923838801,
+      "p95_completion_time": 347.99999999999966,
+      "steps": 1124
+    },
+    {
+      "makespan": 1071,
+      "mean_slowdown": 54.092348827106164,
+      "p95_completion_time": 422.2999999999989,
+      "steps": 1271
+    },
+    {
+      "makespan": 923,
+      "mean_slowdown": 41.90634398580005,
+      "p95_completion_time": 242.69999999999737,
+      "steps": 1123
+    },
+    {
+      "makespan": 1288,
+      "mean_slowdown": 74.99417941083325,
+      "p95_completion_time": 499.4999999999995,
+      "steps": 1488
+    },
+    {
+      "makespan": 780,
+      "mean_slowdown": 65.5718329218868,
+      "p95_completion_time": 323.49999999999983,
+      "steps": 980
+    },
+    {
+      "makespan": 733,
+      "mean_slowdown": 36.93364522291697,
+      "p95_completion_time": 224.1999999999996,
+      "steps": 933
+    },
+    {
+      "makespan": 855,
+      "mean_slowdown": 50.97655847632901,
+      "p95_completion_time": 350.4999999999995,
+      "steps": 1055
+    },
+    {
+      "makespan": 1115,
+      "mean_slowdown": 90.56870074271754,
+      "p95_completion_time": 514.8999999999994,
+      "steps": 1315
+    },
+    {
+      "makespan": 718,
+      "mean_slowdown": 39.160730936601716,
+      "p95_completion_time": 219.04999999999862,
+      "steps": 918
+    },
+    {
+      "makespan": 1013,
+      "mean_slowdown": 63.54020532310327,
+      "p95_completion_time": 316.24999999999886,
+      "steps": 1213
+    },
+    {
+      "makespan": 720,
+      "mean_slowdown": 36.27956222806464,
+      "p95_completion_time": 213.74999999999974,
+      "steps": 920
+    },
+    {
+      "makespan": 1057,
+      "mean_slowdown": 35.35344972060158,
+      "p95_completion_time": 233.39999999999986,
+      "steps": 1257
+    },
+    {
+      "makespan": 1169,
+      "mean_slowdown": 41.39946697112045,
+      "p95_completion_time": 364.6999999999984,
+      "steps": 1369
+    },
+    {
+      "makespan": 1003,
+      "mean_slowdown": 80.32512925076949,
+      "p95_completion_time": 363.29999999999956,
+      "steps": 1203
+    },
+    {
+      "makespan": 765,
+      "mean_slowdown": 47.71739986805895,
+      "p95_completion_time": 313.99999999999966,
+      "steps": 965
+    },
+    {
+      "makespan": 855,
+      "mean_slowdown": 57.29135043779543,
+      "p95_completion_time": 306.0499999999996,
+      "steps": 1055
+    },
+    {
+      "makespan": 775,
+      "mean_slowdown": 42.99543574631947,
+      "p95_completion_time": 289.49999999999983,
+      "steps": 975
+    },
+    {
+      "makespan": 640,
+      "mean_slowdown": 36.504281466771,
+      "p95_completion_time": 164.84999999999937,
+      "steps": 840
+    },
+    {
+      "makespan": 752,
+      "mean_slowdown": 46.46947077239725,
+      "p95_completion_time": 307.8999999999997,
+      "steps": 952
+    },
+    {
+      "makespan": 931,
+      "mean_slowdown": 35.684796668002875,
+      "p95_completion_time": 195.89999999999935,
+      "steps": 1131
+    },
+    {
+      "makespan": 873,
+      "mean_slowdown": 53.22507854137103,
+      "p95_completion_time": 308.64999999999975,
+      "steps": 1073
+    },
+    {
+      "makespan": 854,
+      "mean_slowdown": 64.28149673670104,
+      "p95_completion_time": 327.99999999999966,
+      "steps": 1054
+    },
+    {
+      "makespan": 1062,
+      "mean_slowdown": 59.4065346944565,
+      "p95_completion_time": 344.04999999999995,
+      "steps": 1262
+    },
+    {
+      "makespan": 980,
+      "mean_slowdown": 45.59371487503482,
+      "p95_completion_time": 265.9499999999997,
+      "steps": 1180
+    },
+    {
+      "makespan": 1054,
+      "mean_slowdown": 45.33611883572913,
+      "p95_completion_time": 439.29999999999956,
+      "steps": 1254
+    },
+    {
+      "makespan": 837,
+      "mean_slowdown": 34.21546981529619,
+      "p95_completion_time": 226.69999999999874,
+      "steps": 1037
+    },
+    {
+      "makespan": 918,
+      "mean_slowdown": 23.617543497580137,
+      "p95_completion_time": 207.94999999999968,
+      "steps": 1118
+    },
+    {
+      "makespan": 628,
+      "mean_slowdown": 30.658098546350267,
+      "p95_completion_time": 192.09999999999962,
+      "steps": 828
+    },
+    {
+      "makespan": 818,
+      "mean_slowdown": 58.54899850737116,
+      "p95_completion_time": 290.7999999999997,
+      "steps": 1018
+    },
+    {
+      "makespan": 885,
+      "mean_slowdown": 31.106589159167335,
+      "p95_completion_time": 214.24999999999991,
+      "steps": 1085
+    }
+  ],
+  "status": "complete"
+}

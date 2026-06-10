@@ -1,0 +1,47 @@
+{
+  "artifacts": [
+    "results/paper/experiments/experiment_c/data/experiment_c_slowdowns.csv",
+    "data/experiment_c_slowdowns.csv",
+    "results/paper/experiments/experiment_c/tables/experiment_c_results.csv",
+    "results/paper/experiments/experiment_c/figures/deeprm_ablation_degradation.pdf",
+    "results/paper/experiments/experiment_c/figures/deeprm_ablation_degradation.png",
+    "results/paper/experiments/experiment_c/figures/deeprm_ablation_action_diagnostics.pdf",
+    "results/paper/experiments/experiment_c/figures/deeprm_ablation_action_diagnostics.png",
+    "results/paper/experiments/experiment_c/figures/deeprm_ablation_training_curves.pdf",
+    "results/paper/experiments/experiment_c/figures/deeprm_ablation_training_curves.png",
+    "figures/deeprm_ablation_degradation.pdf",
+    "figures/deeprm_ablation_degradation.png",
+    "figures/deeprm_ablation_action_diagnostics.pdf",
+    "figures/deeprm_ablation_action_diagnostics.png",
+    "figures/deeprm_ablation_training_curves.pdf",
+    "figures/deeprm_ablation_training_curves.png",
+    "results/paper/experiments/experiment_c/experiment_c_results.md",
+    "experiment_c_results.md",
+    "results/paper/experiments/experiment_c/tables/experiment_c_results_table.md"
+  ],
+  "checkpoints": {
+    "1": {
+      "path": "results/checkpoints/experiment_c_m1_author_source/load_0.7/policy_final.pt",
+      "sha256": "1f821cd97fcc25f11fb50f50f77fd5494bec7a7b3f218e0d50d0cc87250353cc"
+    },
+    "10": {
+      "path": "results/checkpoints/author_source_rescue/load_0.7/policy_final.pt",
+      "sha256": "1d439eb4f5b47a7b1242a9824cd3db60f1f685ca0e53d57907bbf35d860e5f7e"
+    },
+    "3": {
+      "path": "results/checkpoints/experiment_c_m3_author_source/load_0.7/policy_final.pt",
+      "sha256": "27497d41197471049dba72fa7943b2031dd7c56f83edd22b8c4e4791c443c0a4"
+    }
+  },
+  "experiment": "C",
+  "payload_json": "results/evaluation/deeprm/experiment_c_action_ablation.json",
+  "verdict": {
+    "active_competent_conditions": [
+      10,
+      3
+    ],
+    "all_competency_gates_passed": false,
+    "case": "M1_not_learnable_H_C1_not_supported_for_competent_conditions",
+    "summary": "M=1 failed the clean competency gate, so it is not interpretable as a robustness test. Among competent conditions, reducing M from 10 to 3 did not increase FGSM aggregate degradation; H_C1 is not supported under the locked training budget."
+  }
+}

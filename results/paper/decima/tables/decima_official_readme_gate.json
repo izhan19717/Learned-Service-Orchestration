@@ -1,0 +1,87 @@
+{
+  "aggregate": {
+    "dynamic_partition": {
+      "mean_decision_steps": 90265.0,
+      "mean_elapsed_seconds": 81.20647478103638,
+      "mean_jct": 62746.507898420314,
+      "mean_num_jobs": 5001.0,
+      "mean_total_reward": -3137.9528600001604,
+      "median_jct": 43835.0,
+      "num_exp": 1,
+      "p95_jct": 175443.0
+    },
+    "learn": {
+      "mean_decision_steps": 142821.0,
+      "mean_elapsed_seconds": 524.5594110488892,
+      "mean_jct": 60856.21855628874,
+      "mean_num_jobs": 5001.0,
+      "mean_total_reward": -3043.419490000149,
+      "median_jct": 41094.0,
+      "num_exp": 1,
+      "p95_jct": 175759.0
+    }
+  },
+  "args": {
+    "canvs_visualization": 0,
+    "exec_cap": 50,
+    "num_ep_seed_base": 10000000,
+    "num_exp": 1,
+    "num_init_dags": 1,
+    "num_stream_dags": 5000,
+    "saved_model": "/workspace/results/checkpoints/decima/official_tf1_readme/model_ep_10000",
+    "test_schemes": [
+      "dynamic_partition",
+      "learn"
+    ],
+    "visualizations_written": false
+  },
+  "elapsed_seconds_total": 670.2169754505157,
+  "gate": {
+    "comparison": "learn_vs_dynamic_partition",
+    "dynamic_partition_mean_jct": 62746.507898420314,
+    "gate_note": "README does not publish a numeric reference; v2.2 uses the brief's 21 pct improvement target with 15 pct relative tolerance.",
+    "gate_passed": false,
+    "learn_beats_dynamic_partition": true,
+    "learn_mean_jct": 60856.21855628874,
+    "metric": "mean_jct",
+    "observed_improvement_pct": 3.0125809474397287,
+    "relative_error_to_target": 0.8565437644076319,
+    "reward_improvement_pct": 3.0125809474399383,
+    "target_improvement_pct": 21.0,
+    "within_15pct_relative_of_target": false
+  },
+  "rows": [
+    {
+      "decision_steps": 90265,
+      "elapsed_seconds": 81.20647478103638,
+      "exp": 0,
+      "first_start_time": 0.0,
+      "last_completion_time": 123813964.0,
+      "makespan": 123813964.0,
+      "mean_jct": 62746.507898420314,
+      "median_jct": 43835.0,
+      "num_jobs": 5001,
+      "p95_jct": 175443.0,
+      "reward_implied_mean_jct": 62746.50789842352,
+      "scheme": "dynamic_partition",
+      "seed": 10000000,
+      "total_reward": -3137.9528600001604
+    },
+    {
+      "decision_steps": 142821,
+      "elapsed_seconds": 524.5594110488892,
+      "exp": 0,
+      "first_start_time": 0.0,
+      "last_completion_time": 123801238.0,
+      "makespan": 123801238.0,
+      "mean_jct": 60856.21855628874,
+      "median_jct": 41094.0,
+      "num_jobs": 5001,
+      "p95_jct": 175759.0,
+      "reward_implied_mean_jct": 60856.21855629172,
+      "scheme": "learn",
+      "seed": 10000000,
+      "total_reward": -3043.419490000149
+    }
+  ]
+}

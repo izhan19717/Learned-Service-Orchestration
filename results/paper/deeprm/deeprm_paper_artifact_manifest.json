@@ -1,0 +1,30 @@
+{
+  "figures": [
+    "results/paper/deeprm/figures/deeprm_training_curve.png",
+    "results/paper/deeprm/figures/deeprm_training_curve.pdf",
+    "results/paper/deeprm/figures/deeprm_clean_gate.png",
+    "results/paper/deeprm/figures/deeprm_clean_gate.pdf",
+    "results/paper/deeprm/figures/deeprm_perturbation_sweeps.png",
+    "results/paper/deeprm/figures/deeprm_perturbation_sweeps.pdf",
+    "results/paper/deeprm/figures/deeprm_p1_first_fit_sensitivity.png",
+    "results/paper/deeprm/figures/deeprm_p1_first_fit_sensitivity.pdf",
+    "results/paper/deeprm/figures/deeprm_p1_first_fit_sensitivity.svg"
+  ],
+  "inputs": {
+    "author_source_gate": "results/evaluation/deeprm/author_source_clean_load_0.7.json",
+    "clean_gate": "results/evaluation/deeprm/clean_load_0.7.json",
+    "perturbation_sweeps": "results/evaluation/deeprm/perturbation_sweeps_v2_2.json",
+    "training_curve": "results/training/author_source_rescue"
+  },
+  "mlflow_run_id": "f15854a77280446a80c1f0daf67a3251",
+  "status": "generated",
+  "tables": [
+    "results/paper/deeprm/tables/deeprm_clean_gate.csv",
+    "results/paper/deeprm/tables/deeprm_clean_gate.md",
+    "results/paper/deeprm/tables/deeprm_clean_gate.tex",
+    "results/paper/deeprm/tables/deeprm_prediction_outcomes.csv",
+    "results/paper/deeprm/tables/deeprm_prediction_outcomes.md",
+    "results/paper/deeprm/tables/deeprm_prediction_outcomes.tex",
+    "results/paper/deeprm/tables/deeprm_sweep_compact.csv"
+  ]
+}

@@ -1,0 +1,11 @@
+| gate | method | mean_slowdown | mlflow_run_id |
+| --- | --- | --- | --- |
+| strict_v2_2 | DeepRM | 36.54 | d5a14b32e67143078c565b927ccade5d |
+| strict_v2_2 | Packer | 64.62 | d5a14b32e67143078c565b927ccade5d |
+| strict_v2_2 | SJF | 40.92 | d5a14b32e67143078c565b927ccade5d |
+| strict_v2_2 | Tetris* | 61 | d5a14b32e67143078c565b927ccade5d |
+| author_source | DeepRM | 19.08 | 684ea029f34f495398b16661a5315860 |
+| author_source | Packer | 44.82 | 684ea029f34f495398b16661a5315860 |
+| author_source | Random | 28.71 | 684ea029f34f495398b16661a5315860 |
+| author_source | SJF | 23.34 | 684ea029f34f495398b16661a5315860 |
+| author_source | SourceTetris | 44.82 | 684ea029f34f495398b16661a5315860 |

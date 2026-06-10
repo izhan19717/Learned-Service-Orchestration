@@ -1,0 +1,77 @@
+{
+  "aggregate": {
+    "delta_ci_high": -4460.818181818184,
+    "delta_ci_low": -4460.818181818184,
+    "delta_mean": -4460.818181818184,
+    "dynamic_partition_mean_jct": 31492.272727272728,
+    "learn_mean_jct": 35953.09090909091,
+    "num_pairs": 1,
+    "p_greater": 1.0,
+    "p_less": 0.4997550024499755,
+    "prediction_confirmed": true
+  },
+  "anchor_fgsm_epsilon": 0.05,
+  "anchor_lag_lambda": 1.0,
+  "anchor_weight": 0.5,
+  "args": {
+    "exec_cap": 50,
+    "num_ep_seed_base": 10000000,
+    "num_exp": 1,
+    "num_init_dags": 1,
+    "num_stream_dags": 10,
+    "saved_model": "/workspace/results/checkpoints/decima/official_tf1_readme/model_ep_10000"
+  },
+  "delta_definition": "mean_JCT(dynamic_partition)-mean_JCT(Decima)",
+  "elapsed_seconds_total": 3.8348684310913086,
+  "fgsm_epsilon": 0.05,
+  "lag_lambda": 1.0,
+  "method": "decima",
+  "paired": [
+    {
+      "delta": -4460.818181818184,
+      "dynamic_partition_mean_jct": 31492.272727272728,
+      "exp": 0,
+      "learn_mean_jct": 35953.09090909091,
+      "seed": 10000000
+    }
+  ],
+  "perturbation": "fgsm",
+  "perturbation_metadata": {
+    "fgsm_attack_count": 204,
+    "fgsm_mean_abs_node_feature_delta": 0.022233351099105056,
+    "fgsm_mean_adv_target_prob": 0.29814460417073146,
+    "fgsm_mean_clean_target_prob": 0.32050663247412325
+  },
+  "protocol_amendment": "PROTOCOL_AMENDMENT_DECIMA_SIMULATOR_GATE.md",
+  "rows": [
+    {
+      "decision_steps": 181,
+      "elapsed_seconds": 0.12906908988952637,
+      "exp": 0,
+      "makespan": 374356.0,
+      "mean_jct": 31492.272727272728,
+      "median_jct": 23630.0,
+      "num_jobs": 11,
+      "p95_jct": 67305.0,
+      "reward_implied_mean_jct": 31492.27272727272,
+      "scheme": "dynamic_partition",
+      "seed": 10000000,
+      "total_reward": -3.464149999999999
+    },
+    {
+      "decision_steps": 257,
+      "elapsed_seconds": 3.6102726459503174,
+      "exp": 0,
+      "makespan": 368234.0,
+      "mean_jct": 35953.09090909091,
+      "median_jct": 28568.0,
+      "num_jobs": 11,
+      "p95_jct": 69957.0,
+      "reward_implied_mean_jct": 35953.09090909092,
+      "scheme": "learn",
+      "seed": 10000000,
+      "total_reward": -3.9548400000000012
+    }
+  ],
+  "tail_weight": 0.5
+}

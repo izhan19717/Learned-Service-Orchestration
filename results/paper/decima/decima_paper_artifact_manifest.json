@@ -1,0 +1,93 @@
+{
+  "figures": [
+    "results/paper/decima/figures/decima_prediction_percent_improvement.png",
+    "results/paper/decima/figures/decima_prediction_percent_improvement.pdf",
+    "results/paper/decima/figures/decima_paired_delta_distributions.png",
+    "results/paper/decima/figures/decima_paired_delta_distributions.pdf",
+    "results/paper/decima/figures/decima_paired_delta_distributions.svg",
+    "results/paper/decima/figures/decima_mean_jct_by_cell.png",
+    "results/paper/decima/figures/decima_mean_jct_by_cell.pdf"
+  ],
+  "inputs": [
+    "results/paper/decima/tables/decima_p1_lag_lambda_1_0.json",
+    "results/paper/decima/tables/decima_p2_tail_w_0_5.json",
+    "results/paper/decima/tables/decima_p3_fgsm_epsilon_0_05.json"
+  ],
+  "mlflow_artifact_run_id": "01f1c2aa59db44f5b42cbcb26fd88547",
+  "mlflow_run_id": "01f1c2aa59db44f5b42cbcb26fd88547",
+  "outcomes": [
+    {
+      "anchor": "lambda=1.0",
+      "ci_high": 779841.7405440705,
+      "ci_low": 653206.2128087608,
+      "comparator_win_fraction": 0.0,
+      "decima_mean_jct": 1404067.5874477092,
+      "decima_win_fraction": 1.0,
+      "delta_definition": "mean_JCT(dynamic_partition)-mean_JCT(Decima)",
+      "delta_value": 716395.9457635704,
+      "dynamic_partition_mean_jct": 2120463.5332112797,
+      "num_pairs": 30,
+      "p_greater": 9.99990000099999e-06,
+      "p_less": 1.0,
+      "percent_ci_high": 36.776946565219156,
+      "percent_ci_low": 30.804878394656004,
+      "percent_improvement": 33.78487460610292,
+      "prediction": "P1-Decima observation lag",
+      "prediction_confirmed": false,
+      "source_json": "results/paper/decima/tables/decima_p1_lag_lambda_1_0.json",
+      "status": "Falsified under simulator-gate amendment",
+      "title": "P1: observation lag"
+    },
+    {
+      "anchor": "w=0.5",
+      "ci_high": 16524.58891376449,
+      "ci_low": 1138.4852446102782,
+      "comparator_win_fraction": 0.4666666666666667,
+      "decima_mean_jct": 131730.08573797677,
+      "decima_win_fraction": 0.5333333333333333,
+      "delta_definition": "mean_JCT(dynamic_partition)-mean_JCT(Decima)",
+      "delta_value": 8043.676119402982,
+      "dynamic_partition_mean_jct": 139773.76185737975,
+      "num_pairs": 30,
+      "p_greater": 0.03288967110328897,
+      "p_less": 0.9671203287967121,
+      "percent_ci_high": 11.822382608994673,
+      "percent_ci_low": 0.8145199996634194,
+      "percent_improvement": 5.754782594755135,
+      "prediction": "P2-Decima workload tail",
+      "prediction_confirmed": false,
+      "source_json": "results/paper/decima/tables/decima_p2_tail_w_0_5.json",
+      "status": "Falsified under simulator-gate amendment",
+      "title": "P2: tail-shifted workload"
+    },
+    {
+      "anchor": "epsilon=0.05",
+      "ci_high": 3019.178864013268,
+      "ci_low": 1057.355505804312,
+      "comparator_win_fraction": 0.23333333333333334,
+      "decima_mean_jct": 62818.318242122725,
+      "decima_win_fraction": 0.7666666666666667,
+      "delta_definition": "mean_JCT(dynamic_partition)-mean_JCT(Decima)",
+      "delta_value": 2000.6525704809292,
+      "dynamic_partition_mean_jct": 64818.970812603635,
+      "num_pairs": 30,
+      "p_greater": 8.99991000089999e-05,
+      "p_less": 0.999920000799992,
+      "percent_ci_high": 4.657863008565708,
+      "percent_ci_low": 1.631243897502174,
+      "percent_improvement": 3.0865231974524274,
+      "prediction": "P3-Decima adversarial node features",
+      "prediction_confirmed": false,
+      "source_json": "results/paper/decima/tables/decima_p3_fgsm_epsilon_0_05.json",
+      "status": "Falsified under simulator-gate amendment",
+      "title": "P3: FGSM node features"
+    }
+  ],
+  "status": "generated",
+  "tables": [
+    "results/paper/decima/tables/decima_prediction_outcomes.csv",
+    "results/paper/decima/tables/decima_prediction_summary.csv",
+    "results/paper/decima/tables/decima_per_seed_deltas.csv",
+    "results/paper/decima/DECIMA_CLAUDE_HANDOFF_REPORT.md"
+  ]
+}
