@@ -375,6 +375,8 @@ def _plot_mean_jct(rows: list[dict[str, object]]) -> list[Path]:
 
 def _save_figure(fig: plt.Figure, stem: str) -> list[Path]:
     paths = [FIG_DIR / f"{stem}.png", FIG_DIR / f"{stem}.pdf"]
+    if stem == "decima_paired_delta_distributions":
+        paths.append(FIG_DIR / f"{stem}.svg")
     for path in paths:
         fig.savefig(path, dpi=240, bbox_inches="tight")
     plt.close(fig)
@@ -389,35 +391,42 @@ def _write_results_report(
     p3_payload = next(payload for spec, payload in payloads if spec.prediction.startswith("P3"))
     p3_diag = p3_payload.get("perturbation_metadata", {})
     lines = [
-        "# Decima Results Report",
+        "# Decima Results Summary",
         "",
-        "## Status",
-        "",
-        "Decima is complete as narrowed official-simulator evidence under",
-        "`PROTOCOL_AMENDMENT_DECIMA_SIMULATOR_GATE.md`.",
-        "",
-        "The comparator is the official README-exposed `dynamic_partition`",
-        "baseline. These results must not be described as Graphene evidence or",
-        "as full Spark-testbed headline reproduction.",
+        "This summary reports the Decima official-simulator evidence used by the paper.",
+        "The comparator is the official README-exposed `dynamic_partition` scheduler.",
+        "These results are not presented as Graphene evidence.",
         "",
         "## Reproduction Gate",
         "",
-        "- Official simulator gate: passed.",
-        "- Gate result: Decima improved mean JCT over `dynamic_partition` by `3.0125809474397287%`.",
-        "- Original over-strict 21% headline gate: preserved as failed, but not used as the narrowed simulator gate.",
+        "The official-simulator gate uses the released Decima simulator at README test",
+        "scale with 50 executors, 1 initial DAG, and 5000 streaming DAGs.",
         "",
-        "## Prediction Outcomes",
+        "| Metric | Value |",
+        "|---|---:|",
+        "| Observed mean-JCT improvement | 3.0126% |",
+        "| Reference improvement target | 21.0000% |",
+        "| Within 15% relative target tolerance | False |",
         "",
-        "| Prediction | Anchor | Status | Delta | 95% CI | Decima win fraction |",
-        "|---|---|---|---:|---:|---:|",
+        "Decima improves mean JCT over `dynamic_partition`, but the observed",
+        "improvement is below the preregistered reference target. The paper reports",
+        "this distinction explicitly.",
+        "",
+        "## Perturbation Outcomes",
+        "",
+        "All Decima perturbation outcomes below use",
+        "`Delta = mean_JCT(dynamic_partition) - mean_JCT(Decima)`. Positive values",
+        "mean Decima has lower mean JCT.",
+        "",
+        "| Prediction | Anchor | Delta | 95% CI | Decima win fraction | Outcome |",
+        "|---|---|---:|---:|---:|---|",
     ]
     for row in rows:
         lines.append(
-            "| {prediction} | `{anchor}` | {status} | {delta:.6g} | "
-            "[{lo:.6g}, {hi:.6g}] | {wins:.3f} |".format(
+            "| {prediction} | `{anchor}` | {delta:.6g} | "
+            "[{lo:.6g}, {hi:.6g}] | {wins:.3f} | Prediction not supported |".format(
                 prediction=row["prediction"],
                 anchor=row["anchor"],
-                status=row["status"],
                 delta=row["delta_value"],
                 lo=row["ci_low"],
                 hi=row["ci_high"],
@@ -427,12 +436,11 @@ def _write_results_report(
     lines.extend(
         [
             "",
-            "All three Decima predictions are falsified under the amended",
-            "official-simulator comparator: the confidence interval for",
-            "`mean_JCT(dynamic_partition) - mean_JCT(Decima)` is strictly",
-            "positive in every perturbation cell.",
+            "The preregistered Decima degradation predictions are not supported under",
+            "the official-simulator comparator: the paired confidence interval is",
+            "positive in each anchor cell.",
             "",
-            "## FGSM Sanity Check",
+            "## P3 Diagnostic",
             "",
         ]
     )
@@ -445,8 +453,8 @@ def _write_results_report(
                 f"- Mean adversarial target probability: `{p3_diag.get('fgsm_mean_adv_target_prob')}`.",
                 "",
                 "The adversarial perturbation reduced the clean target action",
-                "probability on average, so the P3 falsification is not explained",
-                "by a sign-error anti-attack.",
+                "probability on average. The P3 result is therefore not explained by an",
+                "attack-sign error.",
             ]
         )
     else:
@@ -471,7 +479,7 @@ def _write_results_report(
             f"- MLflow artifact-generation run: `{run_id}`.",
         ]
     )
-    path = OUT_DIR / "DECIMA_RESULTS_REPORT.md"
+    path = OUT_DIR / "decima_results_summary.md"
     path.write_text("\n".join(lines) + "\n", encoding="utf-8")
     return path
 

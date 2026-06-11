@@ -42,10 +42,10 @@ perturbation result.
 
 The v2.2 DeepRM clean checkpoint completed 1000 iterations but failed the clean
 reproduction gate. Therefore it is **not** a valid checkpoint for P1, P2, or P3.
-The gate failure is recorded in `REPRODUCTION_DEBUG.md` and summarized in
+The gate result is summarized in
 `results/evaluation/deeprm/reproduction_gate_v2_2_summary.json`.
 
-The failed run is preserved as a failed reproduction attempt, not overwritten.
+The non-passing run is preserved as a separate reproduction-gate record.
 Any further DeepRM rescue attempt must be explicitly labeled
 `author-source reproduction` and must use the public DeepRM repository as the
 operational ground truth for implementation details that conflict with the
@@ -116,8 +116,8 @@ DeepRM clean gates.
   `d5a14b32e67143078c565b927ccade5d`
 
 This checkpoint is the valid DeepRM checkpoint for P1/P2/P3. The older
-paper-mode checkpoint remains a failed reproduction and must not be used for
-DeepRM perturbation results.
+paper-mode checkpoint did not pass the clean reproduction gate and must not be
+used for DeepRM perturbation results.
 
 DeepRM perturbation evaluation was then executed before any Decima/Rossi
 evaluation result:

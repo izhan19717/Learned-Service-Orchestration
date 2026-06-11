@@ -121,5 +121,5 @@ This is a protocol correction, not a perturbation-result-driven change:
 
 - no Decima P1/P2/P3 perturbation cells had been run before this amendment;
 - the amendment narrows the claim rather than strengthening it;
-- the previously recorded failed 21%-threshold artifact remains preserved as a
-  record of the original over-strict gate interpretation.
+- the 21% reference-target result remains documented as a separate clean-gate
+  interpretation, not as the amended simulator-gate criterion.

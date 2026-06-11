@@ -13,8 +13,8 @@
     "results/paper/decima/tables/decima_p2_tail_w_0_5.json",
     "results/paper/decima/tables/decima_p3_fgsm_epsilon_0_05.json"
   ],
-  "mlflow_artifact_run_id": "01f1c2aa59db44f5b42cbcb26fd88547",
-  "mlflow_run_id": "01f1c2aa59db44f5b42cbcb26fd88547",
+  "mlflow_artifact_run_id": "670ff88fe4714f568bec7b7d39fc3c59",
+  "mlflow_run_id": "670ff88fe4714f568bec7b7d39fc3c59",
   "outcomes": [
     {
       "anchor": "lambda=1.0",
@@ -88,6 +88,6 @@
     "results/paper/decima/tables/decima_prediction_outcomes.csv",
     "results/paper/decima/tables/decima_prediction_summary.csv",
     "results/paper/decima/tables/decima_per_seed_deltas.csv",
-    "results/paper/decima/DECIMA_RESULTS_REPORT.md"
+    "results/paper/decima/decima_results_summary.md"
   ]
 }

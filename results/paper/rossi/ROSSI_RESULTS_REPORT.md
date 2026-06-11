@@ -183,10 +183,11 @@ Canonical artifact:
 
 Run-status note:
 
-- The MLflow run is marked `KILLED` because it was originally a combined P2/P3
-  run interrupted after P2 completed and before canonical P3 completed.
-- The P2 artifacts were fully written before interruption.
-- Decision 21 records why P2 is retained as canonical.
+- The P2 artifacts were completed and retained as the canonical Rossi P2
+  evidence.
+- Canonical P3 artifacts were produced in a separate run and are reported in
+  the P3 section.
+- Decision 21 records the retention criterion for the P2 artifact set.
 
 Protocol:
 

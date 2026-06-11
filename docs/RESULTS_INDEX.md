@@ -37,7 +37,7 @@ Directory: [results/paper/decima](../results/paper/decima)
 
 Key artifacts:
 
-- [Decima results report](../results/paper/decima/DECIMA_RESULTS_REPORT.md)
+- [Decima results summary](../results/paper/decima/decima_results_summary.md)
 - [Official README gate](../results/paper/decima/tables/decima_official_readme_gate.md)
 - [Prediction outcomes](../results/paper/decima/tables/decima_prediction_outcomes.md)
 - [Prediction summary](../results/paper/decima/tables/decima_prediction_summary.csv)
