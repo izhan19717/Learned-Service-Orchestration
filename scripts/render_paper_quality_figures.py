@@ -8,7 +8,6 @@ from pathlib import Path
 
 import matplotlib.pyplot as plt
 import numpy as np
-from matplotlib.ticker import MaxNLocator
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -21,12 +20,24 @@ DEEPRM_FIG_DIR = ROOT / "results" / "paper" / "deeprm" / "figures"
 DECIMA_TABLE = ROOT / "results" / "paper" / "decima" / "tables" / "decima_per_seed_deltas.csv"
 DECIMA_FIG_DIR = ROOT / "results" / "paper" / "decima" / "figures"
 
+HPA_TABLE = (
+    ROOT
+    / "results"
+    / "paper"
+    / "experiments"
+    / "hpa_v2_config_sensitivity"
+    / "tables"
+    / "hpa_v2_config_sensitivity_summary.csv"
+)
+HPA_FIG_DIR = ROOT / "results" / "paper" / "experiments" / "hpa_v2_config_sensitivity" / "figures"
+
 
 def main() -> None:
     _set_style()
     paths = []
     paths.extend(render_deeprm_stale_action())
     paths.extend(render_decima_paired_distribution())
+    paths.extend(render_hpa_v2_config_sensitivity())
     for path in paths:
         print(path.relative_to(ROOT))
 
@@ -35,13 +46,13 @@ def _set_style() -> None:
     plt.rcParams.update(
         {
             "font.family": "DejaVu Sans",
-            "font.size": 7.4,
-            "axes.labelsize": 7.6,
-            "axes.titlesize": 8.4,
-            "xtick.labelsize": 6.8,
-            "ytick.labelsize": 6.8,
-            "legend.fontsize": 6.8,
-            "axes.linewidth": 0.65,
+            "font.size": 9.2,
+            "axes.labelsize": 9.4,
+            "axes.titlesize": 9.8,
+            "xtick.labelsize": 8.6,
+            "ytick.labelsize": 8.6,
+            "legend.fontsize": 8.2,
+            "axes.linewidth": 0.8,
             "pdf.fonttype": 42,
             "ps.fonttype": 42,
             "svg.fonttype": "none",
@@ -72,24 +83,23 @@ def render_deeprm_stale_action() -> list[Path]:
     locked_high = np.asarray([float(locked_rows[lag]["ci_high"]) for lag in lags], dtype=float)
 
     colors = {"locked": "#747474", "first_fit": "#1f5b85", "anchor": "#b84a17", "grid": "#e2e2e2"}
-    fig, ax = plt.subplots(figsize=(4.95, 2.65))
+    fig, ax = plt.subplots(figsize=(3.52, 2.32))
     _ci_line(ax, lags, locked_mean, locked_low, locked_high, colors["locked"], "Locked no-op fallback")
     _ci_line(ax, lags, alt_mean, alt_low, alt_high, colors["first_fit"], "First-fit fallback sensitivity")
-    ax.axhline(0.0, color="#222222", linewidth=0.65)
-    ax.axvline(10.0, color=colors["anchor"], linestyle=(0, (3.2, 2.2)), linewidth=0.8)
-    ax.text(10.15, 367, "anchor", color=colors["anchor"], fontsize=6.4, va="top", ha="left")
-    ax.set_title("DeepRM P1 stale-action sensitivity", pad=3.5)
+    ax.axhline(0.0, color="#222222", linewidth=0.8)
+    ax.axvline(10.0, color=colors["anchor"], linestyle=(0, (3.2, 2.2)), linewidth=1.0)
+    ax.set_title("DeepRM P1 stale-action sensitivity", pad=4.0)
     ax.set_xlabel("Observation lag k")
-    ax.set_ylabel("Delta slowdown (Tetris* - DeepRM)")
+    ax.set_ylabel("Delta slowdown\n(Tetris* - DeepRM)")
     ax.set_xlim(-0.35, 20.65)
     ax.set_ylim(-8, 382)
-    ax.yaxis.set_major_locator(MaxNLocator(nbins=6))
-    ax.xaxis.set_major_locator(MaxNLocator(nbins=7))
-    ax.grid(True, color=colors["grid"], linewidth=0.45)
-    ax.legend(frameon=False, loc="upper left", handlelength=2.4, borderaxespad=0.25)
+    ax.set_xticks([0, 1, 2, 5, 10, 20])
+    ax.set_yticks([0, 80, 160, 240, 320])
+    ax.grid(True, color=colors["grid"], linewidth=0.55)
+    ax.legend(frameon=False, loc="upper left", handlelength=2.1, borderaxespad=0.25)
     ax.spines["top"].set_visible(False)
     ax.spines["right"].set_visible(False)
-    fig.subplots_adjust(left=0.13, right=0.99, bottom=0.19, top=0.90)
+    fig.subplots_adjust(left=0.205, right=0.99, bottom=0.215, top=0.88)
     return _save(fig, DEEPRM_FIG_DIR, "deeprm_p1_first_fit_sensitivity")
 
 
@@ -109,11 +119,11 @@ def _ci_line(
         yerr=err,
         color=color,
         marker="o",
-        markersize=3.8,
+        markersize=4.6,
         markeredgewidth=0.0,
-        linewidth=1.15,
-        elinewidth=0.85,
-        capsize=2.8,
+        linewidth=1.55,
+        elinewidth=1.05,
+        capsize=3.1,
         label=label,
         zorder=3,
     )
@@ -136,7 +146,7 @@ def render_decima_paired_distribution() -> list[Path]:
         labels.append(label)
 
     colors = ["#2f6f83", "#8a6a3d", "#9a4f70"]
-    fig, ax = plt.subplots(figsize=(4.65, 2.45))
+    fig, ax = plt.subplots(figsize=(3.52, 2.36))
     positions = np.arange(1, len(grouped) + 1)
     box = ax.boxplot(
         grouped,
@@ -144,10 +154,10 @@ def render_decima_paired_distribution() -> list[Path]:
         widths=0.46,
         patch_artist=True,
         showfliers=False,
-        medianprops={"color": "#e67622", "linewidth": 1.05},
-        whiskerprops={"color": "#2b2b2b", "linewidth": 0.75},
-        capprops={"color": "#2b2b2b", "linewidth": 0.75},
-        boxprops={"linewidth": 0.75, "edgecolor": "#2b2b2b"},
+        medianprops={"color": "#e67622", "linewidth": 1.25},
+        whiskerprops={"color": "#2b2b2b", "linewidth": 0.9},
+        capprops={"color": "#2b2b2b", "linewidth": 0.9},
+        boxprops={"linewidth": 0.9, "edgecolor": "#2b2b2b"},
     )
     for patch, color in zip(box["boxes"], colors, strict=True):
         patch.set_facecolor(color)
@@ -160,24 +170,88 @@ def render_decima_paired_distribution() -> list[Path]:
         ax.scatter(
             np.full(len(values), idx, dtype=float) + jitter,
             values,
-            s=13,
+            s=18,
             color=colors[idx - 1],
-            alpha=0.72,
-            linewidths=0.25,
+            alpha=0.74,
+            linewidths=0.3,
             edgecolors="#263238",
             zorder=3,
         )
-    ax.axhline(0.0, color="#222222", linewidth=0.65)
+    ax.axhline(0.0, color="#222222", linewidth=0.8)
     ax.set_xticks(positions, labels)
     ax.set_ylabel("Per-seed improvement (%)")
-    ax.set_title("Decima paired-seed delta distributions", pad=3.5)
+    ax.set_title("Decima paired-seed delta distributions", pad=4.0)
     ax.set_ylim(-12.5, 41.5)
-    ax.yaxis.set_major_locator(MaxNLocator(nbins=6))
-    ax.grid(True, axis="y", color="#e2e2e2", linewidth=0.45)
+    ax.set_yticks([-10, 0, 10, 20, 30, 40])
+    ax.grid(True, axis="y", color="#e2e2e2", linewidth=0.55)
     ax.spines["top"].set_visible(False)
     ax.spines["right"].set_visible(False)
-    fig.subplots_adjust(left=0.13, right=0.99, bottom=0.17, top=0.88)
+    fig.subplots_adjust(left=0.18, right=0.99, bottom=0.18, top=0.86)
     return _save(fig, DECIMA_FIG_DIR, "decima_paired_delta_distributions")
+
+
+def render_hpa_v2_config_sensitivity() -> list[Path]:
+    rows = [row for row in _read_csv(HPA_TABLE) if row["cell"] == "p1"]
+    colors = {"down300": "#1f77b4", "down0": "#e67e22", "grid": "#e2e2e2", "anchor": "#7a7a7a"}
+    fig = plt.figure(figsize=(3.58, 2.68))
+    gs = fig.add_gridspec(2, 1, height_ratios=(0.34, 1.0), hspace=0.06)
+    ax_top = fig.add_subplot(gs[0])
+    ax = fig.add_subplot(gs[1], sharex=ax_top)
+
+    for down, marker, color, label in (
+        (300, "o", colors["down300"], "scale-down 300 s"),
+        (0, "s", colors["down0"], "scale-down 0 s"),
+    ):
+        series = sorted(
+            [row for row in rows if int(row["scale_down_stabilization_seconds"]) == down],
+            key=lambda row: float(row["target_utilization"]),
+        )
+        xs = np.asarray([100.0 * float(row["target_utilization"]) for row in series], dtype=float)
+        ys = np.asarray([float(row["delta_mean"]) for row in series], dtype=float)
+        low = np.asarray([float(row["ci_low"]) for row in series], dtype=float)
+        high = np.asarray([float(row["ci_high"]) for row in series], dtype=float)
+        yerr = np.vstack([ys - low, high - ys])
+        ax.errorbar(
+            xs,
+            ys,
+            yerr=yerr,
+            marker=marker,
+            markersize=4.8,
+            linewidth=1.6,
+            elinewidth=1.05,
+            capsize=3.0,
+            color=color,
+            label=label,
+            zorder=3,
+        )
+
+    ax_top.axhline(965.0, color=colors["anchor"], linestyle=(0, (4.0, 2.2)), linewidth=1.0)
+    ax_top.text(70.6, 965.0, "bundled-threshold\nP1 anchor (+965)", ha="left", va="center", fontsize=7.7, color="#555555")
+    ax.axhline(0.0, color="#222222", linewidth=0.8)
+
+    ax.set_xlim(38.5, 72.0)
+    ax.set_ylim(-45, 75)
+    ax_top.set_ylim(930, 1000)
+    ax.set_xticks([40, 50, 60, 70])
+    ax.set_yticks([-40, 0, 40])
+    ax_top.set_yticks([965])
+    ax_top.tick_params(labelbottom=False, bottom=False)
+    ax_top.spines["bottom"].set_visible(False)
+    ax.spines["top"].set_visible(False)
+    for axis in (ax_top, ax):
+        axis.spines["right"].set_visible(False)
+        axis.grid(True, color=colors["grid"], linewidth=0.55)
+
+    break_kwargs = dict(marker=[(-1, -0.6), (1, 0.6)], markersize=6, linestyle="none", color="#333333", mec="#333333", mew=0.85, clip_on=False)
+    ax_top.plot([0, 1], [0, 0], transform=ax_top.transAxes, **break_kwargs)
+    ax.plot([0, 1], [1, 1], transform=ax.transAxes, **break_kwargs)
+
+    fig.suptitle("Rossi P1 under HPA-v2 configuration sensitivity", y=0.98, fontsize=9.8)
+    fig.text(0.02, 0.43, "Delta cost\n(HPA-v2 - Rossi)", rotation=90, va="center", ha="center", fontsize=9.4)
+    ax.set_xlabel("HPA target utilization (%)")
+    ax.legend(frameon=False, loc="upper right", handlelength=1.7, borderaxespad=0.25)
+    fig.subplots_adjust(left=0.19, right=0.86, bottom=0.16, top=0.88)
+    return _save(fig, HPA_FIG_DIR, "hpa_v2_config_p1_delta")
 
 
 def _save(fig: plt.Figure, out_dir: Path, stem: str) -> list[Path]:
@@ -190,10 +264,16 @@ def _save(fig: plt.Figure, out_dir: Path, stem: str) -> list[Path]:
         png = directory / f"{stem}.png"
         fig.savefig(pdf, bbox_inches="tight", pad_inches=0.025)
         fig.savefig(svg, bbox_inches="tight", pad_inches=0.025)
+        _strip_trailing_whitespace(svg)
         fig.savefig(png, dpi=450, bbox_inches="tight", pad_inches=0.025)
         paths.extend([pdf, svg, png])
     plt.close(fig)
     return paths
+
+
+def _strip_trailing_whitespace(path: Path) -> None:
+    text = path.read_text(encoding="utf-8")
+    path.write_text("\n".join(line.rstrip() for line in text.splitlines()) + "\n", encoding="utf-8")
 
 
 if __name__ == "__main__":

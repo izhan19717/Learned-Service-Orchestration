@@ -302,33 +302,10 @@ def write_outputs(payload: dict[str, object]) -> list[Path]:
 
 def write_figures(payload: dict[str, object]) -> list[Path]:
     summaries = payload["summaries"]
-    p1 = [row for row in summaries if row["cell"] == "p1"]
-    fig, ax = plt.subplots(figsize=(6.2, 4.0))
-    for down, marker in ((300, "o"), (0, "s")):
-        rows = sorted([row for row in p1 if row["scale_down_stabilization_seconds"] == down], key=lambda row: row["target_utilization"])
-        xs = [100 * row["target_utilization"] for row in rows]
-        ys = [row["delta_mean"] for row in rows]
-        yerr = np.vstack(
-            [
-                np.asarray(ys) - np.asarray([row["ci_low"] for row in rows]),
-                np.asarray([row["ci_high"] for row in rows]) - np.asarray(ys),
-            ]
-        )
-        ax.errorbar(xs, ys, yerr=yerr, marker=marker, linewidth=1.4, capsize=3, label=f"scale-down {down}s")
-    ax.axhline(0, color="#333333", linewidth=0.9)
-    ax.axhline(965, color="#999999", linewidth=0.9, linestyle="--", label="bundled-threshold P1 anchor")
-    ax.set_xlabel("HPA target utilization (%)")
-    ax.set_ylabel("Delta cost: HPA-v2 - Rossi")
-    ax.set_title("Rossi P1 under HPA-v2 configuration sensitivity")
-    ax.spines[["top", "right"]].set_visible(False)
-    ax.grid(alpha=0.22)
-    ax.legend(frameon=False, fontsize=8)
-    fig.tight_layout()
-    p1_pdf = FIG_DIR / "hpa_v2_config_p1_delta.pdf"
-    p1_png = FIG_DIR / "hpa_v2_config_p1_delta.png"
-    fig.savefig(p1_pdf, bbox_inches="tight")
-    fig.savefig(p1_png, dpi=300, bbox_inches="tight")
-    plt.close(fig)
+    from render_paper_quality_figures import _set_style, render_hpa_v2_config_sensitivity
+
+    _set_style()
+    p1_paths = render_hpa_v2_config_sensitivity()
 
     cells = [cell.key for cell in CELLS]
     labels = [cell.label for cell in CELLS]
@@ -355,11 +332,11 @@ def write_figures(payload: dict[str, object]) -> list[Path]:
     fig.savefig(heat_png, dpi=300, bbox_inches="tight")
     plt.close(fig)
 
-    paths = [p1_pdf, p1_png, heat_pdf, heat_png]
-    for path in paths:
+    heat_paths = [heat_pdf, heat_png]
+    for path in heat_paths:
         target = ROOT_FIG_DIR / path.name
         target.write_bytes(path.read_bytes())
-    return paths + [ROOT_FIG_DIR / path.name for path in paths]
+    return p1_paths + heat_paths + [ROOT_FIG_DIR / path.name for path in heat_paths]
 
 
 def report_text(payload: dict[str, object], figures: list[Path]) -> str:
