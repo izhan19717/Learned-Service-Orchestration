@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc" viewBox="0 0 1200 430">
+  <title id="title">Sensitivity checks</title>
+  <desc id="desc">Protocol and comparator sensitivity checks for the learned service orchestration artifact.</desc>
+
+  <style>
+    .title { font: 800 34px Arial, Helvetica, sans-serif; fill: #0f172a; }
+    .subtitle { font: 400 17px Arial, Helvetica, sans-serif; fill: #475569; }
+    .card { fill: #ffffff; stroke: #d8dee9; stroke-width: 2; }
+    .eyebrow { font: 800 13px Arial, Helvetica, sans-serif; letter-spacing: .08em; fill: #475569; }
+    .card-title { font: 800 22px Arial, Helvetica, sans-serif; fill: #0f172a; }
+    .label { font: 400 15px Arial, Helvetica, sans-serif; fill: #475569; }
+    .label-dark { font: 700 17px Arial, Helvetica, sans-serif; fill: #0f172a; }
+    .small { font: 400 13px Arial, Helvetica, sans-serif; fill: #475569; }
+    .big { font: 800 72px Arial, Helvetica, sans-serif; fill: #0f172a; }
+    .big-amber { font: 800 76px Arial, Helvetica, sans-serif; fill: #b45309; }
+    .big-blue { font: 800 68px Arial, Helvetica, sans-serif; fill: #1f5b85; }
+    .metric { font: 800 24px Arial, Helvetica, sans-serif; fill: #0f172a; }
+    .metric-amber { font: 800 22px Arial, Helvetica, sans-serif; fill: #b45309; }
+    .status { font: 800 18px Arial, Helvetica, sans-serif; fill: #ffffff; }
+    .amber { fill: #b45309; }
+    .green { fill: #047857; }
+    .blue { fill: #2563eb; }
+    .slate { fill: #6b7280; }
+    .blue-dark { fill: #1f5b85; }
+    .line { stroke: #d8dee9; stroke-width: 3; }
+    .axis { stroke: #0f172a; stroke-width: 2; }
+    .target-band { fill: #dcfce7; }
+    .pill { fill: #fff7ed; }
+  </style>
+  <rect x="0" y="0" width="1200" height="430" fill="#ffffff" />
+  <text class="title" x="60" y="58">Sensitivity checks</text>
+  <text class="subtitle" x="60" y="88">Two diagnostics show why the empirical interpretation depends on operational details.</text>
+
+  <rect class="card" x="60" y="120" width="520" height="250" rx="18" />
+  <text class="card-title" x="94" y="165">DeepRM stale-action rule</text>
+  <text class="label" x="94" y="193">Changing only the invalid-action fallback changes the P1 magnitude.</text>
+  <rect class="slate" x="145" y="242" width="92" height="98" />
+  <rect class="blue-dark" x="305" y="304" width="92" height="36" />
+  <text class="metric" x="166" y="228">+196</text>
+  <text class="metric" x="326" y="290">+72</text>
+  <text class="small" x="142" y="366">locked no-op</text>
+  <text class="small" x="319" y="366">first-fit</text>
+  <text class="big-blue" x="475" y="265" text-anchor="middle">63%</text>
+  <text class="label" x="475" y="300" text-anchor="middle">smaller at</text>
+  <text class="label-dark" x="475" y="326" text-anchor="middle">lag k = 10</text>
+
+  <rect class="card" x="620" y="120" width="520" height="250" rx="18" />
+  <text class="card-title" x="654" y="165">Rossi comparator sensitivity</text>
+  <text class="label" x="654" y="193">The bundled threshold collapse is far outside the HPA-v2 grid.</text>
+  <text class="big-amber" x="654" y="276">15.6x</text>
+  <text class="label-dark" x="660" y="306">bundled / HPA-v2 max</text>
+  <text class="metric-amber" x="1008" y="232">+965</text>
+  <line x1="900" y1="252" x2="1080" y2="252" stroke="#b45309" stroke-width="16" stroke-linecap="round" />
+  <text class="small" x="900" y="286">bundled threshold</text>
+  <line x1="900" y1="322" x2="960" y2="322" stroke="#2563eb" stroke-width="10" stroke-linecap="round" />
+  <text class="label-dark" x="975" y="328">-34 to +62</text>
+  <text class="small" x="900" y="356">HPA-v2 grid</text>
+</svg>

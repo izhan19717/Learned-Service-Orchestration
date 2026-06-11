@@ -13,11 +13,15 @@ The central statistic is
 the learned policy has the lower metric. Negative `Delta` means the comparator
 has the lower metric. The method-specific metrics are mean slowdown for DeepRM,
 total autoscaling cost for Rossi/RLAD, and mean job completion time for Decima.
-The figure below summarizes the main evidence checks; confidence intervals,
+The figures below summarize the main evidence checks; confidence intervals,
 corrected tests, and diagnostics are indexed under `results/paper/`.
 
 <p align="center">
-  <img src="docs/assets/repository_evidence_summary.svg" alt="Evidence summary for the learned service orchestration artifact: preregistered prediction outcomes, Rossi comparator sensitivity, DeepRM stale-action sensitivity, and Decima official-simulator reproduction gate." width="900">
+  <img src="docs/assets/readme_key_findings.svg" alt="Key empirical findings: seven of nine predictions falsified, Rossi bundled comparator effect inflated relative to HPA-v2, and Decima official-simulator gate missed." width="900">
+</p>
+
+<p align="center">
+  <img src="docs/assets/readme_sensitivity_checks.svg" alt="Sensitivity checks showing DeepRM stale-action fallback sensitivity and Rossi comparator sensitivity against the HPA-v2 grid." width="900">
 </p>
 
 ## Contents

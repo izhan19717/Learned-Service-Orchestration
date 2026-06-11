@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc" viewBox="0 0 1200 390">
+  <title id="title">Key empirical findings</title>
+  <desc id="desc">Three headline findings from the learned service orchestration artifact.</desc>
+
+  <style>
+    .title { font: 800 34px Arial, Helvetica, sans-serif; fill: #0f172a; }
+    .subtitle { font: 400 17px Arial, Helvetica, sans-serif; fill: #475569; }
+    .card { fill: #ffffff; stroke: #d8dee9; stroke-width: 2; }
+    .eyebrow { font: 800 13px Arial, Helvetica, sans-serif; letter-spacing: .08em; fill: #475569; }
+    .card-title { font: 800 22px Arial, Helvetica, sans-serif; fill: #0f172a; }
+    .label { font: 400 15px Arial, Helvetica, sans-serif; fill: #475569; }
+    .label-dark { font: 700 17px Arial, Helvetica, sans-serif; fill: #0f172a; }
+    .small { font: 400 13px Arial, Helvetica, sans-serif; fill: #475569; }
+    .big { font: 800 72px Arial, Helvetica, sans-serif; fill: #0f172a; }
+    .big-amber { font: 800 76px Arial, Helvetica, sans-serif; fill: #b45309; }
+    .big-blue { font: 800 68px Arial, Helvetica, sans-serif; fill: #1f5b85; }
+    .metric { font: 800 24px Arial, Helvetica, sans-serif; fill: #0f172a; }
+    .metric-amber { font: 800 22px Arial, Helvetica, sans-serif; fill: #b45309; }
+    .status { font: 800 18px Arial, Helvetica, sans-serif; fill: #ffffff; }
+    .amber { fill: #b45309; }
+    .green { fill: #047857; }
+    .blue { fill: #2563eb; }
+    .slate { fill: #6b7280; }
+    .blue-dark { fill: #1f5b85; }
+    .line { stroke: #d8dee9; stroke-width: 3; }
+    .axis { stroke: #0f172a; stroke-width: 2; }
+    .target-band { fill: #dcfce7; }
+    .pill { fill: #fff7ed; }
+  </style>
+  <rect x="0" y="0" width="1200" height="390" fill="#ffffff" />
+  <text class="title" x="60" y="58">Key empirical findings</text>
+  <text class="subtitle" x="60" y="88">The repository ties the paper claims to reproducible protocols, scripts, tables, and figures.</text>
+
+  <rect class="card" x="60" y="120" width="335" height="220" rx="18" />
+  <text class="eyebrow" x="94" y="158">PRE-REGISTERED TESTS</text>
+  <text class="big-amber" x="94" y="235">7/9</text>
+  <text class="card-title" x="94" y="266">predictions falsified</text>
+  <rect class="amber" x="94" y="288" width="24" height="24" rx="4" />
+  <text class="status" x="106.0" y="306" text-anchor="middle" font-size="13">F</text>
+  <rect class="amber" x="128" y="288" width="24" height="24" rx="4" />
+  <text class="status" x="140.0" y="306" text-anchor="middle" font-size="13">F</text>
+  <rect class="amber" x="162" y="288" width="24" height="24" rx="4" />
+  <text class="status" x="174.0" y="306" text-anchor="middle" font-size="13">F</text>
+  <rect class="amber" x="196" y="288" width="24" height="24" rx="4" />
+  <text class="status" x="208.0" y="306" text-anchor="middle" font-size="13">F</text>
+  <rect class="green" x="230" y="288" width="24" height="24" rx="4" />
+  <text class="status" x="242.0" y="306" text-anchor="middle" font-size="13">C</text>
+  <rect class="green" x="264" y="288" width="24" height="24" rx="4" />
+  <text class="status" x="276.0" y="306" text-anchor="middle" font-size="13">C</text>
+  <rect class="amber" x="298" y="288" width="24" height="24" rx="4" />
+  <text class="status" x="310.0" y="306" text-anchor="middle" font-size="13">F</text>
+  <rect class="amber" x="332" y="288" width="24" height="24" rx="4" />
+  <text class="status" x="344.0" y="306" text-anchor="middle" font-size="13">F</text>
+  <rect class="amber" x="366" y="288" width="24" height="24" rx="4" />
+  <text class="status" x="378.0" y="306" text-anchor="middle" font-size="13">F</text>
+
+  <rect class="card" x="432" y="120" width="335" height="220" rx="18" />
+  <text class="eyebrow" x="466" y="158">COMPARATOR STANDARD</text>
+  <text class="big-amber" x="466" y="235">15.6x</text>
+  <text class="card-title" x="466" y="266">bundled effect inflation</text>
+  <text class="label" x="466" y="296">relative to the HPA-v2 maximum</text>
+  <text class="small" x="466" y="322">Rossi P1 lag cell, k = 10</text>
+
+  <rect class="card" x="805" y="120" width="335" height="220" rx="18" />
+  <text class="eyebrow" x="839" y="158">OFFICIAL-SIMULATOR GATE</text>
+  <text class="big-amber" x="839" y="235">3.0%</text>
+  <text class="card-title" x="839" y="266">observed Decima gain</text>
+  <rect class="target-band" x="839" y="295" width="210" height="26" />
+  <rect fill="#4fa38b" x="839" y="295" width="170" height="26" />
+  <rect class="amber" x="839" y="326" width="24" height="12" />
+  <text class="small" x="1058" y="315">target 21%</text>
+</svg>
