@@ -122,7 +122,15 @@ def main() -> None:
     ax_p1.set_xlim(-0.04, 2.08)
     ax_p1.set_ylim(-0.09, 1.62)
 
-    inset = inset_axes(ax_p1, width="35%", height="56%", loc="upper left", borderpad=1.05)
+    inset = inset_axes(
+        ax_p1,
+        width="32%",
+        height="53%",
+        loc="upper left",
+        bbox_to_anchor=(0.075, -0.015, 1.0, 1.0),
+        bbox_transform=ax_p1.transAxes,
+        borderpad=0.0,
+    )
     mask = x <= 0.5
     style_axis(inset)
     draw_curve(inset, x[mask], y[mask] * 1000.0, lo[mask] * 1000.0, hi[mask] * 1000.0)
@@ -130,9 +138,9 @@ def main() -> None:
     inset.set_ylim(-36.0, 158.0)
     inset.set_xticks([0.0, 0.25, 0.5])
     inset.set_xticklabels(["0", "0.25", "0.5"])
-    inset.set_yticks([0.0, 50.0, 100.0, 150.0])
+    inset.set_yticks([0.0, 75.0, 150.0])
     inset.set_title(r"$\Delta$ ($\times 10^3$)", fontsize=7.4, pad=2)
-    inset.tick_params(axis="both", labelsize=6.5, pad=1.8)
+    inset.tick_params(axis="both", labelsize=6.4, pad=1.5)
     inset.grid(axis="y", color="#edf2f7", linewidth=0.45)
     row_025 = next(row for row in rows if row["curve"] == "p1_lag" and row["magnitude"] == "0.25")
     delta_025 = float(row_025["delta_dynamic_partition_minus_decima"])
