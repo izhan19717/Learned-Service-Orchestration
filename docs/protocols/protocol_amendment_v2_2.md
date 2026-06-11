@@ -58,7 +58,7 @@ Author-source rescue requirements:
 - source-discrete resource slots: dominant `5..10` of 10, other `1..2` of 10
 - source extra-info state column: `time_since_last_new_job`
 - source policy parameter count: `89,851`
-- paper-mode parameter count retained for audit: `89,451`
+- paper-mode parameter count retained for comparison: `89,451`
 - source reward timing: valid `Allocate` receives reward `0`; reward is
   computed only after `MoveOn`
 - source training horizon from `run_script.py`: `simu_len = 200`

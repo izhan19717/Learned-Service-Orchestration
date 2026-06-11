@@ -58,7 +58,7 @@ Any deviation from this plan is logged here with rationale and timestamp before 
   than crashing the sweep. Complete lower-magnitude cells remain analysed
   normally; noncompletion cells are excluded from Holm calculations because no
   finite paired delta exists.
-- 2026-06-04: Pre-submission audit found the first completed DeepRM E1 sweep was
+- 2026-06-04: Reconciliation found the first completed DeepRM E1 sweep was
   not Table-IV-compatible: it used `policy_iter_1000.pt`, a pure source-style
   packer labelled `SourceTetris`, and hash-derived stochastic-policy generator
   seeds. The locked DeepRM main-study Table IV used `policy_final.pt`,

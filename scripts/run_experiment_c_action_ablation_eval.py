@@ -606,7 +606,7 @@ def write_report(
         "- The degradation statistic is within-pipeline: deg_M = DeepRM_M(P3) - DeepRM_M(clean).",
         "- The clean competency gate requires DeepRM_M to beat SourceTetris_M on at least 20/30 paired seeds with one-sided exact binomial p<0.05.",
         "",
-        "## Training Audit",
+        "## Training Provenance",
         "",
         "| M | checkpoint | iteration | action dim | MLflow training run |",
         "|---:|---|---:|---:|---|",

@@ -24,7 +24,7 @@ total autoscaling cost for Rossi/RLAD, and mean job completion time for Decima.
 docs/
   protocols/              Calibration, preregistration, and amendments.
   protocols/extensions/   Experiments A, B, C, E1, and E2.
-  audits/                 Release and paper-traceability audits.
+  PAPER_TRACEABILITY.md   Claim-to-artifact traceability matrix.
 results/paper/
   deeprm/                 Reported DeepRM tables, figures, and manifests.
   rossi/                  Rossi reproduction, perturbation, and diagnostics.
@@ -43,7 +43,7 @@ Main entry points:
 - [Results index](docs/RESULTS_INDEX.md)
 - [Reproducibility guide](docs/REPRODUCIBILITY.md)
 - [Implementation notes](docs/implementation_notes.md)
-- [Paper v4 traceability audit](docs/audits/paper_v4_traceability_audit_2026_06_10.md)
+- [Paper artifact traceability](docs/PAPER_TRACEABILITY.md)
 - [External simulator setup](external/README.md)
 
 ## Environment
@@ -103,6 +103,6 @@ Perturbation calibration is recorded in
 Protocol amendments and extension experiments are indexed in
 [docs/PROTOCOL_INDEX.md](docs/PROTOCOL_INDEX.md).
 
-Frozen protocol documents are kept separate from post-run audits and
+Frozen protocol documents are kept separate from post-run result reports and
 diagnostics. This separation is necessary because several results falsify the
 original predictions.

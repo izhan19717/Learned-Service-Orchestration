@@ -3,8 +3,8 @@
 Date: 2026-05-21
 
 This report summarizes the completed Rossi 2019 branch for the CISOSE empirical
-section. It records the protocol choices, result interpretation, and paper
-caveats needed to audit the Rossi evidence package.
+section. It records the protocol choices, result interpretation, and evidence
+needed to inspect the Rossi result package.
 
 ## Executive Status
 
@@ -41,7 +41,7 @@ Important caveat:
 - An earlier frozen-controller P1 sweep exists and directionally confirmed P1.
   It is superseded and should not be used as the canonical Rossi P1 result.
   The frozen controller did not reproduce Rossi 2019's online behavior and is
-  retained only as an audit/sensitivity artifact.
+  retained only as a sensitivity artifact.
 
 ## Key Protocol Definitions
 
@@ -327,5 +327,5 @@ Non-canonical/sensitivity files:
 - `results/paper/rossi/tables/rossi_p1_lag_sweep.md`
 - `results/paper/rossi/figures/rossi_p1_observation_lag.pdf`
 
-These frozen P1 files must be clearly labeled as superseded sensitivity/audit
+These frozen P1 files must be clearly labeled as superseded sensitivity
 artifacts if included anywhere.

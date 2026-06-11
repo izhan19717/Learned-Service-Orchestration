@@ -34,12 +34,10 @@ external/*
 /archive/internal_notes/
 /IMPLEMENTATION_NOTES.md
 /SCIENTIFIC_DECISIONS.md
-/E1_E2_OPERATIONAL_AUDIT_2026_06_03.md
 /DEEPRM_AUTHOR_ALIGNMENT.md
 /REPRODUCTION_DEBUG.md
 /SIMULATOR_NOTES.md
-/Horizontal_and_Vertical_Scaling_of_Container-Based_Applications_Using_Reinforcement_Learning.pdf
-/CISOSE_Paper_RL_V4.pdf
+/*.pdf
 
 # Legacy root-level protocol drafts are retained locally; public copies live in docs/.
 /00_MASTER_coordination.md

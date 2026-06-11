@@ -62,4 +62,4 @@ Delta is `cost(HPA-v2) - cost(Rossi)`. Negative values favor HPA-v2; positive va
 
 ## Scientific Reading
 
-The result is a configuration sensitivity around Experiment B. It should be cited only to show whether the HPA-v2 finding is robust to representative HPA target/stabilization choices; it does not alter the locked Rossi reproduction or perturbation protocol.
+The result is a configuration sensitivity around Experiment B. Use it to assess whether the HPA-v2 finding is robust to representative HPA target and stabilization choices; it does not alter the locked Rossi reproduction or perturbation protocol.

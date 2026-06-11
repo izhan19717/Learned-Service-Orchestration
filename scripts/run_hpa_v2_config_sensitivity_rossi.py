@@ -404,7 +404,7 @@ def report_text(payload: dict[str, object], figures: list[Path]) -> str:
             "",
             "## Scientific Reading",
             "",
-            "The result is a configuration sensitivity around Experiment B. It should be cited only to show whether the HPA-v2 finding is robust to representative HPA target/stabilization choices; it does not alter the locked Rossi reproduction or perturbation protocol.",
+            "The result is a configuration sensitivity around Experiment B. Use it to assess whether the HPA-v2 finding is robust to representative HPA target and stabilization choices; it does not alter the locked Rossi reproduction or perturbation protocol.",
         ]
     )
     return "\n".join(lines) + "\n"

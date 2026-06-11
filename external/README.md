@@ -1,6 +1,6 @@
 # External Simulator Sources
 
-This release package does not vendor third-party simulator repositories. Clone
+This repository does not vendor third-party simulator repositories. Clone
 the upstream sources into the paths below before running the full reproduction
 workflows.
 

@@ -1,4 +1,4 @@
-# E1 Pre-Submission Audit
+# E1 Reconciliation Note
 
 Date: 2026-06-04
 
@@ -6,7 +6,8 @@ Delta convention: `metric(comparator) - metric(RL)`. Positive delta means the le
 
 ## 1. DeepRM E1/Table IV Reconciliation
 
-The pre-submission audit found that the first DeepRM E1 sweep was not using the same operational harness as the locked DeepRM Table IV pipeline.
+The first DeepRM E1 sweep used a different operational harness from the locked
+DeepRM Table IV pipeline. The corrected E1 run resolves that mismatch.
 
 Root causes:
 
@@ -14,10 +15,10 @@ Root causes:
 - Comparator mismatch: first E1 used `SourceTetris`, a pure source-style dot-product packer; Table IV used `Tetris*` (`TetrisScheduler(source_dot=True)`, alpha=0.5 plus source dot-product packing).
 - Policy/statistic seed mismatch: first E1 used hash-derived policy-generator seeds and `seed+1000/2000/3000` statistic seeds; Table IV used CLI offsets `1000+i`, `2000+i`, `3000+i` for policy sampling and `seed+10000/20000/30000` for statistics.
 
-Corrective action:
+Correction:
 
-- Patched `scripts/run_e1_deeprm_magnitude_sweep.py` to use `policy_final.pt`, `Tetris*` as the primary comparator, SJF as the secondary comparator, CLI policy-generator offsets, sanitized MLflow metric names, and locked Table IV statistic seeds.
-- Moved the superseded local result directory to `results/paper/experiments/e1_magnitude_sweep/deeprm_20260604_superseded_iter1000_sourcepacker`.
+- Updated `scripts/run_e1_deeprm_magnitude_sweep.py` to use `policy_final.pt`, `Tetris*` as the primary comparator, SJF as the secondary comparator, CLI policy-generator offsets, sanitized MLflow metric names, and locked Table IV statistic seeds.
+- Preserved the superseded result directory under `results/paper/experiments/e1_magnitude_sweep/deeprm_20260604_superseded_iter1000_sourcepacker`.
 - Reran DeepRM E1 in the canonical execution environment and finalized artifacts through MLflow run `2d4588396f474862bbf61bfebbf16ba4`.
 
 Acceptance check against locked Table IV:
@@ -30,13 +31,14 @@ Acceptance check against locked Table IV:
 
 Conclusion:
 
-The DeepRM E1 mismatch is resolved. The corrected E1 table can be tabulated without conflicting with Table IV. The earlier SourceTetris/policy-iteration run must not be used as a paper-facing DeepRM E1 result.
+The DeepRM E1 mismatch is resolved. The corrected E1 table can be tabulated without conflicting with Table IV. The earlier SourceTetris/policy-iteration run is superseded and is not a paper-facing DeepRM E1 result.
 
-## 2. Decima Lambda 0.25 Sanity Check
+## 2. Decima Lambda 0.25 Check
 
-The pre-submission audit also examined the non-monotonic P1 lag point: lambda=0.25 is significantly negative while lambda=0, 0.5, and larger values are positive.
+The Decima E1 sweep contains a non-monotonic P1 lag point: lambda=0.25 is
+significantly negative while lambda=0, 0.5, and larger values are positive.
 
-Code audit:
+Code check:
 
 - `scripts/decima_tf1_perturb_eval.py::_install_lag` computes `lag_mean = lag_lambda * expected_stage_duration`.
 - Each scheduled task receives `delay = _deterministic_exponential_lag(...)`.
@@ -44,7 +46,7 @@ Code audit:
 - `external/decima-sim/spark_env/timeline.py` stores event keys directly in a heap; no integer time-step cast is applied.
 - No `int`, `round`, `floor`, or `ceil` call appears in the lag injection path.
 
-Data audit:
+Data check:
 
 - All P1 lambda cells use the same 30 experiment seeds in the same order.
 - Lambda=0.25 is not a one-window outlier: 24 of 30 paired deltas are negative, with median delta -16,271.12.
@@ -62,5 +64,5 @@ Keep the Decima lambda=0.25 result, but describe it carefully: it is a real per-
 
 - Corrected DeepRM E1 table: `results/paper/experiments/e1_magnitude_sweep/deeprm/tables/e1_deeprm_magnitude_sweep.csv`
 - Corrected DeepRM E1 figure: `results/paper/experiments/e1_magnitude_sweep/deeprm/figures/e1_deeprm_magnitude_sweep.pdf`
-- Decima P1 per-seed audit table: `results/paper/experiments/e1_magnitude_sweep/decima/tables/decima_e1_p1_lag_per_seed_audit.csv`
+- Decima P1 per-seed reconciliation table: `results/paper/experiments/e1_magnitude_sweep/decima/tables/decima_e1_p1_lag_per_seed_reconciliation.csv`
 - Updated extension report: `results/paper/experiments/e1_magnitude_sweep/E1_E2_EXTENSION_REPORT.md`
