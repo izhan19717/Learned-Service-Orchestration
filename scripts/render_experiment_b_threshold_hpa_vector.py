@@ -80,13 +80,13 @@ def _render(threshold: tuple[StepRecord, ...], hpa: tuple[StepRecord, ...]) -> N
     plt.rcParams.update(
         {
             "font.family": "DejaVu Sans",
-            "font.size": 7.5,
-            "axes.labelsize": 7.5,
-            "axes.titlesize": 8.2,
-            "xtick.labelsize": 6.8,
-            "ytick.labelsize": 6.8,
-            "legend.fontsize": 6.8,
-            "axes.linewidth": 0.7,
+            "font.size": 8.7,
+            "axes.labelsize": 8.8,
+            "axes.titlesize": 9.4,
+            "xtick.labelsize": 7.8,
+            "ytick.labelsize": 7.8,
+            "legend.fontsize": 7.8,
+            "axes.linewidth": 0.8,
             "pdf.fonttype": 42,
             "ps.fonttype": 42,
             "path.simplify": True,
@@ -111,11 +111,11 @@ def _render(threshold: tuple[StepRecord, ...], hpa: tuple[StepRecord, ...]) -> N
     fig, axes = plt.subplots(
         2,
         2,
-        figsize=(7.05, 3.25),
+        figsize=(6.35, 3.25),
         sharex=True,
-        gridspec_kw={"height_ratios": [0.88, 1.0], "hspace": 0.13, "wspace": 0.18},
+        gridspec_kw={"height_ratios": [0.88, 1.0], "hspace": 0.14, "wspace": 0.20},
     )
-    fig.subplots_adjust(left=0.065, right=0.992, bottom=0.13, top=0.90)
+    fig.subplots_adjust(left=0.078, right=0.992, bottom=0.145, top=0.89)
 
     for col, (data, title) in enumerate(panels):
         ax_rep = axes[0, col]
@@ -125,7 +125,7 @@ def _render(threshold: tuple[StepRecord, ...], hpa: tuple[StepRecord, ...]) -> N
             data["replicas"],
             where="post",
             color=colors["replicas"],
-            linewidth=0.65 if col == 0 else 0.95,
+            linewidth=0.7 if col == 0 else 1.05,
             solid_capstyle="butt",
             rasterized=False,
         )
@@ -137,7 +137,7 @@ def _render(threshold: tuple[StepRecord, ...], hpa: tuple[StepRecord, ...]) -> N
             data["time"],
             data["true_util"],
             color=colors["true"],
-            linewidth=0.72,
+            linewidth=0.78,
             label="true",
             rasterized=False,
         )
@@ -145,28 +145,28 @@ def _render(threshold: tuple[StepRecord, ...], hpa: tuple[StepRecord, ...]) -> N
             data["time"],
             data["observed_util"],
             color=colors["observed"],
-            linewidth=0.62,
+            linewidth=0.7,
             alpha=0.9,
             label="observed",
             rasterized=False,
         )
-        ax_util.axhline(0.5, color=colors["zero"], linewidth=0.55, linestyle=(0, (2.2, 2.2)), zorder=0)
+        ax_util.axhline(0.5, color=colors["zero"], linewidth=0.65, linestyle=(0, (2.2, 2.2)), zorder=0)
         ax_util.set_ylim(0.0, util_ylim)
         ax_util.yaxis.set_major_locator(MaxNLocator(nbins=5))
         ax_util.set_xlabel("Simulation tick")
         if col == 1:
-            ax_util.legend(frameon=False, loc="upper right", handlelength=2.5, borderaxespad=0.2)
+            ax_util.legend(frameon=False, loc="upper right", handlelength=2.3, borderaxespad=0.2)
 
     axes[0, 0].set_ylabel("Replicas")
     axes[1, 0].set_ylabel("CPU utilization")
     for ax in axes[:, 1]:
         ax.tick_params(labelleft=False)
     for ax in axes.ravel():
-        ax.grid(True, color=colors["grid"], linewidth=0.45)
+        ax.grid(True, color=colors["grid"], linewidth=0.5)
         ax.spines["top"].set_visible(False)
         ax.spines["right"].set_visible(False)
         ax.set_xlim(0, HORIZON - 1)
-        ax.xaxis.set_major_locator(MaxNLocator(nbins=6))
+        ax.set_xticks([0, 1000, 2000, 3000, 4000])
 
     for directory in (OUT_DIR, ROOT_FIG_DIR):
         fig.savefig(directory / f"{FILENAME}.pdf", bbox_inches="tight", pad_inches=0.015)

@@ -345,32 +345,53 @@ def write_figure(rows: list[dict[str, object]], bundled_collapse: float) -> None
         ("p2_threshold", "P2 tail", "Pareto alpha"),
         ("p3_threshold", "P3 bucket flip", "epsilon"),
     ]
-    fig, axes = plt.subplots(2, 2, figsize=(6.8, 4.8))
+    plt.rcParams.update(
+        {
+            "font.family": "DejaVu Sans",
+            "font.size": 8.9,
+            "axes.labelsize": 9.1,
+            "axes.titlesize": 10.0,
+            "xtick.labelsize": 8.1,
+            "ytick.labelsize": 8.1,
+            "axes.linewidth": 0.85,
+            "pdf.fonttype": 42,
+            "ps.fonttype": 42,
+        }
+    )
+    fig, axes = plt.subplots(2, 2, figsize=(5.65, 4.35))
     for ax, (curve, title, xlabel) in zip(axes.ravel(), specs, strict=True):
-        subset = [row for row in rows if row["curve"] == curve]
+        subset = sorted([row for row in rows if row["curve"] == curve], key=lambda row: float(row["magnitude"]))
         xs = np.asarray([float(row["magnitude"]) for row in subset], dtype=float)
         ys = np.asarray([float(row["delta_comparator_minus_rossi"]) for row in subset], dtype=float)
         lows = np.asarray([float(row["ci_low"]) for row in subset], dtype=float)
         highs = np.asarray([float(row["ci_high"]) for row in subset], dtype=float)
-        ax.axhline(0.0, color="#333333", linewidth=0.8)
+        ax.axhline(0.0, color="#333333", linewidth=0.85)
         if curve == "p1_hpa_v2":
-            ax.axhline(0.25 * bundled_collapse, color="#999999", linestyle=":", linewidth=0.8)
-            ax.axhline(-0.25 * bundled_collapse, color="#999999", linestyle=":", linewidth=0.8)
-        ax.fill_between(xs, lows, highs, color="#9ecae9", alpha=0.35, linewidth=0)
-        ax.plot(xs, ys, color="#1f77b4", marker="o", linewidth=1.2)
-        ax.set_title(title)
+            ax.axhline(0.25 * bundled_collapse, color="#999999", linestyle=":", linewidth=0.95)
+            ax.axhline(-0.25 * bundled_collapse, color="#999999", linestyle=":", linewidth=0.95)
+        ax.fill_between(xs, lows, highs, color="#9ecae9", alpha=0.34, linewidth=0)
+        ax.plot(xs, ys, color="#1f77b4", marker="o", markersize=4.2, linewidth=1.45)
+        ax.set_title(title, pad=4)
         ax.set_xlabel(xlabel)
         ax.set_ylabel("Delta")
+        ax.grid(axis="y", color="#e4e4e4", linewidth=0.5)
         ax.spines["top"].set_visible(False)
         ax.spines["right"].set_visible(False)
-    fig.tight_layout()
+        if curve.startswith("p1"):
+            ax.set_xticks([0, 10, 20, 50])
+        elif curve == "p2_threshold":
+            ax.set_xticks([1.5, 2.0, 2.5])
+        else:
+            ax.set_xticks([0.00, 0.05, 0.10, 0.20])
+    fig.subplots_adjust(left=0.09, right=0.985, bottom=0.10, top=0.91, hspace=0.54, wspace=0.36)
     pdf = FIG_DIR / "e1_rossi_magnitude_sweep.pdf"
     png = FIG_DIR / "e1_rossi_magnitude_sweep.png"
-    fig.savefig(pdf)
-    fig.savefig(png, dpi=300)
+    fig.savefig(pdf, bbox_inches="tight", pad_inches=0.025)
+    fig.savefig(png, dpi=450, bbox_inches="tight", pad_inches=0.025)
     plt.close(fig)
-    mlflow.log_artifact(str(pdf), artifact_path="paper/figures")
-    mlflow.log_artifact(str(png), artifact_path="paper/figures")
+    if mlflow.active_run() is not None:
+        mlflow.log_artifact(str(pdf), artifact_path="paper/figures")
+        mlflow.log_artifact(str(png), artifact_path="paper/figures")
 
 
 def main() -> None:

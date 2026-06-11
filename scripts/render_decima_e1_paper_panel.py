@@ -80,6 +80,12 @@ def main() -> None:
     plt.rcParams.update(
         {
             "font.family": "DejaVu Sans",
+            "font.size": 9.2,
+            "axes.labelsize": 9.4,
+            "axes.titlesize": 10.1,
+            "xtick.labelsize": 8.6,
+            "ytick.labelsize": 8.6,
+            "axes.linewidth": 0.85,
             "pdf.fonttype": 42,
             "ps.fonttype": 42,
             "svg.fonttype": "none",
@@ -87,17 +93,17 @@ def main() -> None:
         }
     )
 
-    fig = plt.figure(figsize=(6.55, 4.05))
+    fig = plt.figure(figsize=(5.95, 3.85))
     gs = fig.add_gridspec(
         2,
         2,
         height_ratios=[1.15, 1.0],
-        left=0.11,
+        left=0.115,
         right=0.985,
         top=0.925,
-        bottom=0.125,
-        hspace=0.62,
-        wspace=0.48,
+        bottom=0.135,
+        hspace=0.64,
+        wspace=0.50,
     )
     ax_p1 = fig.add_subplot(gs[0, :])
     ax_p2 = fig.add_subplot(gs[1, 0])
@@ -110,13 +116,13 @@ def main() -> None:
     style_axis(ax_p1)
     draw_curve(ax_p1, x, y, lo, hi)
     ax_p1.axvline(1.0, color="#555555", linestyle=":", linewidth=1.0, zorder=4)
-    ax_p1.set_title("P1 observation lag", fontsize=10.5, pad=4)
-    ax_p1.set_xlabel(r"Lag multiplier $\lambda$", fontsize=9)
-    ax_p1.set_ylabel(r"$\Delta$ (mean JCT, $\times 10^6$)", fontsize=9)
+    ax_p1.set_title("P1 observation lag", pad=4)
+    ax_p1.set_xlabel(r"Lag multiplier $\lambda$")
+    ax_p1.set_ylabel(r"$\Delta$ (mean JCT, $\times 10^6$)")
     ax_p1.set_xlim(-0.04, 2.08)
     ax_p1.set_ylim(-0.09, 1.62)
 
-    inset = inset_axes(ax_p1, width="34%", height="56%", loc="upper left", borderpad=1.15)
+    inset = inset_axes(ax_p1, width="35%", height="56%", loc="upper left", borderpad=1.05)
     mask = x <= 0.5
     style_axis(inset)
     draw_curve(inset, x[mask], y[mask] * 1000.0, lo[mask] * 1000.0, hi[mask] * 1000.0)
@@ -125,8 +131,8 @@ def main() -> None:
     inset.set_xticks([0.0, 0.25, 0.5])
     inset.set_xticklabels(["0", "0.25", "0.5"])
     inset.set_yticks([0.0, 50.0, 100.0, 150.0])
-    inset.set_title(r"$\Delta$ ($\times 10^3$)", fontsize=7, pad=2)
-    inset.tick_params(axis="both", labelsize=5.9, pad=1.8)
+    inset.set_title(r"$\Delta$ ($\times 10^3$)", fontsize=7.4, pad=2)
+    inset.tick_params(axis="both", labelsize=6.5, pad=1.8)
     inset.grid(axis="y", color="#edf2f7", linewidth=0.45)
     row_025 = next(row for row in rows if row["curve"] == "p1_lag" and row["magnitude"] == "0.25")
     delta_025 = float(row_025["delta_dynamic_partition_minus_decima"])
@@ -137,7 +143,7 @@ def main() -> None:
         0.88,
         rf"$\lambda=0.25$" + "\n" + rf"$\Delta={delta_025 / 1000:.1f}$k, $p_H={p_h_025:.3f}$",
         transform=inset.transAxes,
-        fontsize=5.9,
+        fontsize=6.5,
         ha="left",
         va="top",
         bbox={"boxstyle": "round,pad=0.18", "facecolor": "white", "edgecolor": "#d1d5db", "linewidth": 0.55},
@@ -148,9 +154,9 @@ def main() -> None:
     style_axis(ax_p2)
     draw_curve(ax_p2, x, y, lo, hi)
     ax_p2.axvline(0.5, color="#555555", linestyle=":", linewidth=1.0, zorder=4)
-    ax_p2.set_title("P2 DAG-size tail", fontsize=10, pad=4)
-    ax_p2.set_xlabel("Tail weight w", fontsize=9)
-    ax_p2.set_ylabel(r"$\Delta$ ($\times 10^3$)", fontsize=9)
+    ax_p2.set_title("P2 DAG-size tail", pad=4)
+    ax_p2.set_xlabel("Tail weight w")
+    ax_p2.set_ylabel(r"$\Delta$ ($\times 10^3$)")
     ax_p2.set_xlim(-0.04, 1.04)
     ax_p2.set_ylim(-4.0, 70.0)
 
@@ -158,9 +164,9 @@ def main() -> None:
     style_axis(ax_p3)
     draw_curve(ax_p3, x, y, lo, hi)
     ax_p3.axvline(0.05, color="#555555", linestyle=":", linewidth=1.0, zorder=4)
-    ax_p3.set_title("P3 FGSM node features", fontsize=10, pad=4)
-    ax_p3.set_xlabel(r"$\epsilon$", fontsize=9)
-    ax_p3.set_ylabel(r"$\Delta$ ($\times 10^3$)", fontsize=9)
+    ax_p3.set_title("P3 FGSM node features", pad=4)
+    ax_p3.set_xlabel(r"$\epsilon$")
+    ax_p3.set_ylabel(r"$\Delta$ ($\times 10^3$)")
     ax_p3.set_xlim(-0.01, 0.21)
     ax_p3.set_ylim(-0.15, 3.35)
 
