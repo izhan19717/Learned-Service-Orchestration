@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Render the README evidence-summary figure from committed result tables."""
+"""Render the README evidence-summary SVG from committed result tables."""
 
 from __future__ import annotations
 
@@ -7,10 +7,6 @@ import argparse
 import csv
 import json
 from pathlib import Path
-
-import matplotlib.pyplot as plt
-from matplotlib.patches import FancyBboxPatch, Rectangle
-import numpy as np
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -29,51 +25,21 @@ HPA_V2 = (
 )
 DECIMA_GATE = ROOT / "results" / "paper" / "decima" / "tables" / "decima_official_readme_gate.json"
 
-COLORS = {
-    "ink": "#0f172a",
-    "muted": "#475569",
-    "line": "#d8dee9",
-    "panel": "#ffffff",
-    "paper": "#f8fafc",
-    "amber": "#b45309",
-    "amber_light": "#fff7ed",
-    "green": "#047857",
-    "green_light": "#ecfdf5",
-    "blue": "#1f5b85",
-    "blue_light": "#eff6ff",
-    "slate": "#6b7280",
-}
-
 
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--output", type=Path, default=OUT)
-    parser.add_argument("--preview-png", type=Path, default=None)
     args = parser.parse_args()
 
-    _set_style()
-    fig = render_summary()
+    values = {
+        "deeprm": _deeprm_values(),
+        "rossi": _rossi_values(),
+        "decima": _decima_gate_values(),
+    }
+    svg = render_svg(values)
     args.output.parent.mkdir(parents=True, exist_ok=True)
-    fig.savefig(args.output, format="svg", bbox_inches="tight", metadata={"Date": None})
-    _strip_trailing_whitespace(args.output)
-    if args.preview_png is not None:
-        fig.savefig(args.preview_png, dpi=200, bbox_inches="tight")
-    plt.close(fig)
+    args.output.write_text(svg, encoding="utf-8")
     print(args.output.relative_to(ROOT))
-
-
-def _set_style() -> None:
-    plt.rcParams.update(
-        {
-            "font.family": "DejaVu Sans",
-            "font.size": 12.0,
-            "pdf.fonttype": 42,
-            "ps.fonttype": 42,
-            # GitHub/browser SVG rendering can fall back to serif fonts. Converting
-            # text to paths keeps the README figure visually stable.
-            "svg.fonttype": "path",
-        }
-    )
 
 
 def _read_csv(path: Path) -> list[dict[str, str]]:
@@ -86,56 +52,30 @@ def _read_json(path: Path) -> dict:
         return json.load(f)
 
 
-def _strip_trailing_whitespace(path: Path) -> None:
-    lines = path.read_text(encoding="utf-8").splitlines()
-    path.write_text("\n".join(line.rstrip() for line in lines) + "\n", encoding="utf-8")
-
-
-def render_summary() -> plt.Figure:
-    deep = _deeprm_values()
-    rossi = _rossi_values()
-    decima = _decima_gate_values()
-
-    fig = plt.figure(figsize=(12.0, 7.0), facecolor="white")
-    ax = fig.add_axes([0, 0, 1, 1])
-    ax.set_xlim(0, 1)
-    ax.set_ylim(0, 1)
-    ax.axis("off")
-
-    _draw_header(ax)
-    _draw_prediction_card(ax, 0.055, 0.515, 0.405, 0.345)
-    _draw_rossi_card(ax, 0.535, 0.515, 0.410, 0.345, rossi)
-    _draw_deeprm_card(ax, 0.055, 0.135, 0.405, 0.330, deep)
-    _draw_decima_card(ax, 0.535, 0.135, 0.410, 0.330, decima)
-
-    ax.text(
-        0.5,
-        0.055,
-        "Delta = metric(comparator) - metric(RL). Full CIs, corrected tests, seeds, and diagnostics are in results/paper/.",
-        ha="center",
-        va="center",
-        fontsize=10.5,
-        color=COLORS["muted"],
-    )
-    return fig
-
-
 def _deeprm_values() -> dict[str, float]:
     row = next(row for row in _read_csv(DEEPRM_P1) if float(row["lag"]) == 10.0)
     locked = float(row["locked_delta"])
     first_fit = float(row["delta_tetris_minus_deeprm"])
-    reduction_pct = 100.0 * (locked - first_fit) / locked
-    return {"locked": locked, "first_fit": first_fit, "reduction_pct": reduction_pct}
+    return {
+        "locked": locked,
+        "first_fit": first_fit,
+        "reduction_pct": 100.0 * (locked - first_fit) / locked,
+    }
 
 
 def _rossi_values() -> dict[str, float]:
     bundled = next(row for row in _read_csv(ROSSI_P1) if float(row["lag"]) == 10.0)
-    hpa_rows = [row for row in _read_csv(HPA_V2) if row["cell"] == "p1"]
-    hpa_deltas = np.asarray([float(row["delta_mean"]) for row in hpa_rows], dtype=float)
+    hpa_deltas = [
+        float(row["delta_mean"])
+        for row in _read_csv(HPA_V2)
+        if row["cell"] == "p1"
+    ]
+    hpa_max = max(hpa_deltas)
     return {
         "bundled": float(bundled["delta_hpa_minus_rossi"]),
-        "hpa_min": float(np.min(hpa_deltas)),
-        "hpa_max": float(np.max(hpa_deltas)),
+        "hpa_min": min(hpa_deltas),
+        "hpa_max": hpa_max,
+        "ratio": float(bundled["delta_hpa_minus_rossi"]) / hpa_max,
     }
 
 
@@ -147,188 +87,131 @@ def _decima_gate_values() -> dict[str, float]:
     }
 
 
-def _draw_header(ax: plt.Axes) -> None:
-    ax.text(
-        0.055,
-        0.935,
-        "Empirical evidence summary",
-        ha="left",
-        va="top",
-        fontsize=24,
-        weight="bold",
-        color=COLORS["ink"],
-    )
-    ax.text(
-        0.055,
-        0.887,
-        "Pre-registered perturbations, stronger comparator checks, injection sensitivity, and official-simulator reproduction.",
-        ha="left",
-        va="top",
-        fontsize=12.5,
-        color=COLORS["muted"],
-    )
+def render_svg(values: dict[str, dict[str, float]]) -> str:
+    deep = values["deeprm"]
+    rossi = values["rossi"]
+    decima = values["decima"]
+
+    rossi_bundled_width = 390
+    rossi_hpa_width = 86
+    decima_target_width = round(decima["target"] / 26.0 * 380)
+    decima_observed_width = round(decima["observed"] / 26.0 * 380)
+    deeprm_base_y = 632
+    deeprm_locked_height = round(deep["locked"] / 220.0 * 88)
+    deeprm_first_fit_height = round(deep["first_fit"] / 220.0 * 88)
+    deeprm_locked_top = deeprm_base_y - deeprm_locked_height
+    deeprm_first_fit_top = deeprm_base_y - deeprm_first_fit_height
+
+    svg = f"""<svg xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc" viewBox="0 0 1200 760">
+  <title id="title">Empirical evidence summary</title>
+  <desc id="desc">Evidence summary for the learned service orchestration artifact: preregistered prediction outcomes, Rossi comparator sensitivity, DeepRM stale-action sensitivity, and Decima official-simulator reproduction gate.</desc>
+  <style>
+    .title {{ font: 800 42px Arial, Helvetica, sans-serif; fill: #0f172a; }}
+    .subtitle {{ font: 400 19px Arial, Helvetica, sans-serif; fill: #475569; }}
+    .card-title {{ font: 800 24px Arial, Helvetica, sans-serif; fill: #0f172a; }}
+    .card-subtitle {{ font: 400 15px Arial, Helvetica, sans-serif; fill: #475569; }}
+    .label {{ font: 400 16px Arial, Helvetica, sans-serif; fill: #475569; }}
+    .label-dark {{ font: 700 18px Arial, Helvetica, sans-serif; fill: #0f172a; }}
+    .small {{ font: 400 14px Arial, Helvetica, sans-serif; fill: #475569; }}
+    .big-amber {{ font: 800 88px Arial, Helvetica, sans-serif; fill: #b45309; }}
+    .big-blue {{ font: 800 72px Arial, Helvetica, sans-serif; fill: #1f5b85; }}
+    .metric {{ font: 800 28px Arial, Helvetica, sans-serif; fill: #0f172a; }}
+    .metric-amber {{ font: 800 25px Arial, Helvetica, sans-serif; fill: #b45309; }}
+    .status {{ font: 800 21px Arial, Helvetica, sans-serif; fill: #ffffff; }}
+    .card {{ fill: #ffffff; stroke: #d8dee9; stroke-width: 2; }}
+    .amber {{ fill: #b45309; }}
+    .green {{ fill: #047857; }}
+    .blue {{ fill: #2563eb; }}
+    .slate {{ fill: #6b7280; }}
+    .gate {{ fill: #dcfce7; }}
+    .gate-pill {{ fill: #fff7ed; }}
+    .line {{ stroke: #d8dee9; stroke-width: 3; }}
+    .axis {{ stroke: #0f172a; stroke-width: 2; }}
+  </style>
+
+  <rect x="0" y="0" width="1200" height="760" fill="#ffffff" />
+  <text class="title" x="74" y="70">Empirical evidence summary</text>
+  <text class="subtitle" x="74" y="101">Pre-registered perturbations, stronger comparator checks, injection sensitivity, and official-simulator reproduction.</text>
+
+  <rect class="card" x="64" y="132" width="508" height="270" rx="18" />
+  <text class="card-title" x="100" y="185">A. Pre-registered predictions</text>
+  <text class="card-subtitle" x="100" y="211">Seven predicted degradation cells fail under the locked anchors.</text>
+  <text class="big-amber" x="105" y="308">7/9</text>
+  <text class="label-dark" x="115" y="342">predictions falsified</text>
+  <text class="label-dark" x="288" y="262">DeepRM</text>
+  <text class="label-dark" x="264" y="310">Rossi/RLAD</text>
+  <text class="label-dark" x="293" y="358">Decima</text>
+  <text class="label-dark" x="404" y="245">P1</text>
+  <text class="label-dark" x="473" y="245">P2</text>
+  <text class="label-dark" x="542" y="245">P3</text>
+  {status_grid()}
+
+  <rect class="card" x="628" y="132" width="508" height="270" rx="18" />
+  <text class="card-title" x="664" y="185">B. Rossi comparator standard</text>
+  <text class="card-subtitle" x="664" y="211">The bundled lag failure is not representative of HPA-v2.</text>
+  <text class="big-amber" x="680" y="294">{rossi['ratio']:.1f}x</text>
+  <text class="label" x="855" y="273">bundled effect relative</text>
+  <text class="label-dark" x="855" y="303">to HPA-v2 maximum</text>
+  <line class="line" x1="712" y1="338" x2="1060" y2="338" />
+  <line class="axis" x1="740" y1="328" x2="740" y2="358" />
+  <line x1="740" y1="338" x2="{740 + rossi_bundled_width}" y2="338" stroke="#b45309" stroke-width="18" stroke-linecap="round" />
+  <text class="metric-amber" x="1045" y="317">+{rossi['bundled']:.0f}</text>
+  <text class="small" x="712" y="376">bundled threshold</text>
+  <line class="line" x1="712" y1="410" x2="1060" y2="410" />
+  <line class="axis" x1="740" y1="397" x2="740" y2="434" />
+  <line x1="725" y1="410" x2="{725 + rossi_hpa_width}" y2="410" stroke="#2563eb" stroke-width="12" stroke-linecap="round" />
+  <circle cx="725" cy="410" r="8" fill="#2563eb" />
+  <circle cx="{725 + rossi_hpa_width}" cy="410" r="8" fill="#2563eb" />
+  <text class="label-dark" x="828" y="416">{rossi['hpa_min']:.0f} to +{rossi['hpa_max']:.0f}</text>
+  <text class="small" x="712" y="449">HPA-v2 grid</text>
+
+  <rect class="card" x="64" y="420" width="508" height="250" rx="18" />
+  <text class="card-title" x="100" y="473">C. DeepRM stale-action rule</text>
+  <text class="card-subtitle" x="100" y="499">Changing only the invalid-action fallback changes the P1 magnitude.</text>
+  <rect class="slate" x="175" y="{deeprm_locked_top}" width="88" height="{deeprm_locked_height}" />
+  <rect fill="#1f5b85" x="338" y="{deeprm_first_fit_top}" width="88" height="{deeprm_first_fit_height}" />
+  <text class="metric" x="193" y="{deeprm_locked_top - 12}">+{deep['locked']:.0f}</text>
+  <text class="metric" x="356" y="{deeprm_first_fit_top - 12}">+{deep['first_fit']:.0f}</text>
+  <text class="small" x="174" y="642">locked no-op</text>
+  <text class="small" x="353" y="642">first-fit</text>
+  <text class="big-blue" x="425" y="555" text-anchor="middle">{deep['reduction_pct']:.0f}%</text>
+  <text class="label" x="425" y="592" text-anchor="middle">smaller at</text>
+  <text class="label-dark" x="425" y="622" text-anchor="middle">lag k = 10</text>
+
+  <rect class="card" x="628" y="420" width="508" height="250" rx="18" />
+  <text class="card-title" x="664" y="473">D. Decima official-simulator gate</text>
+  <text class="card-subtitle" x="664" y="499">Released checkpoint improves JCT, but misses the target.</text>
+  <rect class="gate" x="917" y="520" width="112" height="130" />
+  <text class="label" x="664" y="552">target</text>
+  <rect fill="#4fa38b" x="735" y="528" width="{decima_target_width}" height="32" />
+  <text class="metric" x="1037" y="554">{decima['target']:.0f}%</text>
+  <text class="label" x="664" y="625">observed</text>
+  <rect class="amber" x="735" y="601" width="{decima_observed_width}" height="32" />
+  <text class="metric" x="807" y="627">{decima['observed']:.1f}%</text>
+  <rect class="gate-pill" x="936" y="617" width="154" height="44" rx="22" />
+  <text class="metric-amber" x="1013" y="646" text-anchor="middle">gate not met</text>
+
+  <text class="small" x="600" y="718" text-anchor="middle">Delta = metric(comparator) - metric(RL). Full CIs, corrected tests, seeds, and diagnostics are in results/paper/.</text>
+</svg>
+"""
+    return svg
 
 
-def _card(ax: plt.Axes, x: float, y: float, w: float, h: float, title: str, subtitle: str) -> None:
-    ax.add_patch(
-        FancyBboxPatch(
-            (x, y),
-            w,
-            h,
-            boxstyle="round,pad=0.012,rounding_size=0.018",
-            linewidth=1.1,
-            edgecolor=COLORS["line"],
-            facecolor=COLORS["panel"],
-            transform=ax.transAxes,
-        )
-    )
-    ax.text(x + 0.026, y + h - 0.043, title, ha="left", va="top", fontsize=14.8, weight="bold", color=COLORS["ink"])
-    ax.text(x + 0.026, y + h - 0.076, subtitle, ha="left", va="top", fontsize=9.8, color=COLORS["muted"])
-
-
-def _pill(
-    ax: plt.Axes,
-    x: float,
-    y: float,
-    w: float,
-    h: float,
-    text: str,
-    face: str,
-    text_color: str,
-    fontsize: float,
-) -> None:
-    ax.add_patch(
-        FancyBboxPatch(
-            (x, y),
-            w,
-            h,
-            boxstyle="round,pad=0.006,rounding_size=0.022",
-            linewidth=0,
-            facecolor=face,
-            transform=ax.transAxes,
-        )
-    )
-    ax.text(x + w / 2, y + h / 2, text, ha="center", va="center", fontsize=fontsize, weight="bold", color=text_color)
-
-
-def _draw_prediction_card(ax: plt.Axes, x: float, y: float, w: float, h: float) -> None:
-    _card(ax, x, y, w, h, "A. Pre-registered predictions", "Seven predicted degradation cells fail under the locked anchors.")
-
-    ax.text(x + 0.040, y + 0.150, "7/9", ha="left", va="center", fontsize=50, weight="bold", color=COLORS["amber"])
-    ax.text(x + 0.045, y + 0.087, "predictions falsified", ha="left", va="center", fontsize=12.0, weight="bold", color=COLORS["ink"])
-
-    methods = ["DeepRM", "Rossi/RLAD", "Decima"]
-    preds = ["P1", "P2", "P3"]
-    statuses = [["F", "F", "F"], ["F", "C", "C"], ["F", "F", "F"]]
-    x0 = x + 0.270
-    y0 = y + 0.165
-    dx = 0.055
-    dy = 0.055
-    ax.text(x0 - 0.003, y0 + 0.054, "P1", ha="center", va="center", fontsize=9.4, weight="bold", color=COLORS["muted"])
-    ax.text(x0 + dx, y0 + 0.054, "P2", ha="center", va="center", fontsize=9.4, weight="bold", color=COLORS["muted"])
-    ax.text(x0 + 2 * dx, y0 + 0.054, "P3", ha="center", va="center", fontsize=9.4, weight="bold", color=COLORS["muted"])
-    for r, method in enumerate(methods):
-        yy = y0 - r * dy
-        ax.text(x0 - 0.060, yy, method, ha="right", va="center", fontsize=9.4, color=COLORS["ink"])
-        for c, pred in enumerate(preds):
-            xx = x0 + c * dx
-            status = statuses[r][c]
-            color = COLORS["green"] if status == "C" else COLORS["amber"]
-            ax.add_patch(Rectangle((xx - 0.015, yy - 0.020), 0.030, 0.040, facecolor=color, edgecolor="none", transform=ax.transAxes))
-            ax.text(xx, yy, status, ha="center", va="center", fontsize=9.2, weight="bold", color="white")
-
-
-def _draw_rossi_card(ax: plt.Axes, x: float, y: float, w: float, h: float, values: dict[str, float]) -> None:
-    _card(ax, x, y, w, h, "B. Rossi comparator standard", "The bundled lag failure is not representative of HPA-v2.")
-    bundled = values["bundled"]
-    hpa_min = values["hpa_min"]
-    hpa_max = values["hpa_max"]
-    ratio = bundled / hpa_max
-
-    ax.text(x + 0.036, y + 0.174, f"{ratio:.1f}x", ha="left", va="center", fontsize=34, weight="bold", color=COLORS["amber"])
-    ax.text(x + 0.214, y + 0.184, "bundled effect relative", ha="left", va="center", fontsize=10.6, color=COLORS["muted"])
-    ax.text(x + 0.214, y + 0.154, "to HPA-v2 maximum", ha="left", va="center", fontsize=11.8, weight="bold", color=COLORS["ink"])
-
-    left = x + 0.052
-    right = x + w - 0.048
-    base_y = y + 0.040
-    scale_min, scale_max = -80.0, 1000.0
-
-    def sx(v: float) -> float:
-        return left + (v - scale_min) / (scale_max - scale_min) * (right - left)
-
-    zero = sx(0.0)
-    ax.plot([left, right], [base_y, base_y], color=COLORS["line"], linewidth=1.4, transform=ax.transAxes, clip_on=False)
-    ax.plot([zero, zero], [base_y - 0.025, base_y + 0.09], color=COLORS["ink"], linewidth=1.0, transform=ax.transAxes, clip_on=False)
-
-    y_b = base_y + 0.062
-    ax.plot([zero, sx(bundled)], [y_b, y_b], color=COLORS["amber"], linewidth=11, solid_capstyle="round", transform=ax.transAxes)
-    ax.text(left, y_b - 0.028, "bundled threshold", ha="left", va="center", fontsize=9.3, color=COLORS["muted"])
-    ax.text(sx(bundled), y_b + 0.029, f"+{bundled:.0f}", ha="right", va="center", fontsize=11.4, weight="bold", color=COLORS["amber"])
-
-    y_h = base_y + 0.002
-    ax.plot([sx(hpa_min), sx(hpa_max)], [y_h, y_h], color="#2563eb", linewidth=7, solid_capstyle="round", transform=ax.transAxes)
-    ax.scatter([sx(hpa_min), sx(hpa_max)], [y_h, y_h], s=38, color="#1d4ed8", transform=ax.transAxes, zorder=3)
-    ax.text(left, y_h - 0.035, "HPA-v2 grid", ha="left", va="center", fontsize=9.3, color=COLORS["muted"])
-    ax.text(sx(hpa_max) + 0.008, y_h, f"{hpa_min:.0f} to +{hpa_max:.0f}", ha="left", va="center", fontsize=9.3, color=COLORS["ink"])
-
-
-def _draw_deeprm_card(ax: plt.Axes, x: float, y: float, w: float, h: float, values: dict[str, float]) -> None:
-    _card(ax, x, y, w, h, "C. DeepRM stale-action rule", "Changing only the invalid-action fallback changes the P1 magnitude.")
-    locked = values["locked"]
-    first_fit = values["first_fit"]
-    ymax = 220.0
-    bar_w = 0.072
-    x1 = x + 0.090
-    x2 = x + 0.225
-    base = y + 0.055
-    max_h = 0.135
-
-    for xx, value, color, label in (
-        (x1, locked, COLORS["slate"], "locked no-op"),
-        (x2, first_fit, COLORS["blue"], "first-fit"),
-    ):
-        height = value / ymax * max_h
-        ax.add_patch(Rectangle((xx, base), bar_w, height, facecolor=color, edgecolor="none", transform=ax.transAxes))
-        ax.text(xx + bar_w / 2, base + height + 0.018, f"+{value:.0f}", ha="center", va="center", fontsize=13.0, weight="bold", color=COLORS["ink"])
-        ax.text(xx + bar_w / 2, base - 0.030, label, ha="center", va="center", fontsize=9.2, color=COLORS["muted"])
-
-    ax.text(x + 0.318, y + 0.176, f"{values['reduction_pct']:.0f}%", ha="center", va="center", fontsize=34, weight="bold", color=COLORS["blue"])
-    ax.text(x + 0.318, y + 0.126, "smaller at", ha="center", va="center", fontsize=10.8, color=COLORS["muted"])
-    ax.text(x + 0.318, y + 0.096, "lag k = 10", ha="center", va="center", fontsize=10.8, weight="bold", color=COLORS["ink"])
-
-
-def _draw_decima_card(ax: plt.Axes, x: float, y: float, w: float, h: float, values: dict[str, float]) -> None:
-    _card(ax, x, y, w, h, "D. Decima official-simulator gate", "Released checkpoint improves JCT, but misses the target.")
-    observed = values["observed"]
-    target = values["target"]
-    max_pct = 26.0
-
-    left = x + 0.055
-    right = x + w - 0.055
-    bar_w = right - left
-    y_target = y + 0.182
-    y_observed = y + 0.100
-
-    target_low = target * 0.85 / max_pct
-    target_high = target * 1.15 / max_pct
-    ax.add_patch(
-        Rectangle(
-            (left + target_low * bar_w, y + 0.067),
-            (target_high - target_low) * bar_w,
-            0.160,
-            facecolor="#dcfce7",
-            edgecolor="none",
-            transform=ax.transAxes,
-        )
-    )
-    ax.add_patch(Rectangle((left, y_target), target / max_pct * bar_w, 0.036, facecolor="#4fa38b", edgecolor="none", transform=ax.transAxes))
-    ax.add_patch(Rectangle((left, y_observed), observed / max_pct * bar_w, 0.036, facecolor=COLORS["amber"], edgecolor="none", transform=ax.transAxes))
-    ax.text(left - 0.010, y_target + 0.018, "target", ha="right", va="center", fontsize=9.8, color=COLORS["muted"])
-    ax.text(left - 0.010, y_observed + 0.018, "observed", ha="right", va="center", fontsize=9.8, color=COLORS["muted"])
-    ax.text(left + target / max_pct * bar_w + 0.010, y_target + 0.018, f"{target:.0f}%", ha="left", va="center", fontsize=12.5, weight="bold", color=COLORS["ink"])
-    ax.text(left + observed / max_pct * bar_w + 0.010, y_observed + 0.018, f"{observed:.1f}%", ha="left", va="center", fontsize=12.5, weight="bold", color=COLORS["ink"])
-    _pill(ax, x + 0.284, y + 0.067, 0.104, 0.043, "gate not met", COLORS["amber_light"], COLORS["amber"], 10.4)
+def status_grid() -> str:
+    xs = [388, 457, 526]
+    ys = [266, 314, 362]
+    statuses = [
+        ["F", "F", "F"],
+        ["F", "C", "C"],
+        ["F", "F", "F"],
+    ]
+    parts = []
+    for row, y in zip(statuses, ys, strict=True):
+        for status, x in zip(row, xs, strict=True):
+            klass = "green" if status == "C" else "amber"
+            parts.append(f'<rect class="{klass}" x="{x}" y="{y}" width="40" height="34" />')
+            parts.append(f'<text class="status" x="{x + 20}" y="{y + 24}" text-anchor="middle">{status}</text>')
+    return "\n  ".join(parts)
 
 
 if __name__ == "__main__":
