@@ -88,6 +88,16 @@ def render_deeprm_stale_action() -> list[Path]:
     _ci_line(ax, lags, alt_mean, alt_low, alt_high, colors["first_fit"], "First-fit fallback sensitivity")
     ax.axhline(0.0, color="#222222", linewidth=0.8)
     ax.axvline(10.0, color=colors["anchor"], linestyle=(0, (3.2, 2.2)), linewidth=1.0)
+    ax.text(
+        10.28,
+        20,
+        "Anchor",
+        color=colors["anchor"],
+        fontsize=8.0,
+        va="bottom",
+        ha="left",
+        bbox={"facecolor": "white", "edgecolor": "none", "pad": 0.8, "alpha": 0.92},
+    )
     ax.set_title("DeepRM P1 stale-action sensitivity", pad=4.0)
     ax.set_xlabel("Observation lag k")
     ax.set_ylabel("Delta slowdown\n(Tetris* - DeepRM)")
