@@ -13,11 +13,11 @@ The central statistic is
 the learned policy has the lower metric. Negative `Delta` means the comparator
 has the lower metric. The method-specific metrics are mean slowdown for DeepRM,
 total autoscaling cost for Rossi/RLAD, and mean job completion time for Decima.
-The figure below summarizes the pre-registered anchor-level outcomes; confidence
-intervals, corrected tests, and diagnostics are indexed under `results/paper/`.
+The figure below summarizes the main evidence checks; confidence intervals,
+corrected tests, and diagnostics are indexed under `results/paper/`.
 
 <p align="center">
-  <img src="docs/assets/repository_evidence_map.svg" alt="Pre-registered prediction outcome matrix for DeepRM, Rossi/RLAD, and Decima across P1 observation lag, P2 workload tail, and P3 adversarial input." width="900">
+  <img src="docs/assets/repository_evidence_summary.svg" alt="Evidence summary for the learned service orchestration artifact: preregistered prediction outcomes, Rossi comparator sensitivity, DeepRM stale-action sensitivity, and Decima official-simulator reproduction gate." width="900">
 </p>
 
 ## Contents
@@ -70,9 +70,10 @@ Run the regression tests:
 python -m pytest
 ```
 
-Regenerate the vector figures used in the paper:
+Regenerate the README summary and the vector figures used in the paper:
 
 ```bash
+python scripts/render_readme_evidence_summary.py
 python scripts/render_paper_quality_figures.py
 python scripts/render_experiment_b_threshold_hpa_vector.py
 ```
