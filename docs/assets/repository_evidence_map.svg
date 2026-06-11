@@ -1,84 +1,173 @@
-<svg xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc" viewBox="0 0 1200 520">
-  <title id="title">Repository evidence map</title>
-  <desc id="desc">Fixed protocols feed three method implementations, three perturbation families, paired evaluation, and paper-ready artifacts.</desc>
+<svg xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc" viewBox="0 0 1200 690">
+  <title id="title">Pre-registered prediction outcomes</title>
+  <desc id="desc">Outcome matrix for nine paired perturbation tests across DeepRM, Rossi/RLAD, and Decima. Seven predictions are falsified and two are confirmed.</desc>
   <style>
-    .bg { fill: #f8fafc; }
-    .panel { fill: #ffffff; stroke-width: 2; }
-    .protocol { stroke: #2563eb; }
-    .method { stroke: #059669; }
-    .perturb { stroke: #b45309; }
-    .artifact { stroke: #7c3aed; }
-    .label { font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #111827; }
-    .title { font-size: 30px; font-weight: 700; }
-    .subtitle { font-size: 16px; fill: #4b5563; }
-    .section { font-size: 18px; font-weight: 700; }
-    .body { font-size: 14px; fill: #374151; }
-    .small { font-size: 12px; fill: #4b5563; }
-    .chip { fill: #f9fafb; stroke: #d1d5db; stroke-width: 1.4; }
-    .arrow { fill: none; stroke: #6b7280; stroke-width: 2.3; marker-end: url(#arrowhead); }
-    .note { fill: #eef2ff; stroke: #c7d2fe; stroke-width: 1.4; }
+    .bg { fill: #ffffff; }
+    .title { font: 700 34px ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #111827; }
+    .subtitle { font: 400 16px ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #374151; }
+    .header { fill: #f8fafc; stroke: #cbd5e1; stroke-width: 1.4; }
+    .method { fill: #f9fafb; stroke: #d1d5db; stroke-width: 1.4; }
+    .falsified { fill: #fff7ed; stroke: #c2410c; stroke-width: 1.8; }
+    .confirmed { fill: #ecfdf5; stroke: #047857; stroke-width: 1.8; }
+    .badge-f { fill: #c2410c; }
+    .badge-c { fill: #047857; }
+    .label { font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #111827; }
+    .col-title { font-size: 18px; font-weight: 700; }
+    .col-sub { font-size: 13px; fill: #4b5563; }
+    .method-title { font-size: 20px; font-weight: 700; }
+    .method-sub { font-size: 13px; fill: #4b5563; }
+    .status { font-size: 13px; font-weight: 800; letter-spacing: 0.08em; fill: #ffffff; }
+    .delta { font-size: 28px; font-weight: 800; }
+    .cell-note { font-size: 13px; fill: #374151; }
+    .summary { font-size: 15px; font-weight: 700; fill: #ffffff; }
+    .legend { font-size: 14px; fill: #374151; }
+    .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace; }
   </style>
-  <defs>
-    <marker id="arrowhead" markerWidth="10" markerHeight="8" refX="8" refY="4" orient="auto">
-      <path d="M 0 0 L 10 4 L 0 8 z" fill="#6b7280" />
-    </marker>
-  </defs>
 
-  <rect class="bg" x="0" y="0" width="1200" height="520" rx="18" />
-  <text class="label title" x="600" y="48" text-anchor="middle">Learned Service Orchestration Evidence Map</text>
-  <text class="label subtitle" x="600" y="76" text-anchor="middle">Protocols, implementations, perturbation tests, and reviewable paper artifacts in one reproducible package.</text>
+  <rect class="bg" x="0" y="0" width="1200" height="690" />
 
-  <rect class="panel protocol" x="40" y="125" width="235" height="250" rx="12" />
-  <text class="label section" x="65" y="160">Fixed Protocols</text>
-  <rect class="chip" x="62" y="185" width="190" height="34" rx="8" />
-  <text class="label body" x="82" y="207">Calibration</text>
-  <rect class="chip" x="62" y="232" width="190" height="34" rx="8" />
-  <text class="label body" x="82" y="254">Pre-registration</text>
-  <rect class="chip" x="62" y="279" width="190" height="34" rx="8" />
-  <text class="label body" x="82" y="301">Protocol amendments</text>
-  <text class="label small" x="65" y="346">docs/protocols/</text>
+  <text class="title" x="600" y="46" text-anchor="middle">Pre-Registered Prediction Outcomes</text>
+  <text class="subtitle" x="600" y="78" text-anchor="middle">Nine paired perturbation tests across three learned service-orchestration systems.</text>
+  <text class="subtitle" x="600" y="102" text-anchor="middle">
+    <tspan class="mono">Delta</tspan>
+    <tspan> = metric(comparator) - metric(RL); positive values mean the learned policy has the lower metric.</tspan>
+  </text>
 
-  <rect class="panel method" x="340" y="100" width="255" height="300" rx="12" />
-  <text class="label section" x="365" y="135">Implemented Methods</text>
-  <rect class="chip" x="365" y="160" width="205" height="48" rx="8" />
-  <text class="label body" x="385" y="181">DeepRM</text>
-  <text class="label small" x="385" y="199">multi-resource scheduling</text>
-  <rect class="chip" x="365" y="226" width="205" height="48" rx="8" />
-  <text class="label body" x="385" y="247">Rossi/RLAD</text>
-  <text class="label small" x="385" y="265">container autoscaling</text>
-  <rect class="chip" x="365" y="292" width="205" height="48" rx="8" />
-  <text class="label body" x="385" y="313">Decima</text>
-  <text class="label small" x="385" y="331">DAG scheduling</text>
-  <text class="label small" x="365" y="370">src/ and tests/</text>
+  <rect x="407" y="122" width="170" height="34" rx="17" class="badge-f" />
+  <text class="summary" x="492" y="144" text-anchor="middle">7 / 9 falsified</text>
+  <rect x="594" y="122" width="170" height="34" rx="17" class="badge-c" />
+  <text class="summary" x="679" y="144" text-anchor="middle">2 / 9 confirmed</text>
 
-  <rect class="panel perturb" x="670" y="100" width="255" height="300" rx="12" />
-  <text class="label section" x="695" y="135">Perturbation Families</text>
-  <rect class="chip" x="695" y="160" width="205" height="48" rx="8" />
-  <text class="label body" x="715" y="181">P1 observation lag</text>
-  <text class="label small" x="715" y="199">stale observations/actions</text>
-  <rect class="chip" x="695" y="226" width="205" height="48" rx="8" />
-  <text class="label body" x="715" y="247">P2 workload tail</text>
-  <text class="label small" x="715" y="265">heavy-tail stressors</text>
-  <rect class="chip" x="695" y="292" width="205" height="48" rx="8" />
-  <text class="label body" x="715" y="313">P3 adversarial input</text>
-  <text class="label small" x="715" y="331">policy-observation attacks</text>
-  <text class="label small" x="695" y="370">paired evaluation grids</text>
+  <rect class="header" x="250" y="178" width="290" height="72" rx="8" />
+  <text class="label col-title" x="395" y="207" text-anchor="middle">P1 observation lag</text>
+  <text class="label col-sub" x="395" y="230" text-anchor="middle">stale telemetry or stale actions</text>
 
-  <rect class="panel artifact" x="985" y="125" width="175" height="250" rx="12" />
-  <text class="label section" x="1010" y="160">Artifacts</text>
-  <rect class="chip" x="1007" y="185" width="130" height="34" rx="8" />
-  <text class="label body" x="1024" y="207">Tables</text>
-  <rect class="chip" x="1007" y="232" width="130" height="34" rx="8" />
-  <text class="label body" x="1024" y="254">Figures</text>
-  <rect class="chip" x="1007" y="279" width="130" height="34" rx="8" />
-  <text class="label body" x="1024" y="301">Reports</text>
-  <text class="label small" x="1010" y="346">results/paper/</text>
+  <rect class="header" x="556" y="178" width="290" height="72" rx="8" />
+  <text class="label col-title" x="701" y="207" text-anchor="middle">P2 workload tail</text>
+  <text class="label col-sub" x="701" y="230" text-anchor="middle">heavy-tailed service, jobs, or DAGs</text>
 
-  <path class="arrow" d="M 275 250 H 330" />
-  <path class="arrow" d="M 595 250 H 660" />
-  <path class="arrow" d="M 925 250 H 975" />
+  <rect class="header" x="862" y="178" width="290" height="72" rx="8" />
+  <text class="label col-title" x="1007" y="207" text-anchor="middle">P3 adversarial input</text>
+  <text class="label col-sub" x="1007" y="230" text-anchor="middle">policy-input perturbation</text>
 
-  <rect class="note" x="323" y="430" width="555" height="52" rx="10" />
-  <text class="label body" x="600" y="454" text-anchor="middle">Primary statistic: Delta = metric(classical comparator) - metric(RL)</text>
-  <text class="label small" x="600" y="474" text-anchor="middle">Positive Delta means the learned policy has the lower method-specific metric.</text>
+  <rect class="method" x="48" y="268" width="178" height="112" rx="8" />
+  <text class="label method-title" x="68" y="304">DeepRM</text>
+  <text class="label method-sub" x="68" y="330">multi-resource</text>
+  <text class="label method-sub" x="68" y="351">job scheduling</text>
+  <text class="label method-sub mono" x="68" y="372">mean slowdown</text>
+
+  <rect class="method" x="48" y="402" width="178" height="112" rx="8" />
+  <text class="label method-title" x="68" y="438">Rossi/RLAD</text>
+  <text class="label method-sub" x="68" y="464">container</text>
+  <text class="label method-sub" x="68" y="485">autoscaling</text>
+  <text class="label method-sub mono" x="68" y="506">total cost</text>
+
+  <rect class="method" x="48" y="536" width="178" height="112" rx="8" />
+  <text class="label method-title" x="68" y="572">Decima</text>
+  <text class="label method-sub" x="68" y="598">DAG scheduling</text>
+  <text class="label method-sub" x="68" y="619">official-sim</text>
+  <text class="label method-sub mono" x="68" y="640">mean JCT</text>
+
+  <g>
+    <rect class="falsified" x="250" y="268" width="290" height="112" rx="8" />
+    <rect class="badge-f" x="270" y="287" width="98" height="25" rx="12.5" />
+    <text class="status" x="319" y="305" text-anchor="middle">FALSIFIED</text>
+    <text class="label delta" x="270" y="343">Delta +195.7</text>
+    <text class="label cell-note" x="270" y="357">
+      <tspan x="270" dy="0">Tetris* &gt; DeepRM</tspan>
+      <tspan x="270" dy="17">at k = 10.</tspan>
+    </text>
+  </g>
+
+  <g>
+    <rect class="falsified" x="556" y="268" width="290" height="112" rx="8" />
+    <rect class="badge-f" x="576" y="287" width="98" height="25" rx="12.5" />
+    <text class="status" x="625" y="305" text-anchor="middle">FALSIFIED</text>
+    <text class="label delta" x="576" y="343">Delta +91.8</text>
+    <text class="label cell-note" x="576" y="357">
+      <tspan x="576" dy="0">Tetris* &gt; DeepRM</tspan>
+      <tspan x="576" dy="17">at alpha = 1.5.</tspan>
+    </text>
+  </g>
+
+  <g>
+    <rect class="falsified" x="862" y="268" width="290" height="112" rx="8" />
+    <rect class="badge-f" x="882" y="287" width="98" height="25" rx="12.5" />
+    <text class="status" x="931" y="305" text-anchor="middle">FALSIFIED</text>
+    <text class="label delta" x="882" y="343">Delta +23.6</text>
+    <text class="label cell-note" x="882" y="357">
+      <tspan x="882" dy="0">Tetris* &gt; DeepRM</tspan>
+      <tspan x="882" dy="17">at epsilon = 0.05.</tspan>
+    </text>
+  </g>
+
+  <g>
+    <rect class="falsified" x="250" y="402" width="290" height="112" rx="8" />
+    <rect class="badge-f" x="270" y="421" width="98" height="25" rx="12.5" />
+    <text class="status" x="319" y="439" text-anchor="middle">FALSIFIED</text>
+    <text class="label delta" x="270" y="477">Delta +965.1</text>
+    <text class="label cell-note" x="270" y="491">
+      <tspan x="270" dy="0">Bundled threshold &gt; Rossi</tspan>
+      <tspan x="270" dy="17">at k = 10.</tspan>
+    </text>
+  </g>
+
+  <g>
+    <rect class="confirmed" x="556" y="402" width="290" height="112" rx="8" />
+    <rect class="badge-c" x="576" y="421" width="98" height="25" rx="12.5" />
+    <text class="status" x="625" y="439" text-anchor="middle">CONFIRMED</text>
+    <text class="label delta" x="576" y="477">Delta -106.0</text>
+    <text class="label cell-note" x="576" y="491">
+      <tspan x="576" dy="0">HPA &lt; Rossi</tspan>
+      <tspan x="576" dy="17">at alpha = 1.5.</tspan>
+    </text>
+  </g>
+
+  <g>
+    <rect class="confirmed" x="862" y="402" width="290" height="112" rx="8" />
+    <rect class="badge-c" x="882" y="421" width="98" height="25" rx="12.5" />
+    <text class="status" x="931" y="439" text-anchor="middle">CONFIRMED</text>
+    <text class="label delta" x="882" y="477">Delta -91.0</text>
+    <text class="label cell-note" x="882" y="491">
+      <tspan x="882" dy="0">HPA &lt; Rossi</tspan>
+      <tspan x="882" dy="17">at epsilon = 0.05.</tspan>
+    </text>
+  </g>
+
+  <g>
+    <rect class="falsified" x="250" y="536" width="290" height="112" rx="8" />
+    <rect class="badge-f" x="270" y="555" width="98" height="25" rx="12.5" />
+    <text class="status" x="319" y="573" text-anchor="middle">FALSIFIED</text>
+    <text class="label delta" x="270" y="611">Delta +716k</text>
+    <text class="label cell-note" x="270" y="625">
+      <tspan x="270" dy="0">dynamic_partition &gt; Decima</tspan>
+      <tspan x="270" dy="17">at lambda = 1.</tspan>
+    </text>
+  </g>
+
+  <g>
+    <rect class="falsified" x="556" y="536" width="290" height="112" rx="8" />
+    <rect class="badge-f" x="576" y="555" width="98" height="25" rx="12.5" />
+    <text class="status" x="625" y="573" text-anchor="middle">FALSIFIED</text>
+    <text class="label delta" x="576" y="611">Delta +8.0k</text>
+    <text class="label cell-note" x="576" y="625">
+      <tspan x="576" dy="0">dynamic_partition &gt; Decima</tspan>
+      <tspan x="576" dy="17">at w = 0.5.</tspan>
+    </text>
+  </g>
+
+  <g>
+    <rect class="falsified" x="862" y="536" width="290" height="112" rx="8" />
+    <rect class="badge-f" x="882" y="555" width="98" height="25" rx="12.5" />
+    <text class="status" x="931" y="573" text-anchor="middle">FALSIFIED</text>
+    <text class="label delta" x="882" y="611">Delta +2.0k</text>
+    <text class="label cell-note" x="882" y="625">
+      <tspan x="882" dy="0">dynamic_partition &gt; Decima</tspan>
+      <tspan x="882" dy="17">at epsilon = 0.05.</tspan>
+    </text>
+  </g>
+
+  <text class="legend" x="600" y="674" text-anchor="middle">
+    Confirmed = predicted degradation direction observed. Falsified = learned policy did not lose to the comparator at the preregistered anchor.
+  </text>
 </svg>

@@ -13,9 +13,11 @@ The central statistic is
 the learned policy has the lower metric. Negative `Delta` means the comparator
 has the lower metric. The method-specific metrics are mean slowdown for DeepRM,
 total autoscaling cost for Rossi/RLAD, and mean job completion time for Decima.
+The figure below summarizes the pre-registered anchor-level outcomes; confidence
+intervals, corrected tests, and diagnostics are indexed under `results/paper/`.
 
 <p align="center">
-  <img src="docs/assets/repository_evidence_map.svg" alt="Evidence map linking fixed protocols, three learned orchestration methods, perturbation families, and paper artifacts." width="900">
+  <img src="docs/assets/repository_evidence_map.svg" alt="Pre-registered prediction outcome matrix for DeepRM, Rossi/RLAD, and Decima across P1 observation lag, P2 workload tail, and P3 adversarial input." width="900">
 </p>
 
 ## Contents
