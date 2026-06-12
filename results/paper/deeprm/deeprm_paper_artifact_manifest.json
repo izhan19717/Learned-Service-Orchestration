@@ -14,7 +14,7 @@
     "author_source_gate": "results/evaluation/deeprm/author_source_clean_load_0.7.json",
     "clean_gate": "results/evaluation/deeprm/clean_load_0.7.json",
     "perturbation_sweeps": "results/evaluation/deeprm/perturbation_sweeps_v2_2.json",
-    "training_curve": "results/training/author_source_rescue"
+    "training_curve": "results/training/author_source_aligned"
   },
   "mlflow_run_id": "f15854a77280446a80c1f0daf67a3251",
   "status": "generated",

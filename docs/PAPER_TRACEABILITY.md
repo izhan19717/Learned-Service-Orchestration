@@ -42,7 +42,7 @@ inspect and reproduce the empirical evidence.
 | DeepRM magnitude sweeps | `results/paper/experiments/e1_magnitude_sweep/deeprm/figures/e1_deeprm_magnitude_sweep.pdf` |
 | Rossi magnitude sweeps | `results/paper/experiments/e1_magnitude_sweep/rossi/figures/e1_rossi_magnitude_sweep.pdf` |
 | Decima magnitude sweeps | `results/paper/experiments/e1_magnitude_sweep/decima/figures/e1_decima_magnitude_sweep_paper_panel.pdf` |
-| Decima lambda=0.25 reconciliation note | `results/paper/experiments/e1_magnitude_sweep/E1_RECONCILIATION_NOTE.md` |
+| Decima lambda=0.25 harness-alignment note | `results/paper/experiments/e1_magnitude_sweep/E1_RECONCILIATION_NOTE.md` |
 | Rossi autocorrelation/block-bootstrap sensitivity | `results/paper/experiments/experiment_a/experiment_a_results.md` |
 | DeepRM action-space ablation | `results/paper/experiments/experiment_c/experiment_c_results.md` |
 

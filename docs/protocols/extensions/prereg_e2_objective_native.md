@@ -12,8 +12,8 @@ Test D1's central claim on a controlled comparison. Encoding an SLO as one term 
 
 ## 2. Task and formulations (pre-committed)
 Task: Rossi horizontal/vertical autoscaling in the RLAD simulator. Same observation space, action space, network architecture, and per-step compute budget for both formulations.
-- **F-scalar (published baseline).** Reward = 0.90·(SLA compliance) + 0.09·(−resource cost) + 0.01·(−reconfiguration churn). Identical to the reproduced Rossi policy used in the main study (MLflow [ID]).
-- **F-constrained (objective-native).** Minimise expected resource cost subject to E[SLA-violation rate] ≤ τ, with NO churn term and NO SLA term in the objective. Primary solver: Lagrangian PPO (PPO-Lagrangian / RCPO), citing the constrained-MDP formulation (Altman 1999). Library and version recorded on commit ([e.g. omnisafe X.Y]).
+- **F-scalar (published baseline).** Reward = 0.90·(SLA compliance) + 0.09·(−resource cost) + 0.01·(−reconfiguration churn). Identical to the reproduced Rossi policy used in the main study; MLflow provenance is recorded in the generated result artifacts.
+- **F-constrained (objective-native).** Minimise expected resource cost subject to E[SLA-violation rate] ≤ τ, with NO churn term and NO SLA term in the objective. Primary solver: Lagrangian PPO (PPO-Lagrangian / RCPO), citing the constrained-MDP formulation (Altman 1999). Solver library and version are recorded with the generated result artifacts if the native-objective branch is executed.
 - **Constraint threshold τ (pre-committed):** set to the clean-cell SLA-violation rate achieved by F-scalar, so the two policies are matched on the operational invariant. The comparison is then "at equal SLA compliance, what does each formulation do to cost and churn, especially under perturbation."
 - **Fallback (pre-committed):** if Lagrangian PPO fails the training-stability gate (§4), switch to a fixed-penalty / barrier formulation (large fixed penalty on SLA violation, no weighted SLA term), also citing CMDP. If that also fails, report the null per §6.
 

@@ -16,7 +16,7 @@ from cisose_deeprm.tracking import start_tracked_run, write_json_with_run_id
 
 ROOT = Path(__file__).resolve().parents[1]
 EVAL_DIR = ROOT / "results" / "evaluation" / "deeprm"
-TRAIN_DIR = ROOT / "results" / "training" / "author_source_rescue"
+TRAIN_DIR = ROOT / "results" / "training" / "author_source_aligned"
 OUT_DIR = ROOT / "results" / "paper" / "deeprm"
 FIG_DIR = OUT_DIR / "figures"
 TABLE_DIR = OUT_DIR / "tables"

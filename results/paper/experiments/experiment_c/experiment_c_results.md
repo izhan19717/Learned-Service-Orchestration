@@ -13,7 +13,7 @@ MLflow run: `53b29a1151424b9cb2f856e7f05a6977`
 
 | M | checkpoint | iteration | action dim | MLflow training run |
 |---:|---|---:|---:|---|
-| 10 | `results/checkpoints/author_source_rescue/load_0.7/policy_final.pt` | 1000 | 11 | `2d7bb69faec64a8aaf0f82b03ea34aea` |
+| 10 | `results/checkpoints/author_source_aligned/load_0.7/policy_final.pt` | 1000 | 11 | `2d7bb69faec64a8aaf0f82b03ea34aea` |
 | 3 | `results/checkpoints/experiment_c_m3_author_source/load_0.7/policy_final.pt` | 1000 | 4 | `e0c6e22d99834598a730bdf0184109c2` |
 | 1 | `results/checkpoints/experiment_c_m1_author_source/load_0.7/policy_final.pt` | 1000 | 2 | `e708962c0ffc40baa4d810dc271828b6` |
 

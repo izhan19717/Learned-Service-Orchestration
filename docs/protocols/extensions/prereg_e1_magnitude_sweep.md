@@ -11,7 +11,10 @@ smoke tests only. Evaluation only; no retraining.
 Test whether the seven-of-nine falsification verdicts and the HPA-v2 lag attenuation are properties of the methods or artifacts of the single anchors used in the main study. Equivalently, demonstrate that the paper meets its own D3 requirement (magnitudes calibrated and swept, not chosen to produce a result).
 
 ## 2. What is fixed (no degrees of freedom after this point)
-- Policies: the exact trained checkpoints used in the main study (MLflow run IDs: DeepRM [ID], Decima [ID], Rossi [ID]). No retraining at any magnitude. The fragility claim concerns a fixed policy degrading under perturbation.
+- Policies: the exact trained checkpoints used in the main study. MLflow
+  provenance and checkpoint identifiers are recorded in the generated result
+  artifacts. No retraining at any magnitude. The fragility claim concerns a
+  fixed policy degrading under perturbation.
 - Comparators: each method's bundled comparator as shipped (SourceTetris and SJF for DeepRM; `dynamic_partition` for Decima; the RLAD threshold for Rossi), plus the HPA-v2 controller at the Table V configuration (50% target, 300 s scale-down) for the Rossi lag sweep.
 - Workloads, simulator versions, evaluation horizon, and the 30-seed / 30-window sets: identical to the main study.
 - Metric per method (unchanged): DeepRM mean slowdown; Decima mean JCT; Rossi total cost.
@@ -58,13 +61,9 @@ Any deviation from this plan is logged here with rationale and timestamp before 
   than crashing the sweep. Complete lower-magnitude cells remain analysed
   normally; noncompletion cells are excluded from Holm calculations because no
   finite paired delta exists.
-- 2026-06-04: Reconciliation found the first completed DeepRM E1 sweep was
-  not Table-IV-compatible: it used `policy_iter_1000.pt`, a pure source-style
-  packer labelled `SourceTetris`, and hash-derived stochastic-policy generator
-  seeds. The locked DeepRM main-study Table IV used `policy_final.pt`,
-  `TetrisScheduler(source_dot=True)` (`Tetris*`, alpha=0.5 plus source dot-product
-  packing), and CLI generator offsets `1000+i`, `2000+i`, `3000+i`. The old
-  DeepRM E1 artifacts are therefore superseded for paper use. The DeepRM E1
-  sweep is rerun with the locked checkpoint, locked `Tetris*` comparator, SJF as
-  the secondary comparator, and the same policy-generator offsets as
-  `cisose-deeprm evaluate-perturbations`.
+- 2026-06-04: The canonical DeepRM E1 sweep is aligned to the locked Table IV
+  harness: `policy_final.pt`, `TetrisScheduler(source_dot=True)` (`Tetris*`,
+  alpha=0.5 plus source dot-product packing), SJF as the secondary comparator,
+  and the same policy-generator offsets as `cisose-deeprm
+  evaluate-perturbations`. Only this Table-IV-compatible artifact set is used
+  for reported DeepRM E1 results.

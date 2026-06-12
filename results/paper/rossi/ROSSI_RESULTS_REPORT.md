@@ -36,12 +36,11 @@ Scientific status:
   canonical anchor cells are all at the Monte Carlo floor where applicable, but
   P1 is directionally falsified regardless of correction.
 
-Important caveat:
+Scope note:
 
-- An earlier frozen-controller P1 sweep exists and directionally confirmed P1.
-  It is superseded and should not be used as the canonical Rossi P1 result.
-  The frozen controller did not reproduce Rossi 2019's online behavior and is
-  retained only as a sensitivity artifact.
+- Rossi P1 conclusions use the online adaptive controller artifacts listed
+  below. Frozen-controller P1 artifacts are retained only as sensitivity
+  outputs and are not used for canonical Rossi P1 conclusions.
 
 ## Key Protocol Definitions
 
@@ -163,7 +162,7 @@ Interpretation:
   even improves relative to its clean online cost on these evaluation windows.
 - This is strong evidence against the P1-Rossi prediction.
 
-Superseded frozen P1:
+Frozen-controller P1 sensitivity:
 
 - Frozen P1 artifact: `results/paper/rossi/tables/rossi_p1_lag_sweep.md`
 - MLflow run: `9aad14b0a22b4fcc8d4f8b2f7e8d5784`
@@ -328,5 +327,5 @@ Non-canonical/sensitivity files:
 - `results/paper/rossi/tables/rossi_p1_lag_sweep.md`
 - `results/paper/rossi/figures/rossi_p1_observation_lag.pdf`
 
-These frozen P1 files must be clearly labeled as superseded sensitivity
-artifacts if included anywhere.
+These frozen-controller P1 files are sensitivity artifacts and are not used for
+canonical Rossi P1 conclusions.

@@ -47,7 +47,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--checkpoint",
         type=Path,
-        default=Path("results/checkpoints/author_source_rescue/load_0.7/policy_final.pt"),
+        default=Path("results/checkpoints/author_source_aligned/load_0.7/policy_final.pt"),
     )
     parser.add_argument("--load", type=float, default=PRIMARY_LOAD)
     parser.add_argument("--num-seeds", type=int, default=30)

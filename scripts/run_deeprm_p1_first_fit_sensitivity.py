@@ -31,7 +31,7 @@ from cisose_deeprm.workload import WorkloadTrace
 
 
 ROOT = Path(__file__).resolve().parents[1]
-CHECKPOINT = ROOT / "results" / "checkpoints" / "author_source_rescue" / "load_0.7" / "policy_final.pt"
+CHECKPOINT = ROOT / "results" / "checkpoints" / "author_source_aligned" / "load_0.7" / "policy_final.pt"
 LOCKED_SWEEP = ROOT / "results" / "evaluation" / "deeprm" / "perturbation_sweeps_v2_2.json"
 OUT_JSON = ROOT / "results" / "evaluation" / "deeprm" / "p1_lag_first_fit_sensitivity.json"
 PAPER_DIR = ROOT / "results" / "paper" / "deeprm"

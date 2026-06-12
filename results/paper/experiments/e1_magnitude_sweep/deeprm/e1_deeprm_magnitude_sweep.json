@@ -15194,7 +15194,7 @@
       1.1
     ],
     "censor_max_step_failures": true,
-    "checkpoint": "results/checkpoints/author_source_rescue/load_0.7/policy_final.pt",
+    "checkpoint": "results/checkpoints/author_source_aligned/load_0.7/policy_final.pt",
     "checkpoint_metadata": {
       "env_config": {
         "backlog_capacity": 60,
@@ -15229,7 +15229,7 @@
       "mlflow_run_id": "2d7bb69faec64a8aaf0f82b03ea34aea",
       "resume_iteration": 10,
       "resume_optimizer_state": "restored_from_checkpoint",
-      "resumed_from_checkpoint": "results/checkpoints/author_source_rescue/load_0.7/policy_iter_10.pt",
+      "resumed_from_checkpoint": "results/checkpoints/author_source_aligned/load_0.7/policy_iter_10.pt",
       "train_config": {
         "checkpoint_interval": 10,
         "drain": true,
@@ -15242,10 +15242,10 @@
         "master_seed": 20260514,
         "max_episode_steps": 800,
         "num_jobsets": 100,
-        "resume_from_checkpoint": "results/checkpoints/author_source_rescue/load_0.7/policy_iter_10.pt",
+        "resume_from_checkpoint": "results/checkpoints/author_source_aligned/load_0.7/policy_iter_10.pt",
         "rollout_workers": 8,
         "rollouts_per_jobset": 20,
-        "run_label": "author_source_rescue"
+        "run_label": "author_source_aligned"
       }
     },
     "comparators": [

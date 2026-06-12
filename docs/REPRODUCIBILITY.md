@@ -68,14 +68,14 @@ Training command:
 cisose-deeprm train --author-source --load 0.7 --iterations 1000 \
   --num-jobsets 100 --rollouts-per-jobset 20 --checkpoint-interval 50 \
   --eval-interval 10 --train-end all-done --max-episode-steps 2000 \
-  --rollout-workers 16 --run-label author_source_rescue
+  --rollout-workers 16 --run-label author_source_aligned
 ```
 
 Clean and perturbation evaluation:
 
 ```bash
-cisose-deeprm evaluate-clean --checkpoint results/checkpoints/author_source_rescue/policy_final.pt
-cisose-deeprm evaluate-perturbations --checkpoint results/checkpoints/author_source_rescue/policy_final.pt
+cisose-deeprm evaluate-clean --checkpoint results/checkpoints/author_source_aligned/load_0.7/policy_final.pt
+cisose-deeprm evaluate-perturbations --checkpoint results/checkpoints/author_source_aligned/load_0.7/policy_final.pt
 python scripts/run_deeprm_p1_first_fit_sensitivity.py
 ```
 

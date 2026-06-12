@@ -54,7 +54,8 @@ Directory: [results/paper/experiments](../results/paper/experiments)
 - [HPA-v2 config sensitivity](../results/paper/experiments/hpa_v2_config_sensitivity/hpa_v2_config_sensitivity_results.md)
 - [Decima SRTF/Graphene-style comparator sensitivity](../results/paper/experiments/decima_srtf_comparator/decima_srtf_comparator_results.md)
 - [E1/E2 extension report](../results/paper/experiments/e1_magnitude_sweep/E1_E2_EXTENSION_REPORT.md)
-- [E1 reconciliation note](../results/paper/experiments/e1_magnitude_sweep/E1_RECONCILIATION_NOTE.md)
+- [E1/E2 artifact index](../results/paper/experiments/e1_magnitude_sweep/E1_E2_ARTIFACT_INDEX.md)
+- [E1 harness alignment note](../results/paper/experiments/e1_magnitude_sweep/E1_RECONCILIATION_NOTE.md)
 - [E2 companion analysis](../results/paper/experiments/e2_objective_native/e2_companion_a_results.md)
 
 ## Paper Traceability

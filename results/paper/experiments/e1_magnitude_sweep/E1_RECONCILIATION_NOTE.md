@@ -1,25 +1,29 @@
-# E1 Reconciliation Note
+# E1 Harness Alignment Note
 
 Date: 2026-06-04
 
 Delta convention: `metric(comparator) - metric(RL)`. Positive delta means the learned/RL method has the lower metric.
 
-## 1. DeepRM E1/Table IV Reconciliation
+## 1. DeepRM E1/Table IV Alignment
 
-The first DeepRM E1 sweep used a different operational harness from the locked
-DeepRM Table IV pipeline. The corrected E1 run resolves that mismatch.
+The canonical DeepRM E1 sweep is aligned to the locked DeepRM Table IV
+pipeline. This note records the harness invariants used for the reported E1
+artifacts.
 
-Root causes:
+Required alignment points:
 
-- Checkpoint mismatch: first E1 used `results/checkpoints/author_source_rescue/load_0.7/policy_iter_1000.pt`; Table IV used `results/checkpoints/author_source_rescue/load_0.7/policy_final.pt` with SHA256 `1d439eb4f5b47a7b1242a9824cd3db60f1f685ca0e53d57907bbf35d860e5f7e`.
-- Comparator mismatch: first E1 used `SourceTetris`, a pure source-style dot-product packer; Table IV used `Tetris*` (`TetrisScheduler(source_dot=True)`, alpha=0.5 plus source dot-product packing).
-- Policy/statistic seed mismatch: first E1 used hash-derived policy-generator seeds and `seed+1000/2000/3000` statistic seeds; Table IV used CLI offsets `1000+i`, `2000+i`, `3000+i` for policy sampling and `seed+10000/20000/30000` for statistics.
+- Checkpoint: `results/checkpoints/author_source_aligned/load_0.7/policy_final.pt` with SHA256 `1d439eb4f5b47a7b1242a9824cd3db60f1f685ca0e53d57907bbf35d860e5f7e`.
+- Primary comparator: `Tetris*` (`TetrisScheduler(source_dot=True)`, alpha=0.5 plus source dot-product packing).
+- Secondary comparator: SJF.
+- Policy-generator offsets: `1000+i`, `2000+i`, `3000+i`, matching `cisose-deeprm evaluate-perturbations`.
+- Statistic seeds: `seed+10000/20000/30000`, matching the locked Table IV evaluation.
 
-Correction:
+Implementation:
 
-- Updated `scripts/run_e1_deeprm_magnitude_sweep.py` to use `policy_final.pt`, `Tetris*` as the primary comparator, SJF as the secondary comparator, CLI policy-generator offsets, sanitized MLflow metric names, and locked Table IV statistic seeds.
-- Preserved the superseded result directory under `results/paper/experiments/e1_magnitude_sweep/deeprm_20260604_superseded_iter1000_sourcepacker`.
-- Reran DeepRM E1 in the canonical execution environment and finalized artifacts through MLflow run `2d4588396f474862bbf61bfebbf16ba4`.
+- `scripts/run_e1_deeprm_magnitude_sweep.py` implements the aligned checkpoint,
+  comparator, policy-generator, MLflow naming, and statistic-seed settings.
+- The canonical DeepRM E1 artifact set was finalized through MLflow run
+  `2d4588396f474862bbf61bfebbf16ba4`.
 
 Acceptance check against locked Table IV:
 
@@ -31,7 +35,8 @@ Acceptance check against locked Table IV:
 
 Conclusion:
 
-The DeepRM E1 mismatch is resolved. The corrected E1 table can be tabulated without conflicting with Table IV. The earlier SourceTetris/policy-iteration run is superseded and is not a paper-facing DeepRM E1 result.
+The DeepRM E1 artifact set is Table-IV-compatible. The E1 table can be
+tabulated without conflicting with the locked main-study DeepRM anchor rows.
 
 ## 2. Decima Lambda 0.25 Check
 
@@ -58,11 +63,15 @@ The deterministic exponential draw includes `mean` in its hash key. Therefore ea
 
 Conclusion:
 
-Keep the Decima lambda=0.25 result, but describe it carefully: it is a real per-cell paired reversal under the implemented deterministic lag sampler, not evidence for a smooth monotone physical response. The paper should not overclaim Decima P1 monotonicity; the Decima case remains supported by non-reproduction, anchor-level robustness, and P3/P2 characterization rather than a simple monotone lag curve.
+The Decima lambda=0.25 result is retained as a real per-cell paired reversal
+under the implemented deterministic lag sampler. It is not evidence for a
+smooth monotone physical response. The Decima interpretation therefore rests on
+the official-simulator reproduction result, anchor-level robustness, and P2/P3
+characterisation rather than on a monotone P1 lag curve.
 
 ## Updated Artifacts
 
 - Corrected DeepRM E1 table: `results/paper/experiments/e1_magnitude_sweep/deeprm/tables/e1_deeprm_magnitude_sweep.csv`
 - Corrected DeepRM E1 figure: `results/paper/experiments/e1_magnitude_sweep/deeprm/figures/e1_deeprm_magnitude_sweep.pdf`
 - Decima P1 per-seed reconciliation table: `results/paper/experiments/e1_magnitude_sweep/decima/tables/decima_e1_p1_lag_per_seed_reconciliation.csv`
-- Updated extension report: `results/paper/experiments/e1_magnitude_sweep/E1_E2_EXTENSION_REPORT.md`
+- Extension report: `results/paper/experiments/e1_magnitude_sweep/E1_E2_EXTENSION_REPORT.md`

@@ -46,7 +46,7 @@ MAX_STEPS = 100_000
 EPSILON = 0.05
 
 CHECKPOINTS = {
-    10: ROOT / "results" / "checkpoints" / "author_source_rescue" / "load_0.7" / "policy_final.pt",
+    10: ROOT / "results" / "checkpoints" / "author_source_aligned" / "load_0.7" / "policy_final.pt",
     3: ROOT / "results" / "checkpoints" / "experiment_c_m3_author_source" / "load_0.7" / "policy_final.pt",
     1: ROOT / "results" / "checkpoints" / "experiment_c_m1_author_source" / "load_0.7" / "policy_final.pt",
 }
@@ -550,7 +550,7 @@ def write_figures(payload: dict[str, object]) -> list[Path]:
 
 def write_training_curve_figure() -> list[Path]:
     curves = {
-        "M=10": ROOT / "results" / "training" / "author_source_rescue" / "load_0.7_curve.jsonl",
+        "M=10": ROOT / "results" / "training" / "author_source_aligned" / "load_0.7_curve.jsonl",
         "M=3": ROOT / "results" / "training" / "experiment_c_m3_author_source" / "load_0.7_curve.jsonl",
         "M=1": ROOT / "results" / "training" / "experiment_c_m1_author_source" / "load_0.7_curve.jsonl",
     }

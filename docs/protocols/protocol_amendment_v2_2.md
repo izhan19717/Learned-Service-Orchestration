@@ -33,25 +33,26 @@ Only the reporting structure changes: DeepRM is now one method in a
 three-method, nine-prediction family. DeepRM perturbation evaluations have not
 started at the time of this amendment, so no evaluation result is invalidated.
 
-## DeepRM Gate Failure And Author-Source Rescue Addendum
+## DeepRM Gate Result And Author-Source Alignment Addendum
 
 Date: 2026-05-18
 
 Status: active after DeepRM clean-gate evaluation, before any DeepRM
 perturbation result.
 
-The v2.2 DeepRM clean checkpoint completed 1000 iterations but failed the clean
-reproduction gate. Therefore it is **not** a valid checkpoint for P1, P2, or P3.
+The v2.2 DeepRM clean checkpoint completed 1000 iterations but did not pass the
+clean reproduction gate. Therefore it is **not** a valid checkpoint for P1, P2,
+or P3.
 The gate result is summarized in
 `results/evaluation/deeprm/reproduction_gate_v2_2_summary.json`.
 
 The non-passing run is preserved as a separate reproduction-gate record.
-Any further DeepRM rescue attempt must be explicitly labeled
+The replacement DeepRM training run must be explicitly labeled
 `author-source reproduction` and must use the public DeepRM repository as the
 operational ground truth for implementation details that conflict with the
 paper prose.
 
-Author-source rescue requirements:
+Author-source alignment requirements:
 
 - public source: `https://github.com/hongzimao/deeprm`
 - inspected commit: `fa7841122d4c2993fa0a7ce1667ea1f171865d9d`
@@ -94,20 +95,20 @@ Low-cost implementation checks completed before any new long run:
 - Regression tests covering the source/paper mismatch passed:
   `47 passed`.
 
-The next long DeepRM run must be the source-aligned `lambda = 0.7` rescue only;
+The next long DeepRM run must be the source-aligned `lambda = 0.7` run only;
 the remaining load-sweep policies wait until `lambda = 0.7` passes the
 source-style reproduction gate.
 
-### Author-Source Rescue Completion
+### Author-Source Alignment Completion
 
 Date: 2026-05-20
 
-The source-aligned `lambda = 0.7` rescue completed and passed both required
+The source-aligned `lambda = 0.7` run completed and passed both required
 DeepRM clean gates.
 
 - Training/resume MLflow run: `2d7bb69faec64a8aaf0f82b03ea34aea`
 - Final checkpoint:
-  `results/checkpoints/author_source_rescue/load_0.7/policy_final.pt`
+  `results/checkpoints/author_source_aligned/load_0.7/policy_final.pt`
 - Final checkpoint SHA256:
   `1d439eb4f5b47a7b1242a9824cd3db60f1f685ca0e53d57907bbf35d860e5f7e`
 - Author-source reproduction gate MLflow run:

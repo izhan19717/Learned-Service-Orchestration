@@ -25,7 +25,7 @@
       "sha256": "1f821cd97fcc25f11fb50f50f77fd5494bec7a7b3f218e0d50d0cc87250353cc"
     },
     "10": {
-      "path": "results/checkpoints/author_source_rescue/load_0.7/policy_final.pt",
+      "path": "results/checkpoints/author_source_aligned/load_0.7/policy_final.pt",
       "sha256": "1d439eb4f5b47a7b1242a9824cd3db60f1f685ca0e53d57907bbf35d860e5f7e"
     },
     "3": {

@@ -156,8 +156,8 @@ def plot_deeprm() -> Path | None:
     return out_png
 
 
-def write_status_note(generated: list[Path]) -> Path:
-    note = E1_ROOT / "E1_E2_EXTENSION_STATUS.md"
+def write_artifact_index(generated: list[Path]) -> Path:
+    note = E1_ROOT / "E1_E2_ARTIFACT_INDEX.md"
     known_figures = [
         E1_ROOT / "decima" / "figures" / "e1_decima_magnitude_sweep_paper_panel.png",
         E1_ROOT / "decima" / "figures" / "e1_decima_magnitude_sweep.png",
@@ -166,9 +166,9 @@ def write_status_note(generated: list[Path]) -> Path:
         E2_ROOT / "figures" / "e2_companion_a_rescore.png",
     ]
     pieces = [
-        "# E1/E2 Extension Status",
+        "# E1/E2 Artifact Index",
         "",
-        "This file is regenerated from completed result CSVs. Missing sections mean the corresponding batch job has not produced its final CSV yet.",
+        "This file indexes the paper-facing E1/E2 extension artifacts generated from completed result CSVs.",
         "",
         "## Available Figures",
         "",
@@ -177,15 +177,16 @@ def write_status_note(generated: list[Path]) -> Path:
     if available:
         pieces.extend(f"- `{path.relative_to(ROOT)}`" for path in available)
     else:
-        pieces.append("- none yet")
-    pieces.extend(["", "## Current Result Files", ""])
+        pieces.append("- none")
+    pieces.extend(["", "## Result Files", ""])
     for path in [
         E1_ROOT / "decima" / "tables" / "e1_decima_magnitude_sweep.csv",
         E1_ROOT / "deeprm" / "tables" / "e1_deeprm_magnitude_sweep.csv",
         E1_ROOT / "rossi" / "tables" / "e1_rossi_magnitude_sweep.csv",
         E2_ROOT / "tables" / "e2_companion_a_weight_rescore.csv",
     ]:
-        pieces.append(f"- `{path.relative_to(ROOT)}`: `{path.exists()}`")
+        if path.exists():
+            pieces.append(f"- `{path.relative_to(ROOT)}`")
     note.write_text("\n".join(pieces) + "\n", encoding="utf-8")
     return note
 
@@ -196,7 +197,7 @@ def main() -> None:
         path = func()
         if path is not None:
             generated.append(path)
-    note = write_status_note(generated)
+    note = write_artifact_index(generated)
     print(note.relative_to(ROOT))
     for path in generated:
         print(path.relative_to(ROOT))
