@@ -4,9 +4,19 @@
 
 ## 0. Purpose
 
-A peer reviewer correctly noted that the action-redundancy hypothesis (advanced in §VII.D and §VII.G of the main paper as a candidate explanation for why FGSM attacks on DeepRM land at the action distribution level but not at the aggregate slowdown level) is stated without direct test. The hypothesis is: the action neighbourhood near a given state contains many near-equivalent scheduling decisions, so an attack that flips the policy's argmax often selects an alternative that is not catastrophically worse.
+The action-redundancy hypothesis is a candidate explanation for why FGSM
+attacks on DeepRM affect the action distribution but do not substantially change
+aggregate slowdown. The hypothesis is: the action neighbourhood near a given
+state contains many near-equivalent scheduling decisions, so an attack that
+flips the policy's argmax often selects an alternative that is not
+catastrophically worse.
 
-The reviewer's recommended test is a constraint experiment: restrict the action space to remove near-equivalent choices. If action redundancy is the operative defence, removing redundant alternatives should cause the FGSM attack to successfully degrade the aggregate slowdown metric. If the attack still has small aggregate effect after restriction, the action-redundancy hypothesis is falsified and the mechanism is elsewhere.
+This experiment tests that mechanism directly by restricting the action space to
+remove near-equivalent choices. If action redundancy is the operative defence,
+removing redundant alternatives should cause the FGSM attack to degrade the
+aggregate slowdown metric. If the attack still has small aggregate effect after
+restriction, the action-redundancy hypothesis is not supported and the mechanism
+is elsewhere.
 
 ## 1. Mechanism of the ablation
 

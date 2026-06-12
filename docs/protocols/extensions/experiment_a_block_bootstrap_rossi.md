@@ -4,7 +4,13 @@
 
 ## 0. Purpose
 
-A peer reviewer correctly noted that the Rossi paired statistics are computed over 30 non-overlapping windows drawn from a single continuous workload trajectory, and that the iid bootstrap and paired sign-flip tests used in the main paper implicitly assume independence across windows. If the per-window paired difference series `Δᵢ = cost_comparator(i) − cost_Rossi(i)` exhibits temporal autocorrelation, the iid procedures will understate variance and overstate significance. This experiment supplies the principled robustness check.
+The Rossi paired statistics are computed over 30 non-overlapping windows drawn
+from a single continuous workload trajectory. The iid bootstrap and paired
+sign-flip tests used in the main analysis assume that these window-level paired
+differences are approximately independent. If the per-window paired difference
+series `Δᵢ = cost_comparator(i) − cost_Rossi(i)` exhibits temporal
+autocorrelation, iid procedures can understate variance and overstate
+significance. This experiment supplies a dependence-robust sensitivity check.
 
 The experiment has two parts. Part A1 is a diagnostic: report the autocorrelation function of `Δᵢ` for each Rossi cell so that the reader can judge the magnitude of any dependence. Part A2 is the corrective analysis: rerun the paired CIs and p-values using a moving-block bootstrap and a block sign-flip test at two block lengths, and compare to the iid results reported in the main paper.
 

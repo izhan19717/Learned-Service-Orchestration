@@ -4,7 +4,13 @@
 
 ## 0. Purpose
 
-A peer reviewer correctly noted that the threshold controller bundled with the RLAD simulator (used as the Rossi paper's heuristic comparator) lacks the stabilisation features that production threshold controllers implement. Its bang-bang oscillation under observation lag (the mechanism behind our Rossi P1 finding) is partly a property of the bundled implementation, not of heuristic control in general. The reviewer's correct concern is that our P1 finding generalises only to simulator-grade comparators, not to production-grade alternatives.
+The threshold controller bundled with the RLAD simulator, which is the heuristic
+comparator used in the Rossi paper, lacks the stabilisation features implemented
+by production threshold autoscalers. Its bang-bang oscillation under observation
+lag is partly a property of the bundled implementation rather than a property of
+heuristic control in general. This experiment tests whether the Rossi P1 result
+generalises from the simulator-bundled threshold controller to a
+production-grade HPA-equivalent controller.
 
 This experiment replaces the bundled threshold with a Kubernetes-HPA-equivalent controller implementing the autoscaling/v2 algorithm with default stabilisation features, and reruns Rossi P1, P2, P3, and clean cells with the new comparator.
 
@@ -173,7 +179,9 @@ The paper's revision is determined by which of H_P1a or H_P1b prevails on the P1
 
 **Case 1 — H_P1a prevails** (HPA does not collapse under lag; the bundled-threshold mechanism does not generalise).
 
-This *strengthens the peer reviewer's concern* and weakens our cross-method P1 narrative. The paper's revision:
+This outcome weakens the cross-method P1 narrative by showing that the
+bundled-threshold mechanism does not generalise to the HPA-v2 comparator. The
+paper's revision:
 
 - §VII.E P1 paragraph: revise to acknowledge that the lag-fragility verdict holds only against the bundled simulator-grade threshold, not against stabilisation-windowed controllers.
 - §VII.E baseline caveat: convert from forward-looking ("a stabilisation-windowed comparator may dominate the Rossi controller by a different margin") to backward-looking with the actual HPA-v2 result.
@@ -182,7 +190,8 @@ This *strengthens the peer reviewer's concern* and weakens our cross-method P1 n
 
 **Case 2 — H_P1b prevails** (HPA still produces high cost under lag, via over-provisioning or another mechanism).
 
-This *vindicates the cross-method P1 narrative* against the peer review's strongest critique. The paper's revision:
+This outcome strengthens the cross-method P1 narrative by showing that the
+lag-fragility result survives the HPA-v2 comparator. The paper's revision:
 
 - §VII.E P1 paragraph: add a sentence reporting the HPA-v2 result alongside the bundled-threshold result, with the diagnostic figure showing the over-provisioning (or whatever mechanism is observed).
 - §VII.E baseline caveat: convert from forward-looking to backward-looking with the empirical confirmation that the lag-fragility verdict survives the stabilisation-windowed strengthening.
