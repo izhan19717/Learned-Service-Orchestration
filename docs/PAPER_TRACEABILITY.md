@@ -41,7 +41,7 @@ inspect and reproduce the empirical evidence.
 | Decima SRTF/Graphene-style comparator sensitivity | `results/paper/experiments/decima_srtf_comparator/decima_srtf_comparator_results.md` |
 | DeepRM magnitude sweeps | `results/paper/experiments/e1_magnitude_sweep/deeprm/figures/e1_deeprm_magnitude_sweep.pdf` |
 | Rossi magnitude sweeps | `results/paper/experiments/e1_magnitude_sweep/rossi/figures/e1_rossi_magnitude_sweep.pdf` |
-| Decima magnitude sweeps | `results/paper/experiments/e1_magnitude_sweep/decima/figures/e1_decima_magnitude_sweep_paper_panel.pdf` |
+| Decima magnitude sweeps | `results/paper/experiments/e1_magnitude_sweep/decima/figures/e1_decima_magnitude_sweep_inset.pdf` |
 | Decima lambda=0.25 harness-alignment note | `results/paper/experiments/e1_magnitude_sweep/E1_RECONCILIATION_NOTE.md` |
 | Rossi autocorrelation/block-bootstrap sensitivity | `results/paper/experiments/experiment_a/experiment_a_results.md` |
 | DeepRM action-space ablation | `results/paper/experiments/experiment_c/experiment_c_results.md` |

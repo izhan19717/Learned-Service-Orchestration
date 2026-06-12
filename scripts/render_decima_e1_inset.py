@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Render the manuscript-facing Decima E1 magnitude-sweep panel."""
+"""Render the manuscript-facing Decima E1 magnitude-sweep inset panel."""
 
 from __future__ import annotations
 
@@ -31,7 +31,7 @@ FIG_DIR = (
     / "decima"
     / "figures"
 )
-STEM = "e1_decima_magnitude_sweep_paper_panel"
+STEM = "e1_decima_magnitude_sweep_inset"
 
 
 def read_rows() -> list[dict[str, str]]:

@@ -69,5 +69,5 @@ The following figures have vector PDF/SVG versions:
 
 - [DeepRM P1 stale-action sensitivity](../results/paper/deeprm/figures/deeprm_p1_first_fit_sensitivity.pdf)
 - [Decima paired seed delta distributions](../results/paper/decima/figures/decima_paired_delta_distributions.pdf)
-- [Decima E1 magnitude sweep panel](../results/paper/experiments/e1_magnitude_sweep/decima/figures/e1_decima_magnitude_sweep_paper_panel.pdf)
+- [Decima E1 magnitude sweep inset](../results/paper/experiments/e1_magnitude_sweep/decima/figures/e1_decima_magnitude_sweep_inset.pdf)
 - [Experiment B threshold vs HPA-v2 under lag](../results/paper/experiments/experiment_b/figures/threshold_vs_hpa_v2_under_lag.pdf)

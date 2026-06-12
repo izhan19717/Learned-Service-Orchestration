@@ -5,7 +5,7 @@ completed result CSVs.
 
 ## Figures
 
-- `results/paper/experiments/e1_magnitude_sweep/decima/figures/e1_decima_magnitude_sweep_paper_panel.png`
+- `results/paper/experiments/e1_magnitude_sweep/decima/figures/e1_decima_magnitude_sweep_inset.pdf`
 - `results/paper/experiments/e1_magnitude_sweep/decima/figures/e1_decima_magnitude_sweep.png`
 - `results/paper/experiments/e1_magnitude_sweep/deeprm/figures/e1_deeprm_magnitude_sweep.png`
 - `results/paper/experiments/e1_magnitude_sweep/rossi/figures/e1_rossi_magnitude_sweep.png`
