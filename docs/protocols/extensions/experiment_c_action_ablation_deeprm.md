@@ -26,8 +26,8 @@ We ablate by reducing `M`. At smaller `M`, fewer jobs are visible at any one dec
 
 Three conditions:
 
-| Condition | M | |A| | Interpretation |
-|-----------|---|----|-----|
+| Condition | M | Action count | Interpretation |
+|-----------|---|---:|---|
 | Full (baseline) | 10 | 11 | Source-aligned protocol, already trained and used in main paper. |
 | Reduced | 3 | 4 | Three visible jobs plus wait; substantial reduction in near-equivalent alternatives. |
 | Minimal | 1 | 2 | One visible job plus wait; binary choice; essentially eliminates action-level redundancy. |
@@ -51,9 +51,9 @@ For each `M ∈ {10, 3, 1}` and each of {clean, P3}:
 | Mean slowdown DeepRM_M | Per-seed mean slowdown; report mean over 30 seeds. |
 | Mean slowdown SourceTetris_M | Per-seed mean slowdown of SourceTetris evaluated on the same restricted queue. |
 | Argmax change rate (P3 only) | Fraction of decision steps where the policy's argmax under perturbation differs from clean. |
-| Mean clean-argmax probability drop (P3 only) | Average over decision steps of `π_clean(argmax_clean | s) − π_FGSM(argmax_clean | s)`. |
-| Total-variation distance (P3 only) | Mean over decision steps of `½ Σ_a |π_clean(a|s) − π_FGSM(a|s)|`. |
-| Action-distribution entropy (clean) | Mean over decision steps of `−Σ_a π_clean(a|s) log π_clean(a|s)`; expected to decrease with `M` (the policy concentrates more on a single action when fewer alternatives exist). |
+| Mean clean-argmax probability drop (P3 only) | Average over decision steps of `pi_clean(a_clean given s) - pi_FGSM(a_clean given s)`. |
+| Total-variation distance (P3 only) | Mean over decision steps of one half times the L1 distance between the clean and FGSM action distributions. |
+| Action-distribution entropy (clean) | Mean over decision steps of the categorical entropy of the clean action distribution; expected to decrease with `M` because the policy concentrates more on a single action when fewer alternatives exist. |
 
 Compute also the **competency gate** for each condition: the trained policy `DeepRM_M` must beat `SourceTetris_M` on the clean cell on at least 20 of 30 paired seeds (one-sided binomial test, p < 0.05 against null of equal win rate). If the M=1 condition fails this gate, the result is reported as "M=1 is not learnable under the source-aligned protocol" and the analysis proceeds with `M ∈ {10, 3}`.
 
@@ -108,13 +108,25 @@ Render two figures.
 
 `figures/deeprm_ablation_action_diagnostics.pdf`. A 3-panel figure with one panel per `M`: panel 1 plots argmax change rate; panel 2 plots TV distance; panel 3 plots clean-argmax probability drop. All three are expected to be roughly constant across `M` under H_C1 (the attack lands at the same action-level intensity regardless of action-set size; the difference is in whether the action-level effect translates to aggregate degradation).
 
-## 7. Output table
+## 7. Recorded statistics
 
-| M | clean slowdown DeepRM_M | clean slowdown SourceTetris_M | P3 slowdown DeepRM_M | P3 slowdown SourceTetris_M | deg_M (95% CI) | argmax change rate | TV distance | Δ_M(clean) | Δ_M(P3) |
-|---|------------------------|-------------------------------|-----------------------|----------------------------|-----------------|---------------------|--------------|-------------|----------|
-| 10 | 35.55 (existing P3 ε=0; strict gate 36.5 for competency) | 59.80 (existing P3 ε=0; strict gate 61.0 for competency) | 36.24 (existing) | 59.80 (existing) | +0.68 (existing) | 0.698 (existing) | 0.355 (existing) | +24.25 (existing) | +23.57 (existing) |
-| 3 | … | … | … | … | … | … | … | … | … |
-| 1 | … | … | … | … | … | … | … | … | … |
+For each `M ∈ {10, 3, 1}`, the analysis records:
+
+- clean slowdown for `DeepRM_M`;
+- clean slowdown for `SourceTetris_M`;
+- P3 slowdown for `DeepRM_M`;
+- P3 slowdown for `SourceTetris_M`;
+- `deg_M` with 95% paired-bootstrap CI;
+- argmax change rate under FGSM;
+- total-variation distance under FGSM;
+- `Δ_M(clean) = slowdown(SourceTetris_M, clean) - slowdown(DeepRM_M, clean)`;
+- `Δ_M(P3) = slowdown(SourceTetris_M, P3) - slowdown(DeepRM_M, P3)`.
+
+The source-aligned `M=10` reference values are retained as the regression
+anchor for the Experiment C evaluator: clean DeepRM `35.55`, clean SourceTetris
+`59.80`, P3 DeepRM `36.24`, P3 SourceTetris `59.80`, `deg_10 = +0.68`,
+argmax-change rate `0.698`, total-variation distance `0.355`,
+`Δ_10(clean) = +24.25`, and `Δ_10(P3) = +23.57`.
 
 ## 8. Interpretation rules (pre-registered)
 

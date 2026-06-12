@@ -164,14 +164,18 @@ For both the clean cell and the P1 cell, render a representative-window failure 
 
 Additionally, for the P1 cell, render a side-by-side comparison of the *bundled threshold* and the *HPA-v2 controller* in the same representative window under k=10 lag, saved as `figures/threshold_vs_hpa_v2_under_lag.pdf`. This directly visualises the mechanism difference.
 
-## 7. Output table (companion to Table IV)
+## 7. Recorded statistics
 
-| Cell | Comparator | Δ | iid 95% CI | block 95% CI (L=10) | iid p<sub>u</sub> | p<sub>H</sub> (family of 4) | Outcome |
-|------|-----------|---|------------|----------------------|--------------------|---------------------------|---------|
-| Clean | HPA-v2 | … | … | … | … | … | … |
-| P1 lag k=10 | HPA-v2 | … | … | … | … | … | … |
-| P2 tail α=1.5 | HPA-v2 | … | … | … | … | … | … |
-| P3 bucket-flip ε=0.05 | HPA-v2 | … | … | … | … | … | … |
+The HPA-v2 comparison records one row for each cell: clean, P1 lag `k=10`,
+P2 tail `α=1.5`, and P3 bucket-flip `ε=0.05`. The recorded fields are:
+
+- comparator label `HPA-v2`;
+- paired delta `Δ = cost_hpa_v2 - cost_rossi_online`;
+- iid 95% paired-bootstrap CI;
+- moving-block-bootstrap 95% CI at `L=10`;
+- iid paired sign-flip p-value;
+- Holm-adjusted p-value across the four HPA-v2 cells;
+- outcome under the hypotheses in §5.
 
 ## 8. Interpretation rules (pre-registered)
 

@@ -70,16 +70,18 @@ main paper's existing directional p-value convention.
 
 Apply Holm-Bonferroni across the family of all nine main-paper predictions, replacing the unadjusted p-values for the three Rossi perturbed cells (P1, P2, P3) with their block sign-flip p-values at each block length. The official Experiment A Holm correction uses the two-sided p-values. Report, as a compatibility sensitivity, the Holm-adjusted values that would result from the one-sided observed-direction p-values. The non-Rossi cells keep their original main-paper p-values, with the convention used for each column stated explicitly.
 
-## 4. Output (Part A2)
+## 4. Recorded statistics (Part A2)
 
-The block-bootstrap results table uses the following schema.
+The Part A2 table records one row for each Rossi cell: clean, P1 lag `k=10`,
+P2 tail `α=1.5`, and P3 bucket-flip `ε=0.05`. The recorded fields are:
 
-| Cell | Δ (anchor) | iid 95% CI | block-MBB 95% CI, L=5 | block-MBB 95% CI, L=10 | iid p<sub>u</sub> | block p<sub>u,2s</sub>, L=5 | block p<sub>u,2s</sub>, L=10 | block p<sub>H,2s</sub>, L=5 | block p<sub>H,2s</sub>, L=10 | block p<sub>u,1s compat</sub>, L=5 | block p<sub>u,1s compat</sub>, L=10 |
-|------|-----------|-----------|-----------------------|------------------------|--------------------|---------------------------|----------------------------|---------------------------|----------------------------|-------------------------------|--------------------------------|
-| Clean | −85.8 | (current) | … | … | … | … | … | n/a | n/a | … | … |
-| P1 lag k=10 | +965.1 | (current) | … | … | … | … | … | … | … | … | … |
-| P2 tail α=1.5 | −106.0 | (current) | … | … | … | … | … | … | … | … | … |
-| P3 bucket-flip ε=0.05 | −91.0 | (current) | … | … | … | … | … | … | … | … | … |
+- anchor paired delta `Δ`;
+- iid 95% paired-bootstrap CI;
+- moving-block-bootstrap 95% CI at `L=5` and `L=10`;
+- iid sign-flip p-value;
+- block sign-flip two-sided p-value at `L=5` and `L=10`;
+- Holm-adjusted two-sided p-value at `L=5` and `L=10` for perturbed cells;
+- one-sided observed-direction compatibility p-value at `L=5` and `L=10`.
 
 Save the raw arrays of bootstrap replicates and sign-flip permutations to `data/experiment_a_replicates_L5.npz` and `data/experiment_a_replicates_L10.npz` so the analysis is independently reproducible.
 
