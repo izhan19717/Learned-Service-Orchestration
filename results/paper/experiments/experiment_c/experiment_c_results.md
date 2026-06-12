@@ -49,9 +49,9 @@ Key comparisons:
 - deg_3 - 2*deg_10 = -1.835 [-4.195, +0.574].
 - deg_1 - 4*deg_10 = -22.106 [-28.358, -16.357].
 
-## Paper Text Branch
+## Interpretation
 
-The M=1 condition should be treated as a failed competency branch, not as evidence about FGSM robustness. The paper should use M=10 and M=3 for the interpretable mechanism test and state that the moderate action-space reduction did not increase aggregate FGSM degradation. Therefore, Experiment C does not confirm action redundancy as the operative defence for DeepRM; the binary visible-action condition instead shows that the locked source-aligned training budget no longer produces a competent clean scheduler when the action set is reduced to one visible job plus wait.
+The M=1 condition is treated as a non-competent branch, not as evidence about FGSM robustness. The interpretable mechanism test is therefore M=10 versus M=3. Under that comparison, the moderate action-space reduction does not increase aggregate FGSM degradation. Experiment C does not confirm action redundancy as the operative defence for DeepRM; the binary visible-action condition shows that the locked source-aligned training budget no longer produces a competent clean scheduler when the action set is reduced to one visible job plus wait.
 
 ## Artifacts
 

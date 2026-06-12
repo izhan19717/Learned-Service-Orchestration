@@ -118,42 +118,33 @@ Render two figures.
 
 ## 8. Interpretation rules (pre-registered)
 
-The paper's revision is determined by which of H_C1, H_C2, H_C3 prevails.
+The mechanism interpretation is determined by which of H_C1, H_C2, H_C3
+prevails.
 
 **Case 1 — H_C1 prevails** (action redundancy confirmed).
 
-- §VII.D P3 paragraph: convert "a candidate explanation, which we do not directly test here, is that the action neighbourhood near any given state contains many near-equivalent scheduling decisions" to a direct claim supported by the ablation figure and table.
-- §VII.G cross-method pattern paragraph: convert "the two structural properties of the action-space parameterisation are candidate explanations" to direct claim for DeepRM.
-- §V.B (D2): the action-space-first direction is now empirically supported by a direct ablation, not only by the post-hoc cross-method pattern. Strengthen the §V.B opening sentence accordingly.
+Action redundancy is supported for DeepRM if aggregate FGSM degradation grows
+monotonically and substantially as `M` decreases. Under this case, the ablation
+identifies action redundancy as an operative mechanism for the observed
+DeepRM P3 behaviour.
 
 **Case 2 — H_C2 prevails** (action redundancy falsified).
 
-- §VII.D P3 paragraph: remove the action-redundancy candidate explanation. Insert the ablation result and state that the operative mechanism is not action-level redundancy. Briefly enumerate alternative candidate mechanisms (intrinsic policy smoothing, encoder properties, training-time regularisation) and explicitly defer them to follow-up work.
-- §VII.G cross-method pattern paragraph: weaken the directional claim to: "the cross-method P3 pattern is empirically consistent with action-space structure being the locus of robustness, but our direct ablation on DeepRM does not identify action redundancy as the operative mechanism, and we cannot exclude the possibility that the cross-method robustness is mediated by structural properties at multiple levels (action redundancy in some methods, online compensation in others, with neither being universal)."
-- §V.B (D2): the section's empirical justification is the cross-method pattern, not the redundancy ablation. The directional argument for D2 is unaffected because the ablation does not undermine the broader observation that the methods' robustness mechanisms are properties of their action-space parameterisation.
+Action redundancy is not supported if aggregate FGSM degradation remains
+approximately constant as `M` decreases. Under this case, DeepRM's small
+aggregate FGSM effect must be attributed to another mechanism, such as policy
+smoothing, encoder structure, or training-induced regularisation.
 
 **Case 3 — H_C3 prevails** (mixed).
 
-- §VII.D P3 paragraph: report the mixed result honestly. Action redundancy operates as a defence only when the action set is reduced below a certain threshold; the source-aligned `M = 10` configuration has redundancy beyond the operative threshold; the moderate reduction to `M = 3` is still above the threshold; the minimum `M = 1` falls below.
-- §VII.G cross-method pattern paragraph: state the partial confirmation honestly.
+Action redundancy is partially supported if `M = 3` remains close to the
+source-aligned `M = 10` condition but `M = 1` is qualitatively different. Under
+this case, the redundancy mechanism is interpreted as thresholded rather than
+smoothly monotone.
 
 In all three cases, the value of the experiment is that the action-redundancy claim is no longer asserted without test. The directional argument for D2 is supported by the cross-method pattern regardless of which case prevails.
 
-## 9. Deliverables
-
-The analysis produces the following artifacts.
-
-1. `experiment_c_results.md` — a short report with the competency-gate outcomes, the §7 results table, the verdict on H_C1/H_C2/H_C3, the diagnostic figures, and the per-case interpretation following the rules in §8.
-2. `figures/deeprm_ablation_degradation.pdf`, `figures/deeprm_ablation_action_diagnostics.pdf` — the two diagnostic figures.
-3. `data/experiment_c_slowdowns.csv` — the 30 paired (DeepRM, SourceTetris) slowdowns under clean and P3 for each `M`.
-4. Checkpoints for `DeepRM_M=3` and `DeepRM_M=1` for reproducibility.
-5. Revised text for the §VII.D, §VII.G, and §V.B paragraphs following the case branch in §8.
-
-## 10. Expected duration
-
-Two to three days. Training a DeepRM policy at the source-aligned 1000-iteration budget takes approximately three hours on the hardware used for the main paper; two new conditions (`M=3`, `M=1`) require six hours of training. Evaluation over 30 paired seeds plus P3 FGSM is approximately one hour per condition. Plotting and analysis is half a day.
-
-## 11. References
+## 9. References
 
 - Mao, H., Alizadeh, M., Menache, I., & Kandula, S. (2016). "Resource Management with Deep Reinforcement Learning." *Proc. HotNets*.
 - Goodfellow, I. J., Shlens, J., & Szegedy, C. (2014). "Explaining and Harnessing Adversarial Examples."

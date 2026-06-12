@@ -663,9 +663,9 @@ def write_report(
             f"- deg_1 - 4*deg_10 = {payload['degradation_comparisons']['mean_deg1_minus_4x_deg10']:+.3f} "
             f"[{payload['degradation_comparisons']['ci_low_deg1_minus_4x_deg10']:+.3f}, {payload['degradation_comparisons']['ci_high_deg1_minus_4x_deg10']:+.3f}].",
             "",
-            "## Paper Text Branch",
+            "## Interpretation",
             "",
-            revised_text(verdict["case"]),
+            scientific_interpretation(verdict["case"]),
             "",
             "## Artifacts",
             "",
@@ -728,37 +728,36 @@ def summary_row(m: int, cell: dict[str, object]) -> dict[str, object]:
     }
 
 
-def revised_text(case: str) -> str:
+def scientific_interpretation(case: str) -> str:
     if case == "H_C1":
         return (
-            "Action redundancy is now directly supported for DeepRM. The revised text should state that "
-            "reducing the visible action set causes FGSM to translate from action-level disruption into "
-            "aggregate slowdown degradation, and §VII.D/§VII.G can cite the ablation figure as direct evidence."
+            "Action redundancy is directly supported for DeepRM if reducing the visible action set "
+            "causes FGSM to translate from action-level disruption into aggregate slowdown degradation."
         )
     if case == "H_C2":
         return (
-            "The action-redundancy explanation should be removed as an identified mechanism. The paper should "
-            "state that DeepRM's small aggregate FGSM effect persists even when visible scheduling alternatives "
-            "are reduced, so the operative mechanism is likely elsewhere."
+            "The action-redundancy explanation is not supported as the operative mechanism. "
+            "DeepRM's small aggregate FGSM effect persists even when visible scheduling alternatives "
+            "are reduced, so the mechanism is likely elsewhere."
         )
     if case == "H_C3":
         return (
-            "The paper should report a mixed result: moderate action-set reduction remains close to M=10, while "
-            "the minimum-action setting is qualitatively different. The redundancy claim should be narrowed to a "
-            "thresholded mechanism rather than a smooth monotone mechanism."
+            "The result is mixed: moderate action-set reduction remains close to M=10, while "
+            "the minimum-action setting is qualitatively different. The redundancy mechanism is "
+            "interpreted as thresholded rather than smoothly monotone."
         )
     if case == "M1_not_learnable_H_C1_not_supported_for_competent_conditions":
         return (
-            "The M=1 condition should be treated as a failed competency branch, not as evidence about FGSM "
-            "robustness. The paper should use M=10 and M=3 for the interpretable mechanism test and state "
-            "that the moderate action-space reduction did not increase aggregate FGSM degradation. Therefore, "
+            "The M=1 condition is treated as a non-competent branch, not as evidence about FGSM "
+            "robustness. The interpretable mechanism test is therefore M=10 versus M=3. Under that "
+            "comparison, the moderate action-space reduction does not increase aggregate FGSM degradation. "
             "Experiment C does not confirm action redundancy as the operative defence for DeepRM; the binary "
-            "visible-action condition instead shows that the locked source-aligned training budget no longer "
-            "produces a competent clean scheduler when the action set is reduced to one visible job plus wait."
+            "visible-action condition shows that the locked source-aligned training budget no longer produces "
+            "a competent clean scheduler when the action set is reduced to one visible job plus wait."
         )
     return (
-        "The text should avoid a definitive mechanism claim and present Experiment C as a falsifying sensitivity "
-        "whose pattern does not map cleanly to the preregistered alternatives."
+        "The result does not support a definitive mechanism claim. Experiment C is interpreted as a "
+        "mechanism sensitivity whose pattern does not map cleanly to the preregistered alternatives."
     )
 
 

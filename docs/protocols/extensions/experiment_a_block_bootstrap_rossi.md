@@ -72,7 +72,7 @@ Apply Holm-Bonferroni across the family of all nine main-paper predictions, repl
 
 ## 4. Output (Part A2)
 
-A table of the following form, to be inserted as a companion to Table IV in §VII.C of the paper.
+The block-bootstrap results table uses the following schema.
 
 | Cell | Δ (anchor) | iid 95% CI | block-MBB 95% CI, L=5 | block-MBB 95% CI, L=10 | iid p<sub>u</sub> | block p<sub>u,2s</sub>, L=5 | block p<sub>u,2s</sub>, L=10 | block p<sub>H,2s</sub>, L=5 | block p<sub>H,2s</sub>, L=10 | block p<sub>u,1s compat</sub>, L=5 | block p<sub>u,1s compat</sub>, L=10 |
 |------|-----------|-----------|-----------------------|------------------------|--------------------|---------------------------|----------------------------|---------------------------|----------------------------|-------------------------------|--------------------------------|
@@ -87,26 +87,13 @@ Save the raw arrays of bootstrap replicates and sign-flip permutations to `data/
 
 The block bootstrap is reported as a sensitivity analysis around the main results, not as a replacement. The interpretation rules are:
 
-1. **If `ρ̂(1)` is below 0.3 for all four cells AND the block-bootstrap CIs are within 20% of the iid bootstrap CIs at both block lengths AND no cell's family-wise corrected verdict changes:** report the block-bootstrap analysis as confirmatory and leave the main-paper verdicts unchanged. The paper's autocorrelation acknowledgement in §VII.A and §VII.H is then strengthened by the diagnostic.
+1. **If `ρ̂(1)` is below 0.3 for all four cells AND the block-bootstrap CIs are within 20% of the iid bootstrap CIs at both block lengths AND no cell's family-wise corrected verdict changes:** interpret the iid analysis as stable under the dependence-robust sensitivity check.
 
-2. **If any cell's block-bootstrap CI changes its zero-containment status AND/OR any cell's family-wise corrected verdict changes:** revise the relevant text in §VII.E and §VII.H of the paper. The most likely affected cell is Rossi P2 because its iid CI is the closest to zero among the Rossi cells; for P1 the effect size of +965.1 is order-of-magnitude larger than the iid CI width, so the verdict almost certainly survives even with substantial autocorrelation inflation.
+2. **If any cell's block-bootstrap CI changes its zero-containment status AND/OR any cell's family-wise corrected verdict changes:** report that cell as sensitive to dependence correction. The most likely affected cell is Rossi P2 because its iid CI is the closest to zero among the Rossi cells; for P1 the effect size of +965.1 is order-of-magnitude larger than the iid CI width, so the verdict almost certainly survives even with substantial autocorrelation inflation.
 
-3. **If `LB(10)` p-value is below 0.01 in any cell:** in addition to the above, add a per-cell autocorrelation note in §VII.E and consider whether the block length should be increased to `L = 15` for that cell.
+3. **If `LB(10)` p-value is below 0.01 in any cell:** treat temporal dependence as material for that cell and include the per-cell autocorrelation diagnostic alongside its block-bootstrap result.
 
-## 6. Deliverables
-
-The analysis produces the following artifacts.
-
-1. `experiment_a_results.md` — a short report with the Part A1 diagnostic table, the Part A2 results table, the autocorrelation figure description, and an interpretation paragraph following the rules in §5.
-2. `figures/rossi_acf_diagnostic.pdf` — the 4-panel ACF figure.
-3. `data/experiment_a_replicates_L5.npz`, `data/experiment_a_replicates_L10.npz` — raw bootstrap and sign-flip arrays.
-4. Updated values for the Rossi rows of Table IV (one new sub-row per block length) and an updated §VII.H autocorrelation paragraph with the diagnostic values inserted.
-
-## 7. Expected duration
-
-One day. No new simulator runs; only postprocessing of the existing 4×30 paired cost vectors.
-
-## 8. References
+## 6. References
 
 - Künsch, H. R. (1989). "The Jackknife and the Bootstrap for General Stationary Observations." *Annals of Statistics* 17(3): 1217–1241.
 - Politis, D. N., & White, H. (2004). "Automatic Block-Length Selection for the Dependent Bootstrap." *Econometric Reviews* 23(1): 53–70.

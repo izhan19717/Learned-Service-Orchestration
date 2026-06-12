@@ -175,45 +175,26 @@ Additionally, for the P1 cell, render a side-by-side comparison of the *bundled 
 
 ## 8. Interpretation rules (pre-registered)
 
-The paper's revision is determined by which of H_P1a or H_P1b prevails on the P1 cell.
+The P1 interpretation is determined by which of H_P1a or H_P1b prevails.
 
 **Case 1 — H_P1a prevails** (HPA does not collapse under lag; the bundled-threshold mechanism does not generalise).
 
 This outcome weakens the cross-method P1 narrative by showing that the
 bundled-threshold mechanism does not generalise to the HPA-v2 comparator. The
-paper's revision:
-
-- §VII.E P1 paragraph: revise to acknowledge that the lag-fragility verdict holds only against the bundled simulator-grade threshold, not against stabilisation-windowed controllers.
-- §VII.E baseline caveat: convert from forward-looking ("a stabilisation-windowed comparator may dominate the Rossi controller by a different margin") to backward-looking with the actual HPA-v2 result.
-- §VII.G cross-method pattern: weaken the directional claim. Even after this revision, the cross-method P1 evidence on Decima (via `dynamic_partition`) and the qualified DeepRM P1 finding (via SourceTetris under no-op semantics) still hold.
-- D3 in §V.C: strengthen the comparator-realism commitment with the empirical observation that the simulator-grade and production-grade comparators differ materially in this cell.
+Rossi P1 result is then interpreted as comparator-dependent rather than as a
+general property of threshold control under lag.
 
 **Case 2 — H_P1b prevails** (HPA still produces high cost under lag, via over-provisioning or another mechanism).
 
 This outcome strengthens the cross-method P1 narrative by showing that the
-lag-fragility result survives the HPA-v2 comparator. The paper's revision:
-
-- §VII.E P1 paragraph: add a sentence reporting the HPA-v2 result alongside the bundled-threshold result, with the diagnostic figure showing the over-provisioning (or whatever mechanism is observed).
-- §VII.E baseline caveat: convert from forward-looking to backward-looking with the empirical confirmation that the lag-fragility verdict survives the stabilisation-windowed strengthening.
-- §VII.G cross-method pattern: strengthen.
+lag-fragility result survives the HPA-v2 comparator. The Rossi P1 result is
+then interpreted as robust to this comparator strengthening, with the diagnostic
+trace used to identify whether the mechanism is oscillation, over-provisioning,
+or another HPA-v2 failure mode.
 
 **Either way**, the comparator-honesty point made by D3 in §V.C is reinforced: a published paper's evaluation against its bundled baseline can leave a substantial gap uncovered.
 
-## 9. Deliverables
-
-The analysis produces the following artifacts.
-
-1. `experiment_b_results.md` — a short report with the sanity-check outcomes, the §7 results table, the magnitude verdict (which of H_P1a or H_P1b prevailed), the failure-trace figures, and the per-cell interpretation following the rules in §8.
-2. `figures/hpa_v2_clean_vs_k10_failure_trace.pdf`, `figures/threshold_vs_hpa_v2_under_lag.pdf` — the two diagnostic figures.
-3. `data/experiment_b_costs.csv` — the 30 paired `(cost_hpa_v2, cost_rossi_online)` rows for each of the four cells.
-4. `controllers/hpa_v2_controller.py` — the new `HPAv2Controller` class for repository inclusion.
-5. Revised text for the §VII.E paragraphs following the case branch in §8.
-
-## 10. Expected duration
-
-Two to three days. The HPA controller class is approximately 200 lines of Python following the autoscaling/v2 algorithm. The four cells use the same 30 window seeds as the existing Rossi runs and are computationally identical in cost to the existing threshold runs.
-
-## 11. References
+## 9. References
 
 - Kubernetes autoscaling/v2 documentation: stabilisation windows, scale-up and scale-down rate policies.
 - KEP-853 (Configurable HPA Scale Velocity) for the policy semantics.
